@@ -66,4 +66,4 @@ uv run python scripts/generate_heatmaps.py
 
 ## Status
 
-Work in progress. Currently running the (i,j) sweep on Qwen2.5-1.5B. See `IMPLEMENTATION_PLAN.md` for the full 31-step build plan.
+Work in progress. Currently running the (i,j) sweep on Qwen2.5-1.5B.
