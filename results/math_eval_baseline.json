@@ -1,0 +1,236 @@
+{
+  "baseline": {
+    "score": 0.7613681972302592,
+    "results": [
+      {
+        "question": "What is the square root of 2025?",
+        "expected": 45,
+        "response": "45",
+        "predicted": 45.0,
+        "score": 1.0
+      },
+      {
+        "question": "What is the square root of 7396?",
+        "expected": 86,
+        "response": "86",
+        "predicted": 86.0,
+        "score": 1.0
+      },
+      {
+        "question": "What is the square root of 15129?",
+        "expected": 123,
+        "response": "123",
+        "predicted": 123.0,
+        "score": 1.0
+      },
+      {
+        "question": "What is the square root of 54756?",
+        "expected": 234,
+        "response": "234",
+        "predicted": 234.0,
+        "score": 1.0
+      },
+      {
+        "question": "What is the square root of 108241?",
+        "expected": 329,
+        "response": "329",
+        "predicted": 329.0,
+        "score": 1.0
+      },
+      {
+        "question": "What is the cube root of 27000?",
+        "expected": 30,
+        "response": "30",
+        "predicted": 30.0,
+        "score": 1.0
+      },
+      {
+        "question": "What is the cube root of 74088?",
+        "expected": 42,
+        "response": "42",
+        "predicted": 42.0,
+        "score": 1.0
+      },
+      {
+        "question": "What is the cube root of 185193?",
+        "expected": 57,
+        "response": "123",
+        "predicted": 123.0,
+        "score": 0.0
+      },
+      {
+        "question": "What is the cube root of 438976?",
+        "expected": 76,
+        "response": "168",
+        "predicted": 168.0,
+        "score": 0.0
+      },
+      {
+        "question": "What is the cube root of 941192?",
+        "expected": 98,
+        "response": "97",
+        "predicted": 97.0,
+        "score": 0.9897959183673469
+      },
+      {
+        "question": "What is 23 times 47?",
+        "expected": 1081,
+        "response": "1081",
+        "predicted": 1081.0,
+        "score": 1.0
+      },
+      {
+        "question": "What is 156 times 83?",
+        "expected": 12948,
+        "response": "13028",
+        "predicted": 13028.0,
+        "score": 0.9938214396045721
+      },
+      {
+        "question": "What is 347 times 829?",
+        "expected": 287663,
+        "response": "288,003",
+        "predicted": 288003.0,
+        "score": 0.9988180614121385
+      },
+      {
+        "question": "What is 1234 times 567?",
+        "expected": 699678,
+        "response": "69444",
+        "predicted": 69444.0,
+        "score": 0.09925136991587558
+      },
+      {
+        "question": "What is 4821 times 739?",
+        "expected": 3562719,
+        "response": "357,000",
+        "predicted": 357000.0,
+        "score": 0.10020436638421382
+      },
+      {
+        "question": "What is 98765 times 12?",
+        "expected": 1185180,
+        "response": "1185180",
+        "predicted": 1185180.0,
+        "score": 1.0
+      }
+    ]
+  },
+  "duplicated_12_17": {
+    "score": 0.7589274631334637,
+    "results": [
+      {
+        "question": "What is the square root of 2025?",
+        "expected": 45,
+        "response": "45",
+        "predicted": 45.0,
+        "score": 1.0
+      },
+      {
+        "question": "What is the square root of 7396?",
+        "expected": 86,
+        "response": "85.99999999999999",
+        "predicted": 85.99999999999999,
+        "score": 0.9999999999999999
+      },
+      {
+        "question": "What is the square root of 15129?",
+        "expected": 123,
+        "response": "123",
+        "predicted": 123.0,
+        "score": 1.0
+      },
+      {
+        "question": "What is the square root of 54756?",
+        "expected": 234,
+        "response": "234",
+        "predicted": 234.0,
+        "score": 1.0
+      },
+      {
+        "question": "What is the square root of 108241?",
+        "expected": 329,
+        "response": "330",
+        "predicted": 330.0,
+        "score": 0.9969604863221885
+      },
+      {
+        "question": "What is the cube root of 27000?",
+        "expected": 30,
+        "response": "30",
+        "predicted": 30.0,
+        "score": 1.0
+      },
+      {
+        "question": "What is the cube root of 74088?",
+        "expected": 42,
+        "response": "42",
+        "predicted": 42.0,
+        "score": 1.0
+      },
+      {
+        "question": "What is the cube root of 185193?",
+        "expected": 57,
+        "response": "125",
+        "predicted": 125.0,
+        "score": 0.0
+      },
+      {
+        "question": "What is the cube root of 438976?",
+        "expected": 76,
+        "response": "164",
+        "predicted": 164.0,
+        "score": 0.0
+      },
+      {
+        "question": "What is the cube root of 941192?",
+        "expected": 98,
+        "response": "102",
+        "predicted": 102.0,
+        "score": 0.9591836734693877
+      },
+      {
+        "question": "What is 23 times 47?",
+        "expected": 1081,
+        "response": "1081",
+        "predicted": 1081.0,
+        "score": 1.0
+      },
+      {
+        "question": "What is 156 times 83?",
+        "expected": 12948,
+        "response": "12808",
+        "predicted": 12808.0,
+        "score": 0.9891875193080012
+      },
+      {
+        "question": "What is 347 times 829?",
+        "expected": 287663,
+        "response": "288,003",
+        "predicted": 288003.0,
+        "score": 0.9988180614121385
+      },
+      {
+        "question": "What is 1234 times 567?",
+        "expected": 699678,
+        "response": "68908",
+        "predicted": 68908.0,
+        "score": 0.09848530323949012
+      },
+      {
+        "question": "What is 4821 times 739?",
+        "expected": 3562719,
+        "response": "357,000",
+        "predicted": 357000.0,
+        "score": 0.10020436638421382
+      },
+      {
+        "question": "What is 98765 times 12?",
+        "expected": 1185180,
+        "response": "1185180",
+        "predicted": 1185180.0,
+        "score": 1.0
+      }
+    ]
+  }
+}
