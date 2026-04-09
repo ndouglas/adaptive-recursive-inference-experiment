@@ -61,7 +61,7 @@ uv run python scripts/generate_heatmaps.py
 ## Compute
 
 - **Mac M1 Max (64GB)** -- development, analysis, interactive exploration via MPS
-- **Velaryon (RTX 2070S)** -- batch sweeps via K8s Jobs on the GoldenTooth cluster
+- **Velaryon (RTX 2070S)** -- batch sweeps via K8s Jobs on the Goldentooth cluster
 - **RunPod (A100+)** -- 7B+ model experiments
 
 ## Status
