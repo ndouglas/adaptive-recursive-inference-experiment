@@ -21,7 +21,7 @@ def score_answer(predicted, expected):
     return score
 
 
-def run_math_eval(model, tokenizer, questions):
+def run_math_eval(model, tokenizer, questions, verbose=True):
     """Run math evaluation on a list of questions. Returns (results, aggregate_score)."""
     results = []
     for q in questions:
@@ -48,8 +48,9 @@ def run_math_eval(model, tokenizer, questions):
             "predicted": predicted,
             "score": score,
         })
-        print(f"  {q['question']}")
-        print(f"    Expected: {q['answer']}, Got: {response} (parsed: {predicted}), Score: {score:.4f}")
+        if verbose:
+            print(f"  {q['question']}")
+            print(f"    Expected: {q['answer']}, Got: {response} (parsed: {predicted}), Score: {score:.4f}")
 
     aggregate = sum(r["score"] for r in results) / len(results)
     return results, aggregate

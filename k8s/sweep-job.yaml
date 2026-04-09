@@ -1,0 +1,66 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ari
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: ari-workspace
+  namespace: ari
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: local-path
+  resources:
+    requests:
+      storage: 20Gi
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sweep-1-5b
+  namespace: ari
+spec:
+  backoffLimit: 3
+  template:
+    spec:
+      runtimeClassName: nvidia
+      nodeSelector:
+        role: gpu
+      tolerations:
+        - key: gpu
+          operator: Equal
+          value: "true"
+          effect: NoSchedule
+        - key: platform
+          operator: Equal
+          value: "x86"
+          effect: NoSchedule
+      containers:
+        - name: sweep
+          image: registry.goldentooth.net/ari-sweep:latest
+          env:
+            - name: NVIDIA_VISIBLE_DEVICES
+              value: "all"
+            - name: NVIDIA_DRIVER_CAPABILITIES
+              value: "compute,utility"
+            - name: HF_HOME
+              value: /workspace/huggingface
+          resources:
+            requests:
+              nvidia.com/gpu: "1"
+              memory: 8Gi
+              cpu: "4"
+            limits:
+              nvidia.com/gpu: "1"
+              memory: 16Gi
+              cpu: "8"
+          volumeMounts:
+            - name: workspace
+              mountPath: /workspace
+      volumes:
+        - name: workspace
+          persistentVolumeClaim:
+            claimName: ari-workspace
+      restartPolicy: OnFailure

@@ -1,0 +1,21 @@
+name: Build Sweep Image
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: x86-64
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build and push to registry
+        uses: docker://gcr.io/kaniko-project/executor:latest
+        with:
+          args: >-
+            --dockerfile=k8s/Dockerfile
+            --context=.
+            --destination=registry.goldentooth.net/ari-sweep:${{ github.run_number }}-${{ github.sha }}
+            --destination=registry.goldentooth.net/ari-sweep:latest
+            --skip-tls-verify

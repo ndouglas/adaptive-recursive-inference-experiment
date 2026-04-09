@@ -29,7 +29,7 @@ def score_scenario(predicted, reference):
     return max(0.0, r)
 
 
-def run_eq_eval(model, tokenizer, scenarios):
+def run_eq_eval(model, tokenizer, scenarios, verbose=True):
     """Run EQ evaluation on a list of scenarios. Returns (results, aggregate_score)."""
     results = []
     for s in scenarios:
@@ -66,15 +66,17 @@ def run_eq_eval(model, tokenizer, scenarios):
             "predicted": predicted,
             "score": score,
         })
-        print(f"  {s['character']}: {s['scenario'][:60]}...")
-        print(f"    Emotions:  {s['emotions']}")
-        print(f"    Reference: {s['reference']}")
-        print(f"    Response:  {response}")
-        print(f"    Parsed:    {predicted}, Score: {score:.4f}")
+        if verbose:
+            print(f"  {s['character']}: {s['scenario'][:60]}...")
+            print(f"    Emotions:  {s['emotions']}")
+            print(f"    Reference: {s['reference']}")
+            print(f"    Response:  {response}")
+            print(f"    Parsed:    {predicted}, Score: {score:.4f}")
 
     valid = [r for r in results if r["predicted"] is not None]
     parse_rate = len(valid) / len(results)
     aggregate = sum(r["score"] for r in results) / len(results) if results else 0.0
 
-    print(f"\n  Parse rate: {len(valid)}/{len(results)} ({parse_rate:.0%})")
+    if verbose:
+        print(f"\n  Parse rate: {len(valid)}/{len(results)} ({parse_rate:.0%})")
     return results, aggregate
