@@ -39,7 +39,7 @@ spec:
           effect: NoSchedule
       containers:
         - name: sweep
-          image: registry.goldentooth.net/ari-sweep:latest
+          image: ghcr.io/ndouglas/ari-sweep:latest
           env:
             - name: NVIDIA_VISIBLE_DEVICES
               value: "all"
