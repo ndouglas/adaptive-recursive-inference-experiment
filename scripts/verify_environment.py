@@ -11,7 +11,8 @@ def check_cuda():
     print(f"CUDA: available ({torch.version.cuda})")
     for i in range(torch.cuda.device_count()):
         props = torch.cuda.get_device_properties(i)
-        vram_gb = props.total_mem / (1024 ** 3)
+        total_mem = getattr(props, "total_memory", None) or getattr(props, "total_mem", 0)
+        vram_gb = total_mem / (1024 ** 3)
         print(f"  GPU {i}: {props.name} — {vram_gb:.1f} GB VRAM, compute {props.major}.{props.minor}")
 
     # Matmul smoke test
@@ -69,7 +70,8 @@ def main():
 
     # VRAM budget summary for RunPod planning
     if has_cuda:
-        vram_gb = torch.cuda.get_device_properties(0).total_mem / (1024 ** 3)
+        props = torch.cuda.get_device_properties(0)
+        vram_gb = (getattr(props, "total_memory", None) or getattr(props, "total_mem", 0)) / (1024 ** 3)
         print(f"\nVRAM budget ({vram_gb:.0f} GB):")
         for name, params in [("Qwen2.5-1.5B", 1.5), ("Qwen2.5-7B", 7.6), ("Qwen2.5-14B", 14.8)]:
             est = estimate_model_memory(params)

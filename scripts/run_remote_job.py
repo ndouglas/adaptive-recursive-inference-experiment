@@ -26,7 +26,7 @@ def gpu_summary():
         print("WARNING: No CUDA GPU detected — this will be very slow.")
         return 0.0
     props = torch.cuda.get_device_properties(0)
-    vram_gb = props.total_mem / (1024 ** 3)
+    vram_gb = (getattr(props, "total_memory", None) or getattr(props, "total_mem", 0)) / (1024 ** 3)
     print(f"GPU: {props.name} — {vram_gb:.1f} GB VRAM")
     return vram_gb
 
