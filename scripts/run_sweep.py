@@ -21,13 +21,22 @@ def main():
                         help="Max EQ scenarios per config (default: all 16)")
     parser.add_argument("--test", type=int, default=None,
                         help="Only run first N configs (for quick testing)")
+    parser.add_argument("--dtype", default="float16",
+                        choices=["float16", "bfloat16", "float32"],
+                        help="Model dtype (default: float16)")
     args = parser.parse_args()
 
-    print(f"Loading model: {args.model}")
+    dtype_map = {
+        "float16": torch.float16,
+        "bfloat16": torch.bfloat16,
+        "float32": torch.float32,
+    }
+
+    print(f"Loading model: {args.model} ({args.dtype})")
     tokenizer = AutoTokenizer.from_pretrained(args.model)
     model = AutoModelForCausalLM.from_pretrained(
         args.model,
-        dtype=torch.float16,
+        torch_dtype=dtype_map[args.dtype],
         device_map="auto",
     )
     print(f"Model loaded: {model.config.num_hidden_layers} layers on {model.device}")

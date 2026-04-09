@@ -26,4 +26,4 @@ COPY scripts/ scripts/
 COPY data/ data/
 
 ENTRYPOINT ["python3.12", "scripts/run_sweep.py"]
-CMD ["--max-math", "8", "--max-eq", "8", "--results", "/workspace/sweep_results.json"]
+CMD ["--results", "/workspace/sweep_results.json"]
