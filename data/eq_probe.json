@@ -1,0 +1,98 @@
+[
+  {
+    "scenario": "Alex just received news that their project at work was selected for the company's innovation award, but their closest collaborator was passed over.",
+    "character": "Alex",
+    "emotions": ["pride", "guilt", "happiness", "concern"],
+    "reference": [72, 55, 65, 60]
+  },
+  {
+    "scenario": "Jordan's best friend just told them they're moving to another country for a dream job opportunity.",
+    "character": "Jordan",
+    "emotions": ["happiness", "sadness", "supportiveness", "loneliness"],
+    "reference": [50, 70, 75, 65]
+  },
+  {
+    "scenario": "Sam accidentally overheard coworkers praising their work during a meeting, not knowing Sam was listening.",
+    "character": "Sam",
+    "emotions": ["pride", "embarrassment", "happiness", "awkwardness"],
+    "reference": [70, 40, 75, 45]
+  },
+  {
+    "scenario": "Taylor's teenager just got accepted to a prestigious university far from home on a full scholarship.",
+    "character": "Taylor",
+    "emotions": ["pride", "sadness", "excitement", "anxiety"],
+    "reference": [85, 50, 80, 55]
+  },
+  {
+    "scenario": "Morgan was just promoted to lead a team, but the role was previously held by a close friend who was let go.",
+    "character": "Morgan",
+    "emotions": ["excitement", "guilt", "ambition", "discomfort"],
+    "reference": [45, 70, 55, 65]
+  },
+  {
+    "scenario": "Casey just found out their surprise birthday party was planned by someone they've been in a bitter argument with.",
+    "character": "Casey",
+    "emotions": ["surprise", "confusion", "gratitude", "suspicion"],
+    "reference": [75, 60, 45, 55]
+  },
+  {
+    "scenario": "Riley's elderly parent just asked them to move back home to help care for them, right after Riley started a new life in a new city.",
+    "character": "Riley",
+    "emotions": ["obligation", "resentment", "love", "frustration"],
+    "reference": [75, 40, 80, 55]
+  },
+  {
+    "scenario": "Quinn just won a heated competition against their younger sibling, who had been practicing for months and was visibly devastated.",
+    "character": "Quinn",
+    "emotions": ["satisfaction", "guilt", "sympathy", "pride"],
+    "reference": [55, 60, 65, 50]
+  },
+  {
+    "scenario": "Avery discovered that a colleague they dislike just did something genuinely kind for them behind the scenes.",
+    "character": "Avery",
+    "emotions": ["surprise", "gratitude", "confusion", "shame"],
+    "reference": [70, 60, 55, 45]
+  },
+  {
+    "scenario": "Dakota's partner just confessed to a minor lie that had been going on for several months but ultimately had no real consequences.",
+    "character": "Dakota",
+    "emotions": ["betrayal", "relief", "anger", "confusion"],
+    "reference": [55, 30, 50, 60]
+  },
+  {
+    "scenario": "Jamie just received a heartfelt apology from someone who bullied them years ago in school.",
+    "character": "Jamie",
+    "emotions": ["surprise", "validation", "lingering hurt", "forgiveness"],
+    "reference": [65, 70, 55, 50]
+  },
+  {
+    "scenario": "Reese was just told by their doctor that a health scare turned out to be nothing serious.",
+    "character": "Reese",
+    "emotions": ["relief", "residual anxiety", "gratitude", "vulnerability"],
+    "reference": [85, 40, 70, 45]
+  },
+  {
+    "scenario": "Skyler just realized they forgot their best friend's birthday for the first time in fifteen years.",
+    "character": "Skyler",
+    "emotions": ["guilt", "panic", "self-disappointment", "worry"],
+    "reference": [80, 65, 70, 60]
+  },
+  {
+    "scenario": "Harper's artwork was selected for a gallery show, but the curator publicly described it as expressing pain and darkness, which wasn't Harper's intention at all.",
+    "character": "Harper",
+    "emotions": ["pride", "frustration", "vulnerability", "amusement"],
+    "reference": [55, 60, 50, 35]
+  },
+  {
+    "scenario": "Drew just learned that a family member secretly paid off their student loans without telling them.",
+    "character": "Drew",
+    "emotions": ["gratitude", "surprise", "loss of independence", "love"],
+    "reference": [80, 75, 40, 70]
+  },
+  {
+    "scenario": "Emery just watched their mentee succeed spectacularly at something Emery themselves had always failed at.",
+    "character": "Emery",
+    "emotions": ["pride", "envy", "bittersweet joy", "self-reflection"],
+    "reference": [70, 35, 60, 55]
+  }
+]

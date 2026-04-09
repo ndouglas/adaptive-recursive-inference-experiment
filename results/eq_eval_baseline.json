@@ -1,0 +1,748 @@
+{
+  "baseline": {
+    "score": 0.4506608504621171,
+    "results": [
+      {
+        "character": "Alex",
+        "emotions": [
+          "pride",
+          "guilt",
+          "happiness",
+          "concern"
+        ],
+        "reference": [
+          72,
+          55,
+          65,
+          60
+        ],
+        "response": "80, 20, 90, 10",
+        "predicted": [
+          80,
+          20,
+          90,
+          10
+        ],
+        "score": 0.7988124096574769
+      },
+      {
+        "character": "Jordan",
+        "emotions": [
+          "happiness",
+          "sadness",
+          "supportiveness",
+          "loneliness"
+        ],
+        "reference": [
+          50,
+          70,
+          75,
+          65
+        ],
+        "response": "80, 20, 90, 10",
+        "predicted": [
+          80,
+          20,
+          90,
+          10
+        ],
+        "score": 0.0
+      },
+      {
+        "character": "Sam",
+        "emotions": [
+          "pride",
+          "embarrassment",
+          "happiness",
+          "awkwardness"
+        ],
+        "reference": [
+          70,
+          40,
+          75,
+          45
+        ],
+        "response": "0, 0, 100, 0",
+        "predicted": [
+          0,
+          0,
+          100,
+          0
+        ],
+        "score": 0.6644105970267492
+      },
+      {
+        "character": "Taylor",
+        "emotions": [
+          "pride",
+          "sadness",
+          "excitement",
+          "anxiety"
+        ],
+        "reference": [
+          85,
+          50,
+          80,
+          55
+        ],
+        "response": "80, 20, 90, 10",
+        "predicted": [
+          80,
+          20,
+          90,
+          10
+        ],
+        "score": 0.9532306376993182
+      },
+      {
+        "character": "Morgan",
+        "emotions": [
+          "excitement",
+          "guilt",
+          "ambition",
+          "discomfort"
+        ],
+        "reference": [
+          45,
+          70,
+          55,
+          65
+        ],
+        "response": "80, 50, 70, 30",
+        "predicted": [
+          80,
+          50,
+          70,
+          30
+        ],
+        "score": 0.0
+      },
+      {
+        "character": "Casey",
+        "emotions": [
+          "surprise",
+          "confusion",
+          "gratitude",
+          "suspicion"
+        ],
+        "reference": [
+          75,
+          60,
+          45,
+          55
+        ],
+        "response": "80, 70, 90, 60",
+        "predicted": [
+          80,
+          70,
+          90,
+          60
+        ],
+        "score": 0.0
+      },
+      {
+        "character": "Riley",
+        "emotions": [
+          "obligation",
+          "resentment",
+          "love",
+          "frustration"
+        ],
+        "reference": [
+          75,
+          40,
+          80,
+          55
+        ],
+        "response": "0, 0, 100, 0",
+        "predicted": [
+          0,
+          0,
+          100,
+          0
+        ],
+        "score": 0.6311687442672024
+      },
+      {
+        "character": "Quinn",
+        "emotions": [
+          "satisfaction",
+          "guilt",
+          "sympathy",
+          "pride"
+        ],
+        "reference": [
+          55,
+          60,
+          65,
+          50
+        ],
+        "response": "80, 20, 50, 70",
+        "predicted": [
+          80,
+          20,
+          50,
+          70
+        ],
+        "score": 0.0
+      },
+      {
+        "character": "Avery",
+        "emotions": [
+          "surprise",
+          "gratitude",
+          "confusion",
+          "shame"
+        ],
+        "reference": [
+          70,
+          60,
+          55,
+          45
+        ],
+        "response": "80, 90, 70, 60",
+        "predicted": [
+          80,
+          90,
+          70,
+          60
+        ],
+        "score": 0.7442084075352506
+      },
+      {
+        "character": "Dakota",
+        "emotions": [
+          "betrayal",
+          "relief",
+          "anger",
+          "confusion"
+        ],
+        "reference": [
+          55,
+          30,
+          50,
+          60
+        ],
+        "response": "80, 70, 60, 90",
+        "predicted": [
+          80,
+          70,
+          60,
+          90
+        ],
+        "score": 0.5399687630411976
+      },
+      {
+        "character": "Jamie",
+        "emotions": [
+          "surprise",
+          "validation",
+          "lingering hurt",
+          "forgiveness"
+        ],
+        "reference": [
+          65,
+          70,
+          55,
+          50
+        ],
+        "response": "80, 90, 70, 60",
+        "predicted": [
+          80,
+          90,
+          70,
+          60
+        ],
+        "score": 0.9899494936611664
+      },
+      {
+        "character": "Reese",
+        "emotions": [
+          "relief",
+          "residual anxiety",
+          "gratitude",
+          "vulnerability"
+        ],
+        "reference": [
+          85,
+          40,
+          70,
+          45
+        ],
+        "response": "80, 20, 90, 10",
+        "predicted": [
+          80,
+          20,
+          90,
+          10
+        ],
+        "score": 0.9045154217304135
+      },
+      {
+        "character": "Skyler",
+        "emotions": [
+          "guilt",
+          "panic",
+          "self-disappointment",
+          "worry"
+        ],
+        "reference": [
+          80,
+          65,
+          70,
+          60
+        ],
+        "response": "0, 0, 0, 0",
+        "predicted": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "score": 0.0
+      },
+      {
+        "character": "Harper",
+        "emotions": [
+          "pride",
+          "frustration",
+          "vulnerability",
+          "amusement"
+        ],
+        "reference": [
+          55,
+          60,
+          50,
+          35
+        ],
+        "response": "80, 70, 60, 90",
+        "predicted": [
+          80,
+          70,
+          60,
+          90
+        ],
+        "score": 0.0
+      },
+      {
+        "character": "Drew",
+        "emotions": [
+          "gratitude",
+          "surprise",
+          "loss of independence",
+          "love"
+        ],
+        "reference": [
+          80,
+          75,
+          40,
+          70
+        ],
+        "response": "0, 0, 100, 0",
+        "predicted": [
+          0,
+          0,
+          100,
+          0
+        ],
+        "score": 0.0
+      },
+      {
+        "character": "Emery",
+        "emotions": [
+          "pride",
+          "envy",
+          "bittersweet joy",
+          "self-reflection"
+        ],
+        "reference": [
+          70,
+          35,
+          60,
+          55
+        ],
+        "response": "80, 20, 70, 50",
+        "predicted": [
+          80,
+          20,
+          70,
+          50
+        ],
+        "score": 0.9843091327750998
+      }
+    ]
+  },
+  "duplicated_12_17": {
+    "score": 0.28634031319948294,
+    "results": [
+      {
+        "character": "Alex",
+        "emotions": [
+          "pride",
+          "guilt",
+          "happiness",
+          "concern"
+        ],
+        "reference": [
+          72,
+          55,
+          65,
+          60
+        ],
+        "response": "80, 50, 70, 60",
+        "predicted": [
+          80,
+          50,
+          70,
+          60
+        ],
+        "score": 0.996195293750748
+      },
+      {
+        "character": "Jordan",
+        "emotions": [
+          "happiness",
+          "sadness",
+          "supportiveness",
+          "loneliness"
+        ],
+        "reference": [
+          50,
+          70,
+          75,
+          65
+        ],
+        "response": "100, 0, 100, 0",
+        "predicted": [
+          100,
+          0,
+          100,
+          0
+        ],
+        "score": 0.0
+      },
+      {
+        "character": "Sam",
+        "emotions": [
+          "pride",
+          "embarrassment",
+          "happiness",
+          "awkwardness"
+        ],
+        "reference": [
+          70,
+          40,
+          75,
+          45
+        ],
+        "response": "0, 100, 0, 0",
+        "predicted": [
+          0,
+          100,
+          0,
+          0
+        ],
+        "score": 0.0
+      },
+      {
+        "character": "Taylor",
+        "emotions": [
+          "pride",
+          "sadness",
+          "excitement",
+          "anxiety"
+        ],
+        "reference": [
+          85,
+          50,
+          80,
+          55
+        ],
+        "response": "100, 0, 100, 0",
+        "predicted": [
+          100,
+          0,
+          100,
+          0
+        ],
+        "score": 0.9863939238321437
+      },
+      {
+        "character": "Morgan",
+        "emotions": [
+          "excitement",
+          "guilt",
+          "ambition",
+          "discomfort"
+        ],
+        "reference": [
+          45,
+          70,
+          55,
+          65
+        ],
+        "response": "75, 50, 80, 25",
+        "predicted": [
+          75,
+          50,
+          80,
+          25
+        ],
+        "score": 0.0
+      },
+      {
+        "character": "Casey",
+        "emotions": [
+          "surprise",
+          "confusion",
+          "gratitude",
+          "suspicion"
+        ],
+        "reference": [
+          75,
+          60,
+          45,
+          55
+        ],
+        "response": "0, 0, 100, 0",
+        "predicted": [
+          0,
+          0,
+          100,
+          0
+        ],
+        "score": 0.0
+      },
+      {
+        "character": "Riley",
+        "emotions": [
+          "obligation",
+          "resentment",
+          "love",
+          "frustration"
+        ],
+        "reference": [
+          75,
+          40,
+          80,
+          55
+        ],
+        "response": "0, 100, 50, 75",
+        "predicted": [
+          0,
+          100,
+          50,
+          75
+        ],
+        "score": 0.0
+      },
+      {
+        "character": "Quinn",
+        "emotions": [
+          "satisfaction",
+          "guilt",
+          "sympathy",
+          "pride"
+        ],
+        "reference": [
+          55,
+          60,
+          65,
+          50
+        ],
+        "response": "100, 0, 0, 100",
+        "predicted": [
+          100,
+          0,
+          0,
+          100
+        ],
+        "score": 0.0
+      },
+      {
+        "character": "Avery",
+        "emotions": [
+          "surprise",
+          "gratitude",
+          "confusion",
+          "shame"
+        ],
+        "reference": [
+          70,
+          60,
+          55,
+          45
+        ],
+        "response": "0, 100, 0, 0",
+        "predicted": [
+          0,
+          100,
+          0,
+          0
+        ],
+        "score": 0.1601281538050871
+      },
+      {
+        "character": "Dakota",
+        "emotions": [
+          "betrayal",
+          "relief",
+          "anger",
+          "confusion"
+        ],
+        "reference": [
+          55,
+          30,
+          50,
+          60
+        ],
+        "response": "0, 100, 50, 50",
+        "predicted": [
+          0,
+          100,
+          50,
+          50
+        ],
+        "score": 0.0
+      },
+      {
+        "character": "Jamie",
+        "emotions": [
+          "surprise",
+          "validation",
+          "lingering hurt",
+          "forgiveness"
+        ],
+        "reference": [
+          65,
+          70,
+          55,
+          50
+        ],
+        "response": "0, 100, 50, 0",
+        "predicted": [
+          0,
+          100,
+          50,
+          0
+        ],
+        "score": 0.5720775535473553
+      },
+      {
+        "character": "Reese",
+        "emotions": [
+          "relief",
+          "residual anxiety",
+          "gratitude",
+          "vulnerability"
+        ],
+        "reference": [
+          85,
+          40,
+          70,
+          45
+        ],
+        "response": "100, 0, 0, 0",
+        "predicted": [
+          100,
+          0,
+          0,
+          0
+        ],
+        "score": 0.785674201318386
+      },
+      {
+        "character": "Skyler",
+        "emotions": [
+          "guilt",
+          "panic",
+          "self-disappointment",
+          "worry"
+        ],
+        "reference": [
+          80,
+          65,
+          70,
+          60
+        ],
+        "response": "0, 100, 100, 100",
+        "predicted": [
+          0,
+          100,
+          100,
+          100
+        ],
+        "score": 0.0
+      },
+      {
+        "character": "Harper",
+        "emotions": [
+          "pride",
+          "frustration",
+          "vulnerability",
+          "amusement"
+        ],
+        "reference": [
+          55,
+          60,
+          50,
+          35
+        ],
+        "response": "0, 100, 0, 100",
+        "predicted": [
+          0,
+          100,
+          0,
+          100
+        ],
+        "score": 0.0
+      },
+      {
+        "character": "Drew",
+        "emotions": [
+          "gratitude",
+          "surprise",
+          "loss of independence",
+          "love"
+        ],
+        "reference": [
+          80,
+          75,
+          40,
+          70
+        ],
+        "response": "0, 100, 0, 100",
+        "predicted": [
+          0,
+          100,
+          0,
+          100
+        ],
+        "score": 0.40160966445124946
+      },
+      {
+        "character": "Emery",
+        "emotions": [
+          "pride",
+          "envy",
+          "bittersweet joy",
+          "self-reflection"
+        ],
+        "reference": [
+          70,
+          35,
+          60,
+          55
+        ],
+        "response": "100, 0, 0, 0",
+        "predicted": [
+          100,
+          0,
+          0,
+          0
+        ],
+        "score": 0.6793662204867574
+      }
+    ]
+  }
+}
