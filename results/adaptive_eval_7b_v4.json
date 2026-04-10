@@ -1,0 +1,831 @@
+{
+  "model": "Qwen/Qwen2.5-7B",
+  "block_i": 15,
+  "block_j": 20,
+  "max_iterations": 4,
+  "baseline": {
+    "math_score": 0.6678584039701806,
+    "eq_score": 0.480353706612284
+  },
+  "thresholds": {
+    "0.8": {
+      "threshold": 0.8,
+      "math_score": 0.7500421869726628,
+      "eq_score": 0.39216093767308124,
+      "avg_iterations": 1.7494703389830508,
+      "math_avg_iters": 1.4989406779661016,
+      "eq_avg_iters": 2.0,
+      "elapsed_s": 37.0,
+      "math_results": [
+        {
+          "question": "What is the square root of 2025?",
+          "expected": 45,
+          "predicted": 45.0,
+          "generated": "Reasoning: To find the square root of 2025, we can use the prime factorization method. First, we find the prime factors of 2025, which are 3, 3, 3, 3, 5, and 5. Then, we pair up the prime factors and take one from each pair to get the square root. In this case, we have three pairs of 3 and two pairs of 5, so the square root of 2025 is 3 * 3 * 5 = 45.\nAnswer: 45",
+          "score": 1.0,
+          "avg_iters": 1.0551181102362204
+        },
+        {
+          "question": "What is 3847 times 2963?",
+          "expected": 11398661,
+          "predicted": 3847.0,
+          "generated": "Reasoning: To find the product of 3847 and 2963, we can use the standard multiplication algorithm. First, we multiply 3847 by 3 (the ones digit of 2963), which gives us 11541. Then, we multiply 3847 by 60 (the tens digit of 2963, with a zero added for the place value), which gives us 230820. Next, we multiply 3847 by 900 (the hundreds digit of 296",
+          "score": 0.0003374957813027102,
+          "avg_iters": 1.7109375
+        },
+        {
+          "question": "What is the cube root of 27000?",
+          "expected": 30,
+          "predicted": 27000.0,
+          "generated": "Reasoning: To find the cube root of 27000, we need to find a number that, when multiplied by itself three times, equals 27000. We can start by finding the prime factorization of 27000, which is 2^3 * 3^3 * 5^3. Since the cube root of a number is the same as raising it to the power of 1/3, we can take the cube root of each factor separately. The cube root of 2^3 is 2, the cube root of 3^3 is",
+          "score": 0.0,
+          "avg_iters": 1.078125
+        },
+        {
+          "question": "What is f(f(f(3))) if f(x) = 2x + 1?",
+          "expected": 31,
+          "predicted": 31.0,
+          "generated": "Reasoning: f(3) = 2(3) + 1 = 7\nf(f(3)) = f(7) = 2(7) + 1 = 15\nf(f(f(3))) = f(15) = 2(15) + 1 = 31\nAnswer: 31",
+          "score": 1.0,
+          "avg_iters": 2.0
+        },
+        {
+          "question": "What is 23 times 47?",
+          "expected": 1081,
+          "predicted": 1081.0,
+          "generated": "Reasoning: To find the product of 23 and 47, we can use the distributive property of multiplication over addition. We can break down 47 into 40 and 7, and then multiply each part by 23.\n\n23 * 47 = 23 * (40 + 7)\n         = (23 * 40) + (23 * 7)\n         = 920 + 161\n         = 1081\n\nAnswer: 1081",
+          "score": 1.0,
+          "avg_iters": 1.1111111111111112
+        },
+        {
+          "question": "What is 17 cubed mod 13?",
+          "expected": 12,
+          "predicted": 12.0,
+          "generated": "Reasoning: To find 17 cubed mod 13, we first need to calculate 17 cubed, which is 17 * 17 * 17 = 4913. Then, we need to find the remainder when 4913 is divided by 13. \n\n4913 \u00f7 13 = 377 with a remainder of 12.\n\nSo, 17 cubed mod 13 is 12.\n\nAnswer: 12",
+          "score": 1.0,
+          "avg_iters": 1.1607142857142858
+        },
+        {
+          "question": "How many ways can you choose 3 items from a set of 8?",
+          "expected": 56,
+          "predicted": 56.0,
+          "generated": "Reasoning: This is a combination problem, where the order of the items does not matter. The formula for combinations is nCr = n! / (r!(n-r)!), where n is the total number of items and r is the number of items to choose. In this case, n = 8 and r = 3. So, the calculation is 8! / (3!(8-3)!) = 8! / (3!5!) = 56. Therefore, there are 56 ways to choose 3 items from a set of 8.\n\nAnswer: 56",
+          "score": 1.0,
+          "avg_iters": 2.0
+        },
+        {
+          "question": "In SKI combinator calculus, S f g x = f x (g x) and K x y = x. What is S K K 7?",
+          "expected": 7,
+          "predicted": 7.0,
+          "generated": "Reasoning: To find the answer, we need to apply the given rules of SKI combinator calculus to the expression S K K 7.\n\nFirst, let's substitute the values of S and K in the expression:\n\nS K K 7 = (f x (g x)) K K 7\n\nNow, let's apply the rule for S:\n\n(f x (g x)) K K 7 = f (K K 7) (g (K K 7))\n\nNext, let's apply the rule for K:\n\nf (K K 7) (g (K K 7)) = f (K",
+          "score": 1.0,
+          "avg_iters": 2.0
+        }
+      ],
+      "eq_results": [
+        {
+          "scenario": "Alex just received news that their project at work was selec",
+          "score": 0.8751130125933029,
+          "avg_iters": 2.0
+        },
+        {
+          "scenario": "Jordan's best friend just told them they're moving to anothe",
+          "score": 0.0,
+          "avg_iters": 2.0
+        },
+        {
+          "scenario": "Sam accidentally overheard coworkers praising their work dur",
+          "score": 0.0,
+          "avg_iters": 2.0
+        },
+        {
+          "scenario": "Taylor's teenager just got accepted to a prestigious univers",
+          "score": 0.9863939238321437,
+          "avg_iters": 2.0
+        },
+        {
+          "scenario": "Morgan was just promoted to lead a team, but the role was pr",
+          "score": 0.0,
+          "avg_iters": 2.0
+        },
+        {
+          "scenario": "Casey just found out their surprise birthday party was plann",
+          "score": 0.5773502691896257,
+          "avg_iters": 2.0
+        },
+        {
+          "scenario": "Riley's elderly parent just asked them to move back home to ",
+          "score": 0.698430295769578,
+          "avg_iters": 2.0
+        },
+        {
+          "scenario": "Quinn just won a heated competition against their younger si",
+          "score": 0.0,
+          "avg_iters": 2.0
+        }
+      ]
+    },
+    "0.85": {
+      "threshold": 0.85,
+      "math_score": 0.5110350947740813,
+      "eq_score": 0.39216093767308124,
+      "avg_iterations": 2.0,
+      "math_avg_iters": 2.0,
+      "eq_avg_iters": 2.0,
+      "elapsed_s": 39.2,
+      "math_results": [
+        {
+          "question": "What is the square root of 2025?",
+          "expected": 45,
+          "predicted": 2025.0,
+          "generated": "Reasoning: To find the square root of 2025, we can use the prime factorization method. \n\n1. First, we find the prime factors of 2025. \n2. 2025 is divisible by 3, so we divide it by 3 and get 675. \n3. 675 is also divisible by 3, so we divide it by 3 and get 225. \n4. 225 is also divisible by 3, so we divide it by 3 and get 75. \n5.",
+          "score": 0.0,
+          "avg_iters": 2.0
+        },
+        {
+          "question": "What is 3847 times 2963?",
+          "expected": 11398661,
+          "predicted": 3847.0,
+          "generated": "Reasoning: To find the product of 3847 and 2963, we can use the distributive property of multiplication. \n\n3847 * 2963 = 3847 * (3000 - 37) = 3847 * 3000 - 3847 * 37\n\nNow, we can further break down the multiplication:\n\n3847 * 3000 = 3847 * 3 * 1000 = 11541 * 100",
+          "score": 0.0003374957813027102,
+          "avg_iters": 2.0
+        },
+        {
+          "question": "What is the cube root of 27000?",
+          "expected": 30,
+          "predicted": 2.0,
+          "generated": "Reasoning: To find the cube root of 27000, we need to find a number that, when multiplied by itself three times, equals 27000. We can use the prime factorization method to find the cube root.\n\nPrime factorization of 27000:\n27000 = 2^3 * 3^3 * 5^3\n\nNow, we can take the cube root of each prime factor:\nCube root of 2^3 = 2\nCube root of 3^3 = 3\nCube root of 5^3 =",
+          "score": 0.06666666666666665,
+          "avg_iters": 2.0
+        },
+        {
+          "question": "What is f(f(f(3))) if f(x) = 2x + 1?",
+          "expected": 31,
+          "predicted": 31.0,
+          "generated": "Reasoning: f(3) = 2(3) + 1 = 7\nf(f(3)) = f(7) = 2(7) + 1 = 15\nf(f(f(3))) = f(15) = 2(15) + 1 = 31\nAnswer: 31",
+          "score": 1.0,
+          "avg_iters": 2.0
+        },
+        {
+          "question": "What is 23 times 47?",
+          "expected": 1081,
+          "predicted": 23.0,
+          "generated": "Reasoning: To find the product of 23 and 47, we can use the distributive property of multiplication. We can break down 47 into 40 and 7, and then multiply each part by 23 separately. \n\n23 * 47 = 23 * (40 + 7) = (23 * 40) + (23 * 7)\n\nNow, we can calculate the individual products:\n\n23 * 40 = 920\n23 * 7 = 161\n\nFinally, we add the two products together",
+          "score": 0.021276595744680882,
+          "avg_iters": 2.0
+        },
+        {
+          "question": "What is 17 cubed mod 13?",
+          "expected": 12,
+          "predicted": 12.0,
+          "generated": "Reasoning: To find 17 cubed mod 13, we first need to calculate 17 cubed. 17 cubed is 17 * 17 * 17, which equals 4913. Now, we need to find the remainder when 4913 is divided by 13. \n\n4913 mod 13 = 12\n\nAnswer: 12",
+          "score": 1.0,
+          "avg_iters": 2.0
+        },
+        {
+          "question": "How many ways can you choose 3 items from a set of 8?",
+          "expected": 56,
+          "predicted": 56.0,
+          "generated": "Reasoning: This is a combination problem, where the order of the items does not matter. The formula for combinations is nCr = n! / (r!(n-r)!), where n is the total number of items and r is the number of items to choose. In this case, n = 8 and r = 3. So, the calculation is 8! / (3!(8-3)!) = 8! / (3!5!) = 56. Therefore, there are 56 ways to choose 3 items from a set of 8.\n\nAnswer: 56",
+          "score": 1.0,
+          "avg_iters": 2.0
+        },
+        {
+          "question": "In SKI combinator calculus, S f g x = f x (g x) and K x y = x. What is S K K 7?",
+          "expected": 7,
+          "predicted": 7.0,
+          "generated": "Reasoning: To find the answer, we need to apply the given rules of SKI combinator calculus to the expression S K K 7.\n\nFirst, let's substitute the values of S and K in the expression:\n\nS K K 7 = (f x (g x)) K K 7\n\nNow, let's apply the rule for S:\n\n(f x (g x)) K K 7 = f (K K 7) (g (K K 7))\n\nNext, let's apply the rule for K:\n\nf (K K 7) (g (K K 7)) = f (K",
+          "score": 1.0,
+          "avg_iters": 2.0
+        }
+      ],
+      "eq_results": [
+        {
+          "scenario": "Alex just received news that their project at work was selec",
+          "score": 0.8751130125933029,
+          "avg_iters": 2.0
+        },
+        {
+          "scenario": "Jordan's best friend just told them they're moving to anothe",
+          "score": 0.0,
+          "avg_iters": 2.0
+        },
+        {
+          "scenario": "Sam accidentally overheard coworkers praising their work dur",
+          "score": 0.0,
+          "avg_iters": 2.0
+        },
+        {
+          "scenario": "Taylor's teenager just got accepted to a prestigious univers",
+          "score": 0.9863939238321437,
+          "avg_iters": 2.0
+        },
+        {
+          "scenario": "Morgan was just promoted to lead a team, but the role was pr",
+          "score": 0.0,
+          "avg_iters": 2.0
+        },
+        {
+          "scenario": "Casey just found out their surprise birthday party was plann",
+          "score": 0.5773502691896257,
+          "avg_iters": 2.0
+        },
+        {
+          "scenario": "Riley's elderly parent just asked them to move back home to ",
+          "score": 0.698430295769578,
+          "avg_iters": 2.0
+        },
+        {
+          "scenario": "Quinn just won a heated competition against their younger si",
+          "score": 0.0,
+          "avg_iters": 2.0
+        }
+      ]
+    },
+    "0.9": {
+      "threshold": 0.9,
+      "math_score": 0.5110350947740813,
+      "eq_score": 0.39216093767308124,
+      "avg_iterations": 2.0,
+      "math_avg_iters": 2.0,
+      "eq_avg_iters": 2.0,
+      "elapsed_s": 39.4,
+      "math_results": [
+        {
+          "question": "What is the square root of 2025?",
+          "expected": 45,
+          "predicted": 2025.0,
+          "generated": "Reasoning: To find the square root of 2025, we can use the prime factorization method. \n\n1. First, we find the prime factors of 2025. \n2. 2025 is divisible by 3, so we divide it by 3 and get 675. \n3. 675 is also divisible by 3, so we divide it by 3 and get 225. \n4. 225 is also divisible by 3, so we divide it by 3 and get 75. \n5.",
+          "score": 0.0,
+          "avg_iters": 2.0
+        },
+        {
+          "question": "What is 3847 times 2963?",
+          "expected": 11398661,
+          "predicted": 3847.0,
+          "generated": "Reasoning: To find the product of 3847 and 2963, we can use the distributive property of multiplication. \n\n3847 * 2963 = 3847 * (3000 - 37) = 3847 * 3000 - 3847 * 37\n\nNow, we can further break down the multiplication:\n\n3847 * 3000 = 3847 * 3 * 1000 = 11541 * 100",
+          "score": 0.0003374957813027102,
+          "avg_iters": 2.0
+        },
+        {
+          "question": "What is the cube root of 27000?",
+          "expected": 30,
+          "predicted": 2.0,
+          "generated": "Reasoning: To find the cube root of 27000, we need to find a number that, when multiplied by itself three times, equals 27000. We can use the prime factorization method to find the cube root.\n\nPrime factorization of 27000:\n27000 = 2^3 * 3^3 * 5^3\n\nNow, we can take the cube root of each prime factor:\nCube root of 2^3 = 2\nCube root of 3^3 = 3\nCube root of 5^3 =",
+          "score": 0.06666666666666665,
+          "avg_iters": 2.0
+        },
+        {
+          "question": "What is f(f(f(3))) if f(x) = 2x + 1?",
+          "expected": 31,
+          "predicted": 31.0,
+          "generated": "Reasoning: f(3) = 2(3) + 1 = 7\nf(f(3)) = f(7) = 2(7) + 1 = 15\nf(f(f(3))) = f(15) = 2(15) + 1 = 31\nAnswer: 31",
+          "score": 1.0,
+          "avg_iters": 2.0
+        },
+        {
+          "question": "What is 23 times 47?",
+          "expected": 1081,
+          "predicted": 23.0,
+          "generated": "Reasoning: To find the product of 23 and 47, we can use the distributive property of multiplication. We can break down 47 into 40 and 7, and then multiply each part by 23 separately. \n\n23 * 47 = 23 * (40 + 7) = (23 * 40) + (23 * 7)\n\nNow, we can calculate the individual products:\n\n23 * 40 = 920\n23 * 7 = 161\n\nFinally, we add the two products together",
+          "score": 0.021276595744680882,
+          "avg_iters": 2.0
+        },
+        {
+          "question": "What is 17 cubed mod 13?",
+          "expected": 12,
+          "predicted": 12.0,
+          "generated": "Reasoning: To find 17 cubed mod 13, we first need to calculate 17 cubed. 17 cubed is 17 * 17 * 17, which equals 4913. Now, we need to find the remainder when 4913 is divided by 13. \n\n4913 mod 13 = 12\n\nAnswer: 12",
+          "score": 1.0,
+          "avg_iters": 2.0
+        },
+        {
+          "question": "How many ways can you choose 3 items from a set of 8?",
+          "expected": 56,
+          "predicted": 56.0,
+          "generated": "Reasoning: This is a combination problem, where the order of the items does not matter. The formula for combinations is nCr = n! / (r!(n-r)!), where n is the total number of items and r is the number of items to choose. In this case, n = 8 and r = 3. So, the calculation is 8! / (3!(8-3)!) = 8! / (3!5!) = 56. Therefore, there are 56 ways to choose 3 items from a set of 8.\n\nAnswer: 56",
+          "score": 1.0,
+          "avg_iters": 2.0
+        },
+        {
+          "question": "In SKI combinator calculus, S f g x = f x (g x) and K x y = x. What is S K K 7?",
+          "expected": 7,
+          "predicted": 7.0,
+          "generated": "Reasoning: To find the answer, we need to apply the given rules of SKI combinator calculus to the expression S K K 7.\n\nFirst, let's substitute the values of S and K in the expression:\n\nS K K 7 = (f x (g x)) K K 7\n\nNow, let's apply the rule for S:\n\n(f x (g x)) K K 7 = f (K K 7) (g (K K 7))\n\nNext, let's apply the rule for K:\n\nf (K K 7) (g (K K 7)) = f (K",
+          "score": 1.0,
+          "avg_iters": 2.0
+        }
+      ],
+      "eq_results": [
+        {
+          "scenario": "Alex just received news that their project at work was selec",
+          "score": 0.8751130125933029,
+          "avg_iters": 2.0
+        },
+        {
+          "scenario": "Jordan's best friend just told them they're moving to anothe",
+          "score": 0.0,
+          "avg_iters": 2.0
+        },
+        {
+          "scenario": "Sam accidentally overheard coworkers praising their work dur",
+          "score": 0.0,
+          "avg_iters": 2.0
+        },
+        {
+          "scenario": "Taylor's teenager just got accepted to a prestigious univers",
+          "score": 0.9863939238321437,
+          "avg_iters": 2.0
+        },
+        {
+          "scenario": "Morgan was just promoted to lead a team, but the role was pr",
+          "score": 0.0,
+          "avg_iters": 2.0
+        },
+        {
+          "scenario": "Casey just found out their surprise birthday party was plann",
+          "score": 0.5773502691896257,
+          "avg_iters": 2.0
+        },
+        {
+          "scenario": "Riley's elderly parent just asked them to move back home to ",
+          "score": 0.698430295769578,
+          "avg_iters": 2.0
+        },
+        {
+          "scenario": "Quinn just won a heated competition against their younger si",
+          "score": 0.0,
+          "avg_iters": 2.0
+        }
+      ]
+    },
+    "0.95": {
+      "threshold": 0.95,
+      "math_score": 0.5110350947740813,
+      "eq_score": 0.42198747211833854,
+      "avg_iterations": 2.383617346045092,
+      "math_avg_iters": 2.0735930735930737,
+      "eq_avg_iters": 2.69364161849711,
+      "elapsed_s": 40.3,
+      "math_results": [
+        {
+          "question": "What is the square root of 2025?",
+          "expected": 45,
+          "predicted": 2025.0,
+          "generated": "Reasoning: To find the square root of 2025, we can use the prime factorization method. \n\n1. First, we find the prime factors of 2025. \n2. 2025 is divisible by 3, so we divide it by 3 and get 675. \n3. 675 is also divisible by 3, so we divide it by 3 and get 225. \n4. 225 is also divisible by 3, so we divide it by 3 and get 75. \n5.",
+          "score": 0.0,
+          "avg_iters": 2.0
+        },
+        {
+          "question": "What is 3847 times 2963?",
+          "expected": 11398661,
+          "predicted": 3847.0,
+          "generated": "Reasoning: To find the product of 3847 and 2963, we can use the distributive property of multiplication. \n\n3847 * 2963 = 3847 * (3000 - 37) = 3847 * 3000 - 3847 * 37\n\nNow, we can further break down the multiplication:\n\n3847 * 3000 = 3847 * 3 * 1000 = 11541 * 100",
+          "score": 0.0003374957813027102,
+          "avg_iters": 2.0
+        },
+        {
+          "question": "What is the cube root of 27000?",
+          "expected": 30,
+          "predicted": 2.0,
+          "generated": "Reasoning: To find the cube root of 27000, we need to find a number that, when multiplied by itself three times, equals 27000. We can use the prime factorization method to find the cube root.\n\nPrime factorization of 27000:\n27000 = 2^3 * 3^3 * 5^3\n\nNow, we can take the cube root of each prime factor:\nCube root of 2^3 = 2\nCube root of 3^3 = 3\nCube root of 5^3 =",
+          "score": 0.06666666666666665,
+          "avg_iters": 2.0
+        },
+        {
+          "question": "What is f(f(f(3))) if f(x) = 2x + 1?",
+          "expected": 31,
+          "predicted": 31.0,
+          "generated": "Reasoning: f(3) = 2(3) + 1 = 7\nf(7) = 2(7) + 1 = 15\nf(15) = 2(15) + 1 = 31\nAnswer: 31",
+          "score": 1.0,
+          "avg_iters": 3.0
+        },
+        {
+          "question": "What is 23 times 47?",
+          "expected": 1081,
+          "predicted": 23.0,
+          "generated": "Reasoning: To find the product of 23 and 47, we can use the distributive property of multiplication. We can break down 47 into 40 and 7, and then multiply each part by 23 separately. \n\n23 * 47 = 23 * (40 + 7) = (23 * 40) + (23 * 7)\n\nNow, we can calculate the individual products:\n\n23 * 40 = 920\n23 * 7 = 161\n\nFinally, we add the two products together",
+          "score": 0.021276595744680882,
+          "avg_iters": 2.0
+        },
+        {
+          "question": "What is 17 cubed mod 13?",
+          "expected": 12,
+          "predicted": 12.0,
+          "generated": "Reasoning: To find 17 cubed mod 13, we first need to calculate 17 cubed. 17 cubed is 17 * 17 * 17, which equals 4913. Now, we need to find the remainder when 4913 is divided by 13. \n\n4913 mod 13 = 12\n\nAnswer: 12",
+          "score": 1.0,
+          "avg_iters": 2.0
+        },
+        {
+          "question": "How many ways can you choose 3 items from a set of 8?",
+          "expected": 56,
+          "predicted": 56.0,
+          "generated": "Reasoning: This is a combination problem, where the order of the items does not matter. The formula for combinations is nCr = n! / (r!(n-r)!), where n is the total number of items and r is the number of items to choose. In this case, n = 8 and r = 3. So, the calculation is 8! / (3!(8-3)!) = 8! / (3!5!) = 56. Therefore, there are 56 ways to choose 3 items from a set of 8.\n\nAnswer: 56",
+          "score": 1.0,
+          "avg_iters": 2.031496062992126
+        },
+        {
+          "question": "In SKI combinator calculus, S f g x = f x (g x) and K x y = x. What is S K K 7?",
+          "expected": 7,
+          "predicted": 7.0,
+          "generated": "Reasoning: To find the answer, we need to apply the given rules of SKI combinator calculus to the expression S K K 7.\n\nFirst, let's substitute the values of S and K in the expression:\n\nS K K 7 = (f x (g x)) K K 7\n\nNow, let's apply the rule for S:\n\n(f x (g x)) K K 7 = f (K K 7) (g (K K 7))\n\nNext, let's apply the rule for K:\n\nf (K K 7) (g (K K 7)) = f (K",
+          "score": 1.0,
+          "avg_iters": 2.0
+        }
+      ],
+      "eq_results": [
+        {
+          "scenario": "Alex just received news that their project at work was selec",
+          "score": 0.8751130125933029,
+          "avg_iters": 2.0
+        },
+        {
+          "scenario": "Jordan's best friend just told them they're moving to anothe",
+          "score": 0.0,
+          "avg_iters": 3.0
+        },
+        {
+          "scenario": "Sam accidentally overheard coworkers praising their work dur",
+          "score": 0.0,
+          "avg_iters": 2.888888888888889
+        },
+        {
+          "scenario": "Taylor's teenager just got accepted to a prestigious univers",
+          "score": 0.9863939238321437,
+          "avg_iters": 2.7857142857142856
+        },
+        {
+          "scenario": "Morgan was just promoted to lead a team, but the role was pr",
+          "score": 0.0,
+          "avg_iters": 2.0
+        },
+        {
+          "scenario": "Casey just found out their surprise birthday party was plann",
+          "score": 0.5773502691896257,
+          "avg_iters": 3.0
+        },
+        {
+          "scenario": "Riley's elderly parent just asked them to move back home to ",
+          "score": 0.9370425713316362,
+          "avg_iters": 2.7777777777777777
+        },
+        {
+          "scenario": "Quinn just won a heated competition against their younger si",
+          "score": 0.0,
+          "avg_iters": 3.0
+        }
+      ]
+    },
+    "0.98": {
+      "threshold": 0.98,
+      "math_score": 0.3333938600551333,
+      "eq_score": 0.42198747211833854,
+      "avg_iterations": 3.2626997351106555,
+      "math_avg_iters": 3.0200803212851404,
+      "eq_avg_iters": 3.50531914893617,
+      "elapsed_s": 49.8,
+      "math_results": [
+        {
+          "question": "What is the square root of 2025?",
+          "expected": 45,
+          "predicted": 675.0,
+          "generated": "Reasoning: To find the square root of 2025, we can use the method of prime factorization. \n\n1. First, we find the prime factors of 2025. \n2. 2025 is divisible by 3, so we divide 2025 by 3. \n3. 2025 \u00f7 3 = 675. \n4. Now, we find the prime factors of 675. \n5. 675 is divisible by 3, so we divide 675 by 3. \n6",
+          "score": 0.0,
+          "avg_iters": 3.0
+        },
+        {
+          "question": "What is 3847 times 2963?",
+          "expected": 11398661,
+          "predicted": 3847.0,
+          "generated": "To find the product of 3847 and 2963, we can use the multiplication algorithm. \n\nFirst, we multiply the ones place of the second number (3) by the first number (3847) and get 2541. \n\nNext, we multiply the tens place of the second number (6) by the first number (3847) and get 23082. Since we are multiplying by the tens place, we need to add two zeros to the end of the result, resulting in 230820.\n\nThen, we multiply the",
+          "score": 0.0003374957813027102,
+          "avg_iters": 3.0
+        },
+        {
+          "question": "What is the cube root of 27000?",
+          "expected": 30,
+          "predicted": 1000.0,
+          "generated": "Reasoning: To find the cube root of 27000, we need to find a number that, when multiplied by itself three times, equals 27000. \n\nStep 1: Estimate the cube root by finding the nearest perfect cubes around 27000. \n- 10^3 = 1000 (too small)\n- 20^3 = 8000 (too small)\n- 30^3 = 27000 (perfect match)\n\nSince 30^3 equals 27000, the cube",
+          "score": 0.0,
+          "avg_iters": 3.0
+        },
+        {
+          "question": "What is f(f(f(3))) if f(x) = 2x + 1?",
+          "expected": 31,
+          "predicted": 2.0,
+          "generated": "To find the value of f(f(f(3))), we need to apply the function f three times starting with the initial value of 3.\n\nFirst, let's find the value of f(3):\n\nf(3) = 2 * 3 + 1 = 6 + 1 = 7\n\nNow, we need to find the value of f(7) (since 7 is the result of the first application of the function):\n\nf(7) = 2 * 7 + 1 = 14 + 1 = 15\n\nFinally, we need to find the value of f",
+          "score": 0.06451612903225812,
+          "avg_iters": 3.15625
+        },
+        {
+          "question": "What is 23 times 47?",
+          "expected": 1081,
+          "predicted": 561.0,
+          "generated": "{\"reasoning\": \"To find the product of 23 and 47, we can use the multiplication method. Multiply 23 by 7 (the units place of 47) and get 161. Then, multiply 23 by 4 (the tens place of 47) and add a zero to the end to account for the tens place, resulting in 400. Finally, add the two products together: 161 + 400 = 561. Therefore, 23 times 47 equals 561.\", \"answer\":",
+          "score": 0.518963922294172,
+          "avg_iters": 3.0
+        },
+        {
+          "question": "What is 17 cubed mod 13?",
+          "expected": 12,
+          "predicted": 1.0,
+          "generated": "Reasoning: To find the answer, we need to calculate the cube of 17 and then find the remainder when it is divided by 13. \n\n17 cubed is 17 * 17 * 17 = 4913.\n\nNow, we need to find the remainder when 4913 is divided by 13.\n\n4913 \u00f7 13 = 397 remainder 1.\n\nTherefore, 17 cubed mod 13 is 1.\n\nAnswer: 1",
+          "score": 0.08333333333333337,
+          "avg_iters": 3.0
+        },
+        {
+          "question": "How many ways can you choose 3 items from a set of 8?",
+          "expected": 56,
+          "predicted": 56.0,
+          "generated": "Reasoning: This is a combination problem, which can be solved using the formula C(n, r) = n! / (r! * (n-r)!), where n is the total number of items and r is the number of items to be chosen. In this case, n = 8 and r = 3. \n\nC(8, 3) = 8! / (3! * (8-3)!) = 8! / (3! * 5!) = 56\n\nAnswer: 56",
+          "score": 1.0,
+          "avg_iters": 3.0
+        },
+        {
+          "question": "In SKI combinator calculus, S f g x = f x (g x) and K x y = x. What is S K K 7?",
+          "expected": 7,
+          "predicted": 7.0,
+          "generated": "To solve this problem, we need to apply the given rules of SKI combinator calculus step by step.\n\nFirst, let's recall the definitions of the combinators:\n\n- S f g x = f x (g x)\n- K x y = x\n\nNow, we need to find the value of S K K 7.\n\nStep 1: Apply the definition of S:\nS K K 7 = K K (K 7)\n\nStep 2: Apply the definition of K:\nK K (K 7) = K (K 7)\n\nStep 3: Apply the definition of K again:\nK (",
+          "score": 1.0,
+          "avg_iters": 3.0
+        }
+      ],
+      "eq_results": [
+        {
+          "scenario": "Alex just received news that their project at work was selec",
+          "score": 0.8751130125933029,
+          "avg_iters": 3.0
+        },
+        {
+          "scenario": "Jordan's best friend just told them they're moving to anothe",
+          "score": 0.0,
+          "avg_iters": 4.0
+        },
+        {
+          "scenario": "Sam accidentally overheard coworkers praising their work dur",
+          "score": 0.0,
+          "avg_iters": 3.0
+        },
+        {
+          "scenario": "Taylor's teenager just got accepted to a prestigious univers",
+          "score": 0.9863939238321437,
+          "avg_iters": 3.4642857142857144
+        },
+        {
+          "scenario": "Morgan was just promoted to lead a team, but the role was pr",
+          "score": 0.0,
+          "avg_iters": 3.0
+        },
+        {
+          "scenario": "Casey just found out their surprise birthday party was plann",
+          "score": 0.5773502691896257,
+          "avg_iters": 4.0
+        },
+        {
+          "scenario": "Riley's elderly parent just asked them to move back home to ",
+          "score": 0.9370425713316362,
+          "avg_iters": 3.4642857142857144
+        },
+        {
+          "scenario": "Quinn just won a heated competition against their younger si",
+          "score": 0.0,
+          "avg_iters": 4.0
+        }
+      ]
+    },
+    "0.99": {
+      "threshold": 0.99,
+      "math_score": 0.11905032893315627,
+      "eq_score": 0.48130984685286976,
+      "avg_iterations": 4.0,
+      "math_avg_iters": 4.0,
+      "eq_avg_iters": 4.0,
+      "elapsed_s": 58.9,
+      "math_results": [
+        {
+          "question": "What is the square root of 2025?",
+          "expected": 45,
+          "predicted": 100.0,
+          "generated": "To find the square root of 2025, we can use a method called \"guess and check\" or more accurately, we can use a mathematical formula or use a calculator for precision. However, since this is a text-based AI, I'll use a more manual approach to explain the process.\n\nFirst, let's estimate the range of the square root of 2025. We know that 100 (which is 10^2) is too small because 100^2 = 100^2 = 10000, which is much larger than 2",
+          "score": 0.0,
+          "avg_iters": 4.0
+        },
+        {
+          "question": "What is 3847 times 2963?",
+          "expected": 11398661,
+          "predicted": 3847.0,
+          "generated": "To find the product of 3847 and 2963, we can use the multiplication algorithm. \n\nFirst, we multiply the smaller number (2963) by the units place of the larger number (3847) and then move to the next place value, multiplying the smaller number by the next place value of the larger number and adding a zero to the end of the result to account for the shift in place value. \n\nHere's the step-by-step process:\n\n1. Multiply 2963 by 1 (the units place of 3847) and add 0",
+          "score": 0.0003374957813027102,
+          "avg_iters": 4.0
+        },
+        {
+          "question": "What is the cube root of 27000?",
+          "expected": 30,
+          "predicted": 27000.0,
+          "generated": "To find the cube root of 27000, we need to find a number that, when multiplied by itself three times, equals 27000. \n\nLet's use the formula for finding the cube root of a number:\n\nCube root of x = x^(1/3)\n\nSo, we need to find the number x that satisfies the equation:\n\nx^3 = 27000\n\nTo find the cube root, we can use a calculator or estimate the answer by finding the cube of nearby numbers until we find one that is close to 27000.\n\nLet's try the",
+          "score": 0.0,
+          "avg_iters": 4.0
+        },
+        {
+          "question": "What is f(f(f(3))) if f(x) = 2x + 1?",
+          "expected": 31,
+          "predicted": 2.0,
+          "generated": "To find the value of f(f(f(3))), we need to apply the function f three times, starting with the given value of 3.\n\nFirst, let's find the value of f(3):\n\nf(3) = 2 * 3 + 1 = 6 + 1 = 7\n\nNow, we need to find the value of f(7) (since 7 is the new input for the next iteration of the function):\n\nf(7) = 2 * 7 + 1 = 14 + 1 = 15\n\nFinally, we need to find the value",
+          "score": 0.06451612903225812,
+          "avg_iters": 4.0
+        },
+        {
+          "question": "What is 23 times 47?",
+          "expected": 1081,
+          "predicted": 20.0,
+          "generated": "To find the product of 23 and 47, we can use either direct multiplication or break it down into simpler steps. Let's use the latter method for clarity.\n\nFirst, let's express the numbers in a way that makes it easier to multiply them step by step:\n\n23 = 20 + 3\n47 = 40 + 7\n\nNow, we can use the distributive property of multiplication over addition (also known as the \"FOIL\" method for binomials):\n\n(20 + 3) \u00d7 (40 + 7)\n\nThis can be expanded as follows:\n\n(",
+          "score": 0.018501387604070274,
+          "avg_iters": 4.0
+        },
+        {
+          "question": "What is 17 cubed mod 13?",
+          "expected": 12,
+          "predicted": 17.0,
+          "generated": "To find the value of 17 cubed (17^3) modulo 13, we can use the property of modular arithmetic that allows us to take the modulus at each step of the calculation. This can make the calculation more manageable when dealing with large numbers.\n\nFirst, let's calculate 17^3 without worrying about the modulus until the end:\n\n17^2 = 17 * 17 = 289\n17^3 = 17 * 289 = 289 * 17 = 4933\n\nNow, we can take the",
+          "score": 0.5833333333333333,
+          "avg_iters": 4.0
+        },
+        {
+          "question": "How many ways can you choose 3 items from a set of 8?",
+          "expected": 56,
+          "predicted": 8.0,
+          "generated": "To solve this problem, we need to use the concept of combinations in mathematics. The number of ways to choose \\( k \\) items from a set of \\( n \\) distinct items without regard to the order of arrangement is given by the formula for combinations, which is represented by the binomial coefficient \\( \\binom{n}{k} \\). This can be calculated using the formula:\n\n\\[ \\binom{n}{k} = \\frac{n!}{k!(n-k)! } \\]\n\nIn this case, \\( n = 8 \\) (the total number of items in the set), and \\( k = 3 \\",
+          "score": 0.1428571428571429,
+          "avg_iters": 4.0
+        },
+        {
+          "question": "In SKI combinator calculus, S f g x = f x (g x) and K x y = x. What is S K K 7?",
+          "expected": 7,
+          "predicted": 1.0,
+          "generated": "To solve this problem, we need to apply the given rules of SKI combinator calculus step by step.\n\nFirst, let's define the rules:\n\n1. S f g x = f x (g x)\n   - This means that when you see an S combinator followed by three other functions or expressions, you can replace it with the first function (f) followed by the third expression (x) and then apply the result of the second function (g) to the third expression (x).\n\n2. K x y = x\n   - This means that when you see a K combinator followed by two expressions, you can",
+          "score": 0.1428571428571429,
+          "avg_iters": 4.0
+        }
+      ],
+      "eq_results": [
+        {
+          "scenario": "Alex just received news that their project at work was selec",
+          "score": 0.8751130125933029,
+          "avg_iters": 4.0
+        },
+        {
+          "scenario": "Jordan's best friend just told them they're moving to anothe",
+          "score": 0.0,
+          "avg_iters": 4.0
+        },
+        {
+          "scenario": "Sam accidentally overheard coworkers praising their work dur",
+          "score": 0.4745789978762496,
+          "avg_iters": 4.0
+        },
+        {
+          "scenario": "Taylor's teenager just got accepted to a prestigious univers",
+          "score": 0.9863939238321437,
+          "avg_iters": 4.0
+        },
+        {
+          "scenario": "Morgan was just promoted to lead a team, but the role was pr",
+          "score": 0.0,
+          "avg_iters": 4.0
+        },
+        {
+          "scenario": "Casey just found out their surprise birthday party was plann",
+          "score": 0.5773502691896257,
+          "avg_iters": 4.0
+        },
+        {
+          "scenario": "Riley's elderly parent just asked them to move back home to ",
+          "score": 0.9370425713316362,
+          "avg_iters": 4.0
+        },
+        {
+          "scenario": "Quinn just won a heated competition against their younger si",
+          "score": 0.0,
+          "avg_iters": 4.0
+        }
+      ]
+    },
+    "0.995": {
+      "threshold": 0.995,
+      "math_score": 0.11905032893315627,
+      "eq_score": 0.48130984685286976,
+      "avg_iterations": 4.0,
+      "math_avg_iters": 4.0,
+      "eq_avg_iters": 4.0,
+      "elapsed_s": 59.1,
+      "math_results": [
+        {
+          "question": "What is the square root of 2025?",
+          "expected": 45,
+          "predicted": 100.0,
+          "generated": "To find the square root of 2025, we can use a method called \"guess and check\" or more accurately, we can use a mathematical formula or use a calculator for precision. However, since this is a text-based AI, I'll use a more manual approach to explain the process.\n\nFirst, let's estimate the range of the square root of 2025. We know that 100 (which is 10^2) is too small because 100^2 = 100^2 = 10000, which is much larger than 2",
+          "score": 0.0,
+          "avg_iters": 4.0
+        },
+        {
+          "question": "What is 3847 times 2963?",
+          "expected": 11398661,
+          "predicted": 3847.0,
+          "generated": "To find the product of 3847 and 2963, we can use the multiplication algorithm. \n\nFirst, we multiply the smaller number (2963) by the units place of the larger number (3847) and then move to the next place value, multiplying the smaller number by the next place value of the larger number and adding a zero to the end of the result to account for the shift in place value. \n\nHere's the step-by-step process:\n\n1. Multiply 2963 by 1 (the units place of 3847) and add 0",
+          "score": 0.0003374957813027102,
+          "avg_iters": 4.0
+        },
+        {
+          "question": "What is the cube root of 27000?",
+          "expected": 30,
+          "predicted": 27000.0,
+          "generated": "To find the cube root of 27000, we need to find a number that, when multiplied by itself three times, equals 27000. \n\nLet's use the formula for finding the cube root of a number:\n\nCube root of x = x^(1/3)\n\nSo, we need to find the number x that satisfies the equation:\n\nx^3 = 27000\n\nTo find the cube root, we can use a calculator or estimate the answer by finding the cube of nearby numbers until we find one that is close to 27000.\n\nLet's try the",
+          "score": 0.0,
+          "avg_iters": 4.0
+        },
+        {
+          "question": "What is f(f(f(3))) if f(x) = 2x + 1?",
+          "expected": 31,
+          "predicted": 2.0,
+          "generated": "To find the value of f(f(f(3))), we need to apply the function f three times, starting with the given value of 3.\n\nFirst, let's find the value of f(3):\n\nf(3) = 2 * 3 + 1 = 6 + 1 = 7\n\nNow, we need to find the value of f(7) (since 7 is the new input for the next iteration of the function):\n\nf(7) = 2 * 7 + 1 = 14 + 1 = 15\n\nFinally, we need to find the value",
+          "score": 0.06451612903225812,
+          "avg_iters": 4.0
+        },
+        {
+          "question": "What is 23 times 47?",
+          "expected": 1081,
+          "predicted": 20.0,
+          "generated": "To find the product of 23 and 47, we can use either direct multiplication or break it down into simpler steps. Let's use the latter method for clarity.\n\nFirst, let's express the numbers in a way that makes it easier to multiply them step by step:\n\n23 = 20 + 3\n47 = 40 + 7\n\nNow, we can use the distributive property of multiplication over addition (also known as the \"FOIL\" method for binomials):\n\n(20 + 3) \u00d7 (40 + 7)\n\nThis can be expanded as follows:\n\n(",
+          "score": 0.018501387604070274,
+          "avg_iters": 4.0
+        },
+        {
+          "question": "What is 17 cubed mod 13?",
+          "expected": 12,
+          "predicted": 17.0,
+          "generated": "To find the value of 17 cubed (17^3) modulo 13, we can use the property of modular arithmetic that allows us to take the modulus at each step of the calculation. This can make the calculation more manageable when dealing with large numbers.\n\nFirst, let's calculate 17^3 without worrying about the modulus until the end:\n\n17^2 = 17 * 17 = 289\n17^3 = 17 * 289 = 289 * 17 = 4933\n\nNow, we can take the",
+          "score": 0.5833333333333333,
+          "avg_iters": 4.0
+        },
+        {
+          "question": "How many ways can you choose 3 items from a set of 8?",
+          "expected": 56,
+          "predicted": 8.0,
+          "generated": "To solve this problem, we need to use the concept of combinations in mathematics. The number of ways to choose \\( k \\) items from a set of \\( n \\) distinct items without regard to the order of arrangement is given by the formula for combinations, which is represented by the binomial coefficient \\( \\binom{n}{k} \\). This can be calculated using the formula:\n\n\\[ \\binom{n}{k} = \\frac{n!}{k!(n-k)! } \\]\n\nIn this case, \\( n = 8 \\) (the total number of items in the set), and \\( k = 3 \\",
+          "score": 0.1428571428571429,
+          "avg_iters": 4.0
+        },
+        {
+          "question": "In SKI combinator calculus, S f g x = f x (g x) and K x y = x. What is S K K 7?",
+          "expected": 7,
+          "predicted": 1.0,
+          "generated": "To solve this problem, we need to apply the given rules of SKI combinator calculus step by step.\n\nFirst, let's define the rules:\n\n1. S f g x = f x (g x)\n   - This means that when you see an S combinator followed by three other functions or expressions, you can replace it with the first function (f) followed by the third expression (x) and then apply the result of the second function (g) to the third expression (x).\n\n2. K x y = x\n   - This means that when you see a K combinator followed by two expressions, you can",
+          "score": 0.1428571428571429,
+          "avg_iters": 4.0
+        }
+      ],
+      "eq_results": [
+        {
+          "scenario": "Alex just received news that their project at work was selec",
+          "score": 0.8751130125933029,
+          "avg_iters": 4.0
+        },
+        {
+          "scenario": "Jordan's best friend just told them they're moving to anothe",
+          "score": 0.0,
+          "avg_iters": 4.0
+        },
+        {
+          "scenario": "Sam accidentally overheard coworkers praising their work dur",
+          "score": 0.4745789978762496,
+          "avg_iters": 4.0
+        },
+        {
+          "scenario": "Taylor's teenager just got accepted to a prestigious univers",
+          "score": 0.9863939238321437,
+          "avg_iters": 4.0
+        },
+        {
+          "scenario": "Morgan was just promoted to lead a team, but the role was pr",
+          "score": 0.0,
+          "avg_iters": 4.0
+        },
+        {
+          "scenario": "Casey just found out their surprise birthday party was plann",
+          "score": 0.5773502691896257,
+          "avg_iters": 4.0
+        },
+        {
+          "scenario": "Riley's elderly parent just asked them to move back home to ",
+          "score": 0.9370425713316362,
+          "avg_iters": 4.0
+        },
+        {
+          "scenario": "Quinn just won a heated competition against their younger si",
+          "score": 0.0,
+          "avg_iters": 4.0
+        }
+      ]
+    }
+  }
+}
