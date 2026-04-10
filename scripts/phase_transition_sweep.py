@@ -1,6 +1,6 @@
 """Run fine-grained threshold sweep for phase transition analysis.
 
-Iterates over thresholds, runs collect_traces.py for each, and produces
+Iterates over thresholds, runs all probes at each threshold, and produces
 a summary JSON with accuracy and mean iterations per threshold.
 
 This script is designed for RunPod — it loads the model once and runs
@@ -51,14 +51,16 @@ def run_at_threshold(model, tokenizer, json_processor, probes,
         threshold=threshold, max_iterations=max_iters,
     )
 
+    device = tracer.loop.model.device
     correct = 0
     total_score = 0.0
     total_iters = 0.0
     total_tokens = 0
+    valid_count = 0  # probes with non-empty trace summaries
 
     for probe in probes:
         prompt = PROMPT_TEMPLATE.format(question=probe["question"])
-        input_ids = tokenizer(prompt, return_tensors="pt").input_ids.to(model.device)
+        input_ids = tokenizer(prompt, return_tensors="pt").input_ids.to(device)
 
         trace = tracer.trace_generation(
             input_ids=input_ids,
@@ -76,8 +78,11 @@ def run_at_threshold(model, tokenizer, json_processor, probes,
         total_score += score
 
         summary = trace.summary()
+        if not summary:
+            continue  # model emitted EOS immediately; skip iteration/token stats
         total_iters += summary["avg_iterations"]
         total_tokens += summary["total_tokens"]
+        valid_count += 1
 
     n = len(probes)
     return {
@@ -85,8 +90,8 @@ def run_at_threshold(model, tokenizer, json_processor, probes,
         "accuracy": correct / n,
         "num_correct": correct,
         "mean_score": total_score / n,
-        "mean_avg_iterations": total_iters / n,
-        "mean_tokens": total_tokens / n,
+        "mean_avg_iterations": total_iters / valid_count if valid_count else 0.0,
+        "mean_tokens": total_tokens / valid_count if valid_count else 0,
     }
 
 
@@ -137,18 +142,19 @@ def main():
               f"mean_iters={result['mean_avg_iterations']:.2f} "
               f"[{elapsed:.1f}s]")
 
-    output = {
-        "model": args.model,
-        "data": args.data,
-        "block": [args.block_i, args.block_j],
-        "max_iterations": args.max_iters,
-        "num_probes": len(probes),
-        "results": results,
-    }
+        # Save incrementally so a crash doesn't lose completed thresholds
+        interim = {
+            "model": args.model,
+            "data": args.data,
+            "block": [args.block_i, args.block_j],
+            "max_iterations": args.max_iters,
+            "num_probes": len(probes),
+            "results": results,
+        }
+        os.makedirs(os.path.dirname(os.path.abspath(args.output)), exist_ok=True)
+        with open(args.output, "w") as f:
+            json.dump(interim, f, indent=2)
 
-    os.makedirs(os.path.dirname(os.path.abspath(args.output)), exist_ok=True)
-    with open(args.output, "w") as f:
-        json.dump(output, f, indent=2)
     print(f"\nSaved to {args.output}")
 
     # Print summary table
