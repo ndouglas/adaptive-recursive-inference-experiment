@@ -16,8 +16,17 @@ dependencies = [
   "transformers>=5.4.0",
 ]
 
+[dependency-groups]
+dev = [
+    "pytest>=9.0.3",
+]
+
 # NOTE: The default torch install includes MPS support (macOS ARM) but not CUDA.
 # When building container images for Velaryon (K8s Jobs, Step 9+) or RunPod,
 # install torch with CUDA 12.2 support instead:
 #   pip install torch --index-url https://download.pytorch.org/whl/cu122
 # See k8s/Dockerfile (to be created in Step 9) for the CUDA build.
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
