@@ -106,6 +106,7 @@ class AdaptiveLoop:
         block_layers = list(self.layers[self.block_i:self.block_j])
         prev_output = hidden_states
         trajectory = []
+        l2_norms = []
         iterations = 0
 
         for _ in range(self.max_iterations):
@@ -116,6 +117,7 @@ class AdaptiveLoop:
 
             sim = self._cosine_sim(prev_output, current_output)
             trajectory.append(sim)
+            l2_norms.append(current_output.float().norm(dim=-1).mean().item())
 
             prev_output = current_output
 
@@ -138,6 +140,7 @@ class AdaptiveLoop:
             "iterations": iterations,
             "final_similarity": trajectory[-1] if trajectory else None,
             "trajectory": trajectory,
+            "l2_norms": l2_norms,
             "halted_early": iterations < self.max_iterations,
         }
 
