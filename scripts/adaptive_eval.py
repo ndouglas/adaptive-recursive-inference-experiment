@@ -29,32 +29,43 @@ def run_adaptive_math_eval(loop, tokenizer, questions, verbose=False):
     total_tokens = 0
 
     for q in questions:
-        prompt = f"Question: {q['question']}\nAnswer (number only):"
+        prompt = (f'Respond with JSON: {{"reasoning": "<your work>", "answer": <number>}}\n\n'
+                  f'Question: {q["question"]}\n')
         input_ids = tokenizer(prompt, return_tensors="pt").input_ids.to(loop.model.device)
 
-        output_ids = loop.generate(input_ids, tokenizer, max_new_tokens=32)
+        output_ids = loop.generate(input_ids, tokenizer, max_new_tokens=128)
         generated = tokenizer.decode(output_ids[0][input_ids.shape[1]:], skip_special_tokens=True)
 
         diag = loop.diagnostics_summary()
         total_iters += sum(loop.token_iterations)
         total_tokens += len(loop.token_iterations)
 
-        # Score: extract answer number (handles CoT and question repetitions)
+        # Score: extract answer (JSON first, then regex fallback)
         expected = q["answer"]
-        text = re.split(r'\nQuestion:', generated)[0].strip()
         predicted = None
-        for pattern in [
-            r'(?:answer|result)\s*(?:is|:)\s*(-?\d[\d,]*\.?\d*)',
-            r'=\s*(-?\d[\d,]*\.?\d*)',
-        ]:
-            match = re.search(pattern, text, re.IGNORECASE)
-            if match:
-                predicted = float(match.group(1).replace(',', ''))
-                break
+        try:
+            json_match = re.search(r'\{[^{}]*\}', generated, re.DOTALL)
+            if json_match:
+                import json as json_mod
+                obj = json_mod.loads(json_match.group())
+                if "answer" in obj and obj["answer"] is not None:
+                    predicted = float(obj["answer"])
+        except (json_mod.JSONDecodeError, ValueError, TypeError):
+            pass
         if predicted is None:
-            match = re.search(r'-?\d[\d,]*\.?\d*', text)
-            if match:
-                predicted = float(match.group().replace(',', ''))
+            text = re.split(r'\nQuestion:', generated)[0].strip()
+            for pattern in [
+                r'(?:answer|result)\s*(?:is|:)\s*(-?\d[\d,]*\.?\d*)',
+                r'=\s*(-?\d[\d,]*\.?\d*)',
+            ]:
+                match = re.search(pattern, text, re.IGNORECASE)
+                if match:
+                    predicted = float(match.group(1).replace(',', ''))
+                    break
+            if predicted is None:
+                match = re.search(r'-?\d[\d,]*\.?\d*', text)
+                if match:
+                    predicted = float(match.group().replace(',', ''))
 
         if predicted is not None:
             if expected == 0:

@@ -1,17 +1,27 @@
+import json as json_mod
 import re
 import torch
 
 
 def parse_number(text):
-    """Extract the answer number from model output text.
+    """Extract the answer from model output.
 
-    Handles both terse ("45") and chain-of-thought ("To find... = 45") output.
-    First strips trailing question repetitions, then checks for answer-signaling
-    patterns, then falls back to the first number.
+    Tries to parse JSON {"reasoning": ..., "answer": N} first.
+    Falls back to regex extraction with question-repetition stripping.
     """
-    # Strip trailing question repetitions (model often echoes next question)
-    text = re.split(r'\nQuestion:', text)[0]
-    text = text.strip()
+    # Try JSON extraction
+    try:
+        # Find the first { ... } block
+        match = re.search(r'\{[^{}]*\}', text, re.DOTALL)
+        if match:
+            obj = json_mod.loads(match.group())
+            if "answer" in obj and obj["answer"] is not None:
+                return float(obj["answer"])
+    except (json_mod.JSONDecodeError, ValueError, TypeError):
+        pass
+
+    # Strip trailing question repetitions
+    text = re.split(r'\nQuestion:', text)[0].strip()
 
     # Check for answer-signaling patterns
     for pattern in [
@@ -44,13 +54,14 @@ def run_math_eval(model, tokenizer, questions, verbose=True):
     """Run math evaluation on a list of questions. Returns (results, aggregate_score)."""
     results = []
     for q in questions:
-        prompt = f"Answer with just the number, nothing else.\n\nQuestion: {q['question']}\nAnswer:"
+        prompt = (f'Respond with JSON: {{"reasoning": "<your work>", "answer": <number>}}\n\n'
+                  f'Question: {q["question"]}\n')
         inputs = tokenizer(prompt, return_tensors="pt").to(model.device)
 
         with torch.no_grad():
             output_ids = model.generate(
                 **inputs,
-                max_new_tokens=20,
+                max_new_tokens=128,
                 do_sample=False,
             )
 

@@ -18,32 +18,35 @@ from src.inference.adaptive_loop import AdaptiveLoop
 from src.evaluation.math_eval import run_math_eval
 
 
-def score_answer(generated, expected):
-    """Score a generated answer against expected (partial credit via relative error).
+def parse_answer(text):
+    """Extract answer from model output — JSON first, then regex fallback."""
+    import json as json_mod
+    try:
+        match = re.search(r'\{[^{}]*\}', text, re.DOTALL)
+        if match:
+            obj = json_mod.loads(match.group())
+            if "answer" in obj and obj["answer"] is not None:
+                return float(obj["answer"])
+    except (json_mod.JSONDecodeError, ValueError, TypeError):
+        pass
 
-    Strips trailing question repetitions, checks for answer-signaling patterns,
-    then falls back to first number.
-    """
-    # Strip trailing question repetitions
-    text = re.split(r'\nQuestion:', generated)[0].strip()
-
-    # Try answer-signaling patterns
-    predicted = None
+    text = re.split(r'\nQuestion:', text)[0].strip()
     for pattern in [
         r'(?:answer|result)\s*(?:is|:)\s*(-?\d[\d,]*\.?\d*)',
         r'=\s*(-?\d[\d,]*\.?\d*)',
     ]:
         match = re.search(pattern, text, re.IGNORECASE)
         if match:
-            predicted = float(match.group(1).replace(',', ''))
-            break
+            return float(match.group(1).replace(',', ''))
+    match = re.search(r'-?\d[\d,]*\.?\d*', text)
+    if match:
+        return float(match.group().replace(',', ''))
+    return None
 
-    # Fall back to first number
-    if predicted is None:
-        match = re.search(r'-?\d[\d,]*\.?\d*', text)
-        if match:
-            predicted = float(match.group().replace(',', ''))
 
+def score_answer(generated, expected):
+    """Score a generated answer against expected (partial credit via relative error)."""
+    predicted = parse_answer(generated)
     if predicted is None:
         return 0.0, None
     if expected == 0:
@@ -56,10 +59,11 @@ def eval_baseline(model, tokenizer, probes):
     """Run probes through the unmodified model."""
     results = []
     for p in probes:
-        prompt = f"Question: {p['question']}\nAnswer (number only):"
+        prompt = (f'Respond with JSON: {{"reasoning": "<your work>", "answer": <number>}}\n\n'
+                  f'Question: {p["question"]}\n')
         inputs = tokenizer(prompt, return_tensors="pt").to(model.device)
         with torch.no_grad():
-            output = model.generate(**inputs, max_new_tokens=32, do_sample=False)
+            output = model.generate(**inputs, max_new_tokens=128, do_sample=False)
         generated = tokenizer.decode(output[0][inputs.input_ids.shape[1]:],
                                      skip_special_tokens=True)
         score, predicted = score_answer(generated, p["answer"])
@@ -79,9 +83,10 @@ def eval_adaptive(loop, tokenizer, probes):
     """Run probes through the adaptive loop."""
     results = []
     for p in probes:
-        prompt = f"Question: {p['question']}\nAnswer (number only):"
+        prompt = (f'Respond with JSON: {{"reasoning": "<your work>", "answer": <number>}}\n\n'
+                  f'Question: {p["question"]}\n')
         input_ids = tokenizer(prompt, return_tensors="pt").input_ids.to(loop.model.device)
-        output_ids = loop.generate(input_ids, tokenizer, max_new_tokens=32)
+        output_ids = loop.generate(input_ids, tokenizer, max_new_tokens=128)
         generated = tokenizer.decode(output_ids[0][input_ids.shape[1]:],
                                      skip_special_tokens=True)
         score, predicted = score_answer(generated, p["answer"])
