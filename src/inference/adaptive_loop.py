@@ -93,8 +93,8 @@ class AdaptiveLoop:
         position_ids = torch.arange(seq_len, device=device).unsqueeze(0)
         position_embeddings = self.rotary_emb(hidden_states, position_ids)
 
-        # Causal mask
-        causal_mask = self._get_causal_mask(seq_len, device, hidden_states.float().dtype)
+        # Causal mask — must match model dtype for SDPA attention
+        causal_mask = self._get_causal_mask(seq_len, device, dtype)
 
         # Phase 1: Encoder layers (0 to block_i - 1)
         encoder_layers = list(self.layers[:self.block_i])
