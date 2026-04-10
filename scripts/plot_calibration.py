@@ -22,22 +22,27 @@ import numpy as np
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 from src.analysis.calibration import CalibrationAnalyzer
 
+N_BINS = 10
 
-def plot_reliability_diagram(trace_files, output_path, n_bins=10):
-    """Plot reliability diagrams for each trace file and metric."""
+
+def plot_reliability_diagram(loaded_data, output_path, n_bins=N_BINS):
+    """Plot reliability diagrams for each trace file and metric.
+
+    Args:
+        loaded_data: List of (traces, threshold_label) tuples.
+    """
     metrics = ["avg_final_similarity", "avg_iterations", "avg_convergence_speed"]
     fig, axes = plt.subplots(1, len(metrics), figsize=(5 * len(metrics), 5))
 
     for ax, metric in zip(axes, metrics):
-        for trace_file in trace_files:
-            with open(trace_file) as f:
-                data = json.load(f)
-            traces = data["traces"]
-            threshold = data.get("threshold", "?")
-            label = f"θ={threshold}"
-
+        for traces, label in loaded_data:
             analyzer = CalibrationAnalyzer(traces, metric=metric)
             bins = analyzer.reliability_bins(n_bins)
+
+            if not bins:
+                print(f"Warning: no reliability bins for {label} / {metric}, skipping.")
+                continue
+
             ece = analyzer.expected_calibration_error(n_bins)
 
             confidences = [b["confidence"] for b in bins]
@@ -61,21 +66,21 @@ def plot_reliability_diagram(trace_files, output_path, n_bins=10):
     print(f"Saved reliability diagram: {output_path}")
 
 
-def plot_ece_comparison(trace_files, output_path, n_bins=10):
-    """Bar chart of ECE per metric and threshold."""
+def plot_ece_comparison(loaded_data, output_path, n_bins=N_BINS):
+    """Bar chart of ECE per metric and threshold.
+
+    Args:
+        loaded_data: List of (traces, threshold_label) tuples.
+    """
     metrics = ["avg_final_similarity", "avg_iterations", "avg_convergence_speed"]
 
     data_points = []
-    for trace_file in trace_files:
-        with open(trace_file) as f:
-            data = json.load(f)
-        threshold = data.get("threshold", 0)
-        traces = data["traces"]
+    for traces, label in loaded_data:
         eces = {}
         for metric in metrics:
             analyzer = CalibrationAnalyzer(traces, metric=metric)
             eces[metric] = analyzer.expected_calibration_error(n_bins)
-        data_points.append({"threshold": threshold, "eces": eces})
+        data_points.append({"threshold": label, "eces": eces})
 
     fig, ax = plt.subplots(figsize=(10, 5))
     x = np.arange(len(data_points))
@@ -87,7 +92,7 @@ def plot_ece_comparison(trace_files, output_path, n_bins=10):
         ax.bar(x + i * width, vals, width, label=short_name)
 
     ax.set_xticks(x + width)
-    ax.set_xticklabels([f"θ={dp['threshold']}" for dp in data_points])
+    ax.set_xticklabels([dp["threshold"] for dp in data_points])
     ax.set_ylabel("ECE (lower is better)")
     ax.set_title("Expected Calibration Error by Metric and Threshold")
     ax.legend()
@@ -111,7 +116,7 @@ def plot_phase_transition(sweep_files, output_path):
 
         thresholds = [r["threshold"] for r in results]
         accuracies = [r["accuracy"] for r in results]
-        iterations = [r["mean_avg_iterations"] for r in results]
+        iterations = [r.get("mean_avg_iterations", float("nan")) for r in results]
 
         color = colors[idx % len(colors)]
         axes[0].plot(thresholds, accuracies, "o-", color=color, label=label, markersize=4)
@@ -137,30 +142,35 @@ def plot_phase_transition(sweep_files, output_path):
 
 def cmd_calibration(args):
     os.makedirs(args.output_dir, exist_ok=True)
+
+    # Load all trace files once; share the data with chart functions and the ECE table.
+    loaded_data = []
+    for trace_file in args.trace_files:
+        with open(trace_file) as f:
+            data = json.load(f)
+        threshold = data.get("threshold", "?")
+        loaded_data.append((data["traces"], f"θ={threshold}"))
+
     plot_reliability_diagram(
-        args.trace_files,
+        loaded_data,
         os.path.join(args.output_dir, "reliability_diagram.png"),
     )
     plot_ece_comparison(
-        args.trace_files,
+        loaded_data,
         os.path.join(args.output_dir, "ece_comparison.png"),
     )
 
     # Print ECE table
     metrics = ["avg_final_similarity", "avg_iterations", "avg_convergence_speed"]
-    print(f"\n{'File':<50s}  ", end="")
+    print(f"\n{'Threshold':<50s}  ", end="")
     for m in metrics:
         print(f"{m.replace('avg_', ''):>15s}  ", end="")
     print()
-    for trace_file in args.trace_files:
-        with open(trace_file) as f:
-            data = json.load(f)
-        traces = data["traces"]
-        threshold = data.get("threshold", "?")
-        print(f"{'θ=' + str(threshold):<50s}  ", end="")
+    for traces, label in loaded_data:
+        print(f"{label:<50s}  ", end="")
         for metric in metrics:
             analyzer = CalibrationAnalyzer(traces, metric=metric)
-            ece = analyzer.expected_calibration_error()
+            ece = analyzer.expected_calibration_error(N_BINS)
             print(f"{ece:>15.4f}  ", end="")
         print()
 
