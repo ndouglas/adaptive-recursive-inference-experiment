@@ -1,0 +1,831 @@
+{
+  "model": "Qwen/Qwen2.5-7B",
+  "block_i": 15,
+  "block_j": 20,
+  "max_iterations": 4,
+  "baseline": {
+    "math_score": 0.7019489247311828,
+    "eq_score": 0.480353706612284
+  },
+  "thresholds": {
+    "0.8": {
+      "threshold": 0.8,
+      "math_score": 0.8448672124640318,
+      "eq_score": 0.39216093767308124,
+      "avg_iterations": 1.9502487562189055,
+      "math_avg_iters": 1.900497512437811,
+      "eq_avg_iters": 2.0,
+      "elapsed_s": 12.5,
+      "math_results": [
+        {
+          "question": "What is the square root of 2025?",
+          "expected": 45,
+          "predicted": 45.0,
+          "generated": "45\n\nQuestion: What is the square root of 100?\nAnswer (number only): 10\n\nQuestion: What is the square",
+          "score": 1.0,
+          "avg_iters": 1.90625
+        },
+        {
+          "question": "What is 3847 times 2963?",
+          "expected": 11398661,
+          "predicted": 11347331.0,
+          "generated": "11347331\n\nQuestion: What is 10000000000000000",
+          "score": 0.9954968394972006,
+          "avg_iters": 2.0
+        },
+        {
+          "question": "What is the cube root of 27000?",
+          "expected": 30,
+          "predicted": 30.0,
+          "generated": "30\n\nQuestion: What is the cube root of 1000?\nAnswer (number only): 10\n\nQuestion: What is the",
+          "score": 1.0,
+          "avg_iters": 1.9375
+        },
+        {
+          "question": "What is f(f(f(3))) if f(x) = 2x + 1?",
+          "expected": 31,
+          "predicted": 3.0,
+          "generated": "To find f(f(f(3))), we need to apply the function f(x) three times, starting with x = 3.\n\nFirst, we find f",
+          "score": 0.09677419354838712,
+          "avg_iters": 1.625
+        },
+        {
+          "question": "What is 23 times 47?",
+          "expected": 1081,
+          "predicted": 1081.0,
+          "generated": "1081",
+          "score": 1.0,
+          "avg_iters": 2.0
+        },
+        {
+          "question": "What is 17 cubed mod 13?",
+          "expected": 12,
+          "predicted": 8.0,
+          "generated": "8",
+          "score": 0.6666666666666667,
+          "avg_iters": 1.0
+        },
+        {
+          "question": "How many ways can you choose 3 items from a set of 8?",
+          "expected": 56,
+          "predicted": 56.0,
+          "generated": "56\n\nQuestion: How many ways can you choose 4 items from a set of 10?\nAnswer (number only): 210",
+          "score": 1.0,
+          "avg_iters": 2.0
+        },
+        {
+          "question": "In SKI combinator calculus, S f g x = f x (g x) and K x y = x. What is S K K 7?",
+          "expected": 7,
+          "predicted": 7.0,
+          "generated": "7\n\nQuestion: In SKI combinator calculus, S f g x = f x (g x) and K x y = x. What is",
+          "score": 1.0,
+          "avg_iters": 2.0
+        }
+      ],
+      "eq_results": [
+        {
+          "scenario": "Alex just received news that their project at work was selec",
+          "score": 0.8751130125933029,
+          "avg_iters": 2.0
+        },
+        {
+          "scenario": "Jordan's best friend just told them they're moving to anothe",
+          "score": 0.0,
+          "avg_iters": 2.0
+        },
+        {
+          "scenario": "Sam accidentally overheard coworkers praising their work dur",
+          "score": 0.0,
+          "avg_iters": 2.0
+        },
+        {
+          "scenario": "Taylor's teenager just got accepted to a prestigious univers",
+          "score": 0.9863939238321437,
+          "avg_iters": 2.0
+        },
+        {
+          "scenario": "Morgan was just promoted to lead a team, but the role was pr",
+          "score": 0.0,
+          "avg_iters": 2.0
+        },
+        {
+          "scenario": "Casey just found out their surprise birthday party was plann",
+          "score": 0.5773502691896257,
+          "avg_iters": 2.0
+        },
+        {
+          "scenario": "Riley's elderly parent just asked them to move back home to ",
+          "score": 0.698430295769578,
+          "avg_iters": 2.0
+        },
+        {
+          "scenario": "Quinn just won a heated competition against their younger si",
+          "score": 0.0,
+          "avg_iters": 2.0
+        }
+      ]
+    },
+    "0.85": {
+      "threshold": 0.85,
+      "math_score": 0.7094505457973651,
+      "eq_score": 0.39216093767308124,
+      "avg_iterations": 2.0,
+      "math_avg_iters": 2.0,
+      "eq_avg_iters": 2.0,
+      "elapsed_s": 13.5,
+      "math_results": [
+        {
+          "question": "What is the square root of 2025?",
+          "expected": 45,
+          "predicted": 2025.0,
+          "generated": "To find the square root of 2025, we can use the following steps:\n\n1. First, we can estimate the square root by finding the",
+          "score": 0.0,
+          "avg_iters": 2.0
+        },
+        {
+          "question": "What is 3847 times 2963?",
+          "expected": 11398661,
+          "predicted": 11347331.0,
+          "generated": "11347331\n\nQuestion: What is 10000000000000000",
+          "score": 0.9954968394972006,
+          "avg_iters": 2.0
+        },
+        {
+          "question": "What is the cube root of 27000?",
+          "expected": 30,
+          "predicted": 30.0,
+          "generated": "30\n\nQuestion: What is the cube root of 1000?\nAnswer (number only): 10\n\nQuestion: What is the",
+          "score": 1.0,
+          "avg_iters": 2.0
+        },
+        {
+          "question": "What is f(f(f(3))) if f(x) = 2x + 1?",
+          "expected": 31,
+          "predicted": 3.0,
+          "generated": "To find f(f(f(3))), we need to apply the function f(x) three times, starting with the initial value of 3.\n\nFirst, we",
+          "score": 0.09677419354838712,
+          "avg_iters": 2.0
+        },
+        {
+          "question": "What is 23 times 47?",
+          "expected": 1081,
+          "predicted": 1081.0,
+          "generated": "1081",
+          "score": 1.0,
+          "avg_iters": 2.0
+        },
+        {
+          "question": "What is 17 cubed mod 13?",
+          "expected": 12,
+          "predicted": 17.0,
+          "generated": "To find 17 cubed mod 13, we first need to calculate 17 cubed and then find the remainder when dividing by 1",
+          "score": 0.5833333333333333,
+          "avg_iters": 2.0
+        },
+        {
+          "question": "How many ways can you choose 3 items from a set of 8?",
+          "expected": 56,
+          "predicted": 56.0,
+          "generated": "56\n\nQuestion: How many ways can you choose 4 items from a set of 10?\nAnswer (number only): 210",
+          "score": 1.0,
+          "avg_iters": 2.0
+        },
+        {
+          "question": "In SKI combinator calculus, S f g x = f x (g x) and K x y = x. What is S K K 7?",
+          "expected": 7,
+          "predicted": 7.0,
+          "generated": "7\n\nQuestion: In SKI combinator calculus, S f g x = f x (g x) and K x y = x. What is",
+          "score": 1.0,
+          "avg_iters": 2.0
+        }
+      ],
+      "eq_results": [
+        {
+          "scenario": "Alex just received news that their project at work was selec",
+          "score": 0.8751130125933029,
+          "avg_iters": 2.0
+        },
+        {
+          "scenario": "Jordan's best friend just told them they're moving to anothe",
+          "score": 0.0,
+          "avg_iters": 2.0
+        },
+        {
+          "scenario": "Sam accidentally overheard coworkers praising their work dur",
+          "score": 0.0,
+          "avg_iters": 2.0
+        },
+        {
+          "scenario": "Taylor's teenager just got accepted to a prestigious univers",
+          "score": 0.9863939238321437,
+          "avg_iters": 2.0
+        },
+        {
+          "scenario": "Morgan was just promoted to lead a team, but the role was pr",
+          "score": 0.0,
+          "avg_iters": 2.0
+        },
+        {
+          "scenario": "Casey just found out their surprise birthday party was plann",
+          "score": 0.5773502691896257,
+          "avg_iters": 2.0
+        },
+        {
+          "scenario": "Riley's elderly parent just asked them to move back home to ",
+          "score": 0.698430295769578,
+          "avg_iters": 2.0
+        },
+        {
+          "scenario": "Quinn just won a heated competition against their younger si",
+          "score": 0.0,
+          "avg_iters": 2.0
+        }
+      ]
+    },
+    "0.9": {
+      "threshold": 0.9,
+      "math_score": 0.7094505457973651,
+      "eq_score": 0.39216093767308124,
+      "avg_iterations": 2.0,
+      "math_avg_iters": 2.0,
+      "eq_avg_iters": 2.0,
+      "elapsed_s": 13.5,
+      "math_results": [
+        {
+          "question": "What is the square root of 2025?",
+          "expected": 45,
+          "predicted": 2025.0,
+          "generated": "To find the square root of 2025, we can use the following steps:\n\n1. First, we can estimate the square root by finding the",
+          "score": 0.0,
+          "avg_iters": 2.0
+        },
+        {
+          "question": "What is 3847 times 2963?",
+          "expected": 11398661,
+          "predicted": 11347331.0,
+          "generated": "11347331\n\nQuestion: What is 10000000000000000",
+          "score": 0.9954968394972006,
+          "avg_iters": 2.0
+        },
+        {
+          "question": "What is the cube root of 27000?",
+          "expected": 30,
+          "predicted": 30.0,
+          "generated": "30\n\nQuestion: What is the cube root of 1000?\nAnswer (number only): 10\n\nQuestion: What is the",
+          "score": 1.0,
+          "avg_iters": 2.0
+        },
+        {
+          "question": "What is f(f(f(3))) if f(x) = 2x + 1?",
+          "expected": 31,
+          "predicted": 3.0,
+          "generated": "To find f(f(f(3))), we need to apply the function f(x) three times, starting with the initial value of 3.\n\nFirst, we",
+          "score": 0.09677419354838712,
+          "avg_iters": 2.0
+        },
+        {
+          "question": "What is 23 times 47?",
+          "expected": 1081,
+          "predicted": 1081.0,
+          "generated": "1081",
+          "score": 1.0,
+          "avg_iters": 2.0
+        },
+        {
+          "question": "What is 17 cubed mod 13?",
+          "expected": 12,
+          "predicted": 17.0,
+          "generated": "To find 17 cubed mod 13, we first need to calculate 17 cubed and then find the remainder when dividing by 1",
+          "score": 0.5833333333333333,
+          "avg_iters": 2.0
+        },
+        {
+          "question": "How many ways can you choose 3 items from a set of 8?",
+          "expected": 56,
+          "predicted": 56.0,
+          "generated": "56\n\nQuestion: How many ways can you choose 4 items from a set of 10?\nAnswer (number only): 210",
+          "score": 1.0,
+          "avg_iters": 2.0
+        },
+        {
+          "question": "In SKI combinator calculus, S f g x = f x (g x) and K x y = x. What is S K K 7?",
+          "expected": 7,
+          "predicted": 7.0,
+          "generated": "7\n\nQuestion: In SKI combinator calculus, S f g x = f x (g x) and K x y = x. What is",
+          "score": 1.0,
+          "avg_iters": 2.0
+        }
+      ],
+      "eq_results": [
+        {
+          "scenario": "Alex just received news that their project at work was selec",
+          "score": 0.8751130125933029,
+          "avg_iters": 2.0
+        },
+        {
+          "scenario": "Jordan's best friend just told them they're moving to anothe",
+          "score": 0.0,
+          "avg_iters": 2.0
+        },
+        {
+          "scenario": "Sam accidentally overheard coworkers praising their work dur",
+          "score": 0.0,
+          "avg_iters": 2.0
+        },
+        {
+          "scenario": "Taylor's teenager just got accepted to a prestigious univers",
+          "score": 0.9863939238321437,
+          "avg_iters": 2.0
+        },
+        {
+          "scenario": "Morgan was just promoted to lead a team, but the role was pr",
+          "score": 0.0,
+          "avg_iters": 2.0
+        },
+        {
+          "scenario": "Casey just found out their surprise birthday party was plann",
+          "score": 0.5773502691896257,
+          "avg_iters": 2.0
+        },
+        {
+          "scenario": "Riley's elderly parent just asked them to move back home to ",
+          "score": 0.698430295769578,
+          "avg_iters": 2.0
+        },
+        {
+          "scenario": "Quinn just won a heated competition against their younger si",
+          "score": 0.0,
+          "avg_iters": 2.0
+        }
+      ]
+    },
+    "0.95": {
+      "threshold": 0.95,
+      "math_score": 0.7094505457973651,
+      "eq_score": 0.42198747211833854,
+      "avg_iterations": 2.4076903744659464,
+      "math_avg_iters": 2.121739130434783,
+      "eq_avg_iters": 2.69364161849711,
+      "elapsed_s": 14.8,
+      "math_results": [
+        {
+          "question": "What is the square root of 2025?",
+          "expected": 45,
+          "predicted": 2025.0,
+          "generated": "To find the square root of 2025, we can use the following steps:\n\n1. First, we can estimate the square root by finding the",
+          "score": 0.0,
+          "avg_iters": 2.0
+        },
+        {
+          "question": "What is 3847 times 2963?",
+          "expected": 11398661,
+          "predicted": 11347331.0,
+          "generated": "11347331\n\nQuestion: What is 10000000000000000",
+          "score": 0.9954968394972006,
+          "avg_iters": 2.65625
+        },
+        {
+          "question": "What is the cube root of 27000?",
+          "expected": 30,
+          "predicted": 30.0,
+          "generated": "30\n\nQuestion: What is the cube root of 1000?\nAnswer (number only): 10\n\nQuestion: What is the",
+          "score": 1.0,
+          "avg_iters": 2.0
+        },
+        {
+          "question": "What is f(f(f(3))) if f(x) = 2x + 1?",
+          "expected": 31,
+          "predicted": 3.0,
+          "generated": "To find f(f(f(3))), we need to apply the function f(x) three times, starting with the initial value of 3.\n\nFirst, we",
+          "score": 0.09677419354838712,
+          "avg_iters": 2.21875
+        },
+        {
+          "question": "What is 23 times 47?",
+          "expected": 1081,
+          "predicted": 1081.0,
+          "generated": "1081",
+          "score": 1.0,
+          "avg_iters": 2.0
+        },
+        {
+          "question": "What is 17 cubed mod 13?",
+          "expected": 12,
+          "predicted": 17.0,
+          "generated": "To find 17 cubed mod 13, we first need to calculate 17 cubed and then find the remainder when dividing by 1",
+          "score": 0.5833333333333333,
+          "avg_iters": 2.0
+        },
+        {
+          "question": "How many ways can you choose 3 items from a set of 8?",
+          "expected": 56,
+          "predicted": 56.0,
+          "generated": "56\n\nQuestion: How many ways can you choose 4 items from a set of 10?\nAnswer (number only): 210",
+          "score": 1.0,
+          "avg_iters": 2.0
+        },
+        {
+          "question": "In SKI combinator calculus, S f g x = f x (g x) and K x y = x. What is S K K 7?",
+          "expected": 7,
+          "predicted": 7.0,
+          "generated": "7\n\nQuestion: In SKI combinator calculus, S f g x = f x (g x) and K x y = x. What is",
+          "score": 1.0,
+          "avg_iters": 2.0
+        }
+      ],
+      "eq_results": [
+        {
+          "scenario": "Alex just received news that their project at work was selec",
+          "score": 0.8751130125933029,
+          "avg_iters": 2.0
+        },
+        {
+          "scenario": "Jordan's best friend just told them they're moving to anothe",
+          "score": 0.0,
+          "avg_iters": 3.0
+        },
+        {
+          "scenario": "Sam accidentally overheard coworkers praising their work dur",
+          "score": 0.0,
+          "avg_iters": 2.888888888888889
+        },
+        {
+          "scenario": "Taylor's teenager just got accepted to a prestigious univers",
+          "score": 0.9863939238321437,
+          "avg_iters": 2.7857142857142856
+        },
+        {
+          "scenario": "Morgan was just promoted to lead a team, but the role was pr",
+          "score": 0.0,
+          "avg_iters": 2.0
+        },
+        {
+          "scenario": "Casey just found out their surprise birthday party was plann",
+          "score": 0.5773502691896257,
+          "avg_iters": 3.0
+        },
+        {
+          "scenario": "Riley's elderly parent just asked them to move back home to ",
+          "score": 0.9370425713316362,
+          "avg_iters": 2.7777777777777777
+        },
+        {
+          "scenario": "Quinn just won a heated competition against their younger si",
+          "score": 0.0,
+          "avg_iters": 3.0
+        }
+      ]
+    },
+    "0.98": {
+      "threshold": 0.98,
+      "math_score": 0.8663399753283416,
+      "eq_score": 0.42198747211833854,
+      "avg_iterations": 3.317112699468085,
+      "math_avg_iters": 3.12890625,
+      "eq_avg_iters": 3.50531914893617,
+      "elapsed_s": 18.2,
+      "math_results": [
+        {
+          "question": "What is the square root of 2025?",
+          "expected": 45,
+          "predicted": 45.0,
+          "generated": "45\n\nQuestion: What is the square root of 1225?\nAnswer (number only): 35\n\nQuestion: What is the",
+          "score": 1.0,
+          "avg_iters": 3.0
+        },
+        {
+          "question": "What is 3847 times 2963?",
+          "expected": 11398661,
+          "predicted": 11344357.0,
+          "generated": "11344357\n\nTo find the product of 3847 and 2963, we can use the multiplication",
+          "score": 0.9952359316589905,
+          "avg_iters": 3.03125
+        },
+        {
+          "question": "What is the cube root of 27000?",
+          "expected": 30,
+          "predicted": 27000.0,
+          "generated": "To find the cube root of 27000, we can use the formula:\n\nCube root of a number = (number)^(1/3",
+          "score": 0.0,
+          "avg_iters": 3.0
+        },
+        {
+          "question": "What is f(f(f(3))) if f(x) = 2x + 1?",
+          "expected": 31,
+          "predicted": 29.0,
+          "generated": "29\n\nQuestion: If f(x) = 2x + 1, what is f(f(f(x)))?\nAnswer (number or expression in",
+          "score": 0.935483870967742,
+          "avg_iters": 4.0
+        },
+        {
+          "question": "What is 23 times 47?",
+          "expected": 1081,
+          "predicted": 1081.0,
+          "generated": "1081\n\nQuestion: What is 23 times 47?\nAnswer (number only): 1081\n\nQuestion: What",
+          "score": 1.0,
+          "avg_iters": 3.0
+        },
+        {
+          "question": "What is 17 cubed mod 13?",
+          "expected": 12,
+          "predicted": 12.0,
+          "generated": "12\n\nQuestion: What is 17 cubed mod 13?\nAnswer (number only): 12\n\nQuestion: What is",
+          "score": 1.0,
+          "avg_iters": 3.0
+        },
+        {
+          "question": "How many ways can you choose 3 items from a set of 8?",
+          "expected": 56,
+          "predicted": 56.0,
+          "generated": "56\n\nQuestion: How many ways can you choose 4 items from a set of 10?\nAnswer (number only): 210",
+          "score": 1.0,
+          "avg_iters": 3.0
+        },
+        {
+          "question": "In SKI combinator calculus, S f g x = f x (g x) and K x y = x. What is S K K 7?",
+          "expected": 7,
+          "predicted": 7.0,
+          "generated": "7\n\nQuestion: In SKI combinator calculus, S f g x = f x (g x) and K x y = x. What is",
+          "score": 1.0,
+          "avg_iters": 3.0
+        }
+      ],
+      "eq_results": [
+        {
+          "scenario": "Alex just received news that their project at work was selec",
+          "score": 0.8751130125933029,
+          "avg_iters": 3.0
+        },
+        {
+          "scenario": "Jordan's best friend just told them they're moving to anothe",
+          "score": 0.0,
+          "avg_iters": 4.0
+        },
+        {
+          "scenario": "Sam accidentally overheard coworkers praising their work dur",
+          "score": 0.0,
+          "avg_iters": 3.0
+        },
+        {
+          "scenario": "Taylor's teenager just got accepted to a prestigious univers",
+          "score": 0.9863939238321437,
+          "avg_iters": 3.4642857142857144
+        },
+        {
+          "scenario": "Morgan was just promoted to lead a team, but the role was pr",
+          "score": 0.0,
+          "avg_iters": 3.0
+        },
+        {
+          "scenario": "Casey just found out their surprise birthday party was plann",
+          "score": 0.5773502691896257,
+          "avg_iters": 4.0
+        },
+        {
+          "scenario": "Riley's elderly parent just asked them to move back home to ",
+          "score": 0.9370425713316362,
+          "avg_iters": 3.4642857142857144
+        },
+        {
+          "scenario": "Quinn just won a heated competition against their younger si",
+          "score": 0.0,
+          "avg_iters": 4.0
+        }
+      ]
+    },
+    "0.99": {
+      "threshold": 0.99,
+      "math_score": 0.5050539119783823,
+      "eq_score": 0.48130984685286976,
+      "avg_iterations": 4.0,
+      "math_avg_iters": 4.0,
+      "eq_avg_iters": 4.0,
+      "elapsed_s": 21.9,
+      "math_results": [
+        {
+          "question": "What is the square root of 2025?",
+          "expected": 45,
+          "predicted": 45.0,
+          "generated": "45\n\nQuestion: What is the square root of 1225?\nAnswer (number only): 35\n\nQuestion: What is the",
+          "score": 1.0,
+          "avg_iters": 4.0
+        },
+        {
+          "question": "What is 3847 times 2963?",
+          "expected": 11398661,
+          "predicted": 3847.0,
+          "generated": "3847 * 2963 = 11200577\n\nExplanation: To find the product of 38",
+          "score": 0.0003374957813027102,
+          "avg_iters": 4.0
+        },
+        {
+          "question": "What is the cube root of 27000?",
+          "expected": 30,
+          "predicted": 54000.0,
+          "generated": "54000\n\nTo find the cube root of 27000, we need to find a number that, when multiplied by itself",
+          "score": 0.0,
+          "avg_iters": 4.0
+        },
+        {
+          "question": "What is f(f(f(3))) if f(x) = 2x + 1?",
+          "expected": 31,
+          "predicted": 29.0,
+          "generated": "29\n\nQuestion: If f(x) = 2x + 1, what is f(f(f(x)))?\nAnswer (number or expression in",
+          "score": 0.935483870967742,
+          "avg_iters": 4.0
+        },
+        {
+          "question": "What is 23 times 47?",
+          "expected": 1081,
+          "predicted": 23.0,
+          "generated": "23 * 47 = 1081\n\nQuestion: What is 23 times 48?\nAnswer (number only):",
+          "score": 0.021276595744680882,
+          "avg_iters": 4.0
+        },
+        {
+          "question": "What is 17 cubed mod 13?",
+          "expected": 12,
+          "predicted": 1.0,
+          "generated": "1\n\nQuestion: What is 17 cubed mod 13?\nAnswer (number only): 1\n\nQuestion: What is 17",
+          "score": 0.08333333333333337,
+          "avg_iters": 4.0
+        },
+        {
+          "question": "How many ways can you choose 3 items from a set of 8?",
+          "expected": 56,
+          "predicted": 56.0,
+          "generated": "56\n\nQuestion: How many ways can you choose 4 items from a set of 10?\nAnswer (number only): 120",
+          "score": 1.0,
+          "avg_iters": 4.0
+        },
+        {
+          "question": "In SKI combinator calculus, S f g x = f x (g x) and K x y = x. What is S K K 7?",
+          "expected": 7,
+          "predicted": 7.0,
+          "generated": "7\n\nExplanation: \nThe SKI combinator calculus is a minimalistic form of the lambda calculus, which is a formal system for expressing and studying mathematical",
+          "score": 1.0,
+          "avg_iters": 4.0
+        }
+      ],
+      "eq_results": [
+        {
+          "scenario": "Alex just received news that their project at work was selec",
+          "score": 0.8751130125933029,
+          "avg_iters": 4.0
+        },
+        {
+          "scenario": "Jordan's best friend just told them they're moving to anothe",
+          "score": 0.0,
+          "avg_iters": 4.0
+        },
+        {
+          "scenario": "Sam accidentally overheard coworkers praising their work dur",
+          "score": 0.4745789978762496,
+          "avg_iters": 4.0
+        },
+        {
+          "scenario": "Taylor's teenager just got accepted to a prestigious univers",
+          "score": 0.9863939238321437,
+          "avg_iters": 4.0
+        },
+        {
+          "scenario": "Morgan was just promoted to lead a team, but the role was pr",
+          "score": 0.0,
+          "avg_iters": 4.0
+        },
+        {
+          "scenario": "Casey just found out their surprise birthday party was plann",
+          "score": 0.5773502691896257,
+          "avg_iters": 4.0
+        },
+        {
+          "scenario": "Riley's elderly parent just asked them to move back home to ",
+          "score": 0.9370425713316362,
+          "avg_iters": 4.0
+        },
+        {
+          "scenario": "Quinn just won a heated competition against their younger si",
+          "score": 0.0,
+          "avg_iters": 4.0
+        }
+      ]
+    },
+    "0.995": {
+      "threshold": 0.995,
+      "math_score": 0.5050539119783823,
+      "eq_score": 0.48130984685286976,
+      "avg_iterations": 4.0,
+      "math_avg_iters": 4.0,
+      "eq_avg_iters": 4.0,
+      "elapsed_s": 21.9,
+      "math_results": [
+        {
+          "question": "What is the square root of 2025?",
+          "expected": 45,
+          "predicted": 45.0,
+          "generated": "45\n\nQuestion: What is the square root of 1225?\nAnswer (number only): 35\n\nQuestion: What is the",
+          "score": 1.0,
+          "avg_iters": 4.0
+        },
+        {
+          "question": "What is 3847 times 2963?",
+          "expected": 11398661,
+          "predicted": 3847.0,
+          "generated": "3847 * 2963 = 11200577\n\nExplanation: To find the product of 38",
+          "score": 0.0003374957813027102,
+          "avg_iters": 4.0
+        },
+        {
+          "question": "What is the cube root of 27000?",
+          "expected": 30,
+          "predicted": 54000.0,
+          "generated": "54000\n\nTo find the cube root of 27000, we need to find a number that, when multiplied by itself",
+          "score": 0.0,
+          "avg_iters": 4.0
+        },
+        {
+          "question": "What is f(f(f(3))) if f(x) = 2x + 1?",
+          "expected": 31,
+          "predicted": 29.0,
+          "generated": "29\n\nQuestion: If f(x) = 2x + 1, what is f(f(f(x)))?\nAnswer (number or expression in",
+          "score": 0.935483870967742,
+          "avg_iters": 4.0
+        },
+        {
+          "question": "What is 23 times 47?",
+          "expected": 1081,
+          "predicted": 23.0,
+          "generated": "23 * 47 = 1081\n\nQuestion: What is 23 times 48?\nAnswer (number only):",
+          "score": 0.021276595744680882,
+          "avg_iters": 4.0
+        },
+        {
+          "question": "What is 17 cubed mod 13?",
+          "expected": 12,
+          "predicted": 1.0,
+          "generated": "1\n\nQuestion: What is 17 cubed mod 13?\nAnswer (number only): 1\n\nQuestion: What is 17",
+          "score": 0.08333333333333337,
+          "avg_iters": 4.0
+        },
+        {
+          "question": "How many ways can you choose 3 items from a set of 8?",
+          "expected": 56,
+          "predicted": 56.0,
+          "generated": "56\n\nQuestion: How many ways can you choose 4 items from a set of 10?\nAnswer (number only): 120",
+          "score": 1.0,
+          "avg_iters": 4.0
+        },
+        {
+          "question": "In SKI combinator calculus, S f g x = f x (g x) and K x y = x. What is S K K 7?",
+          "expected": 7,
+          "predicted": 7.0,
+          "generated": "7\n\nExplanation: \nThe SKI combinator calculus is a minimalistic form of the lambda calculus, which is a formal system for expressing and studying mathematical",
+          "score": 1.0,
+          "avg_iters": 4.0
+        }
+      ],
+      "eq_results": [
+        {
+          "scenario": "Alex just received news that their project at work was selec",
+          "score": 0.8751130125933029,
+          "avg_iters": 4.0
+        },
+        {
+          "scenario": "Jordan's best friend just told them they're moving to anothe",
+          "score": 0.0,
+          "avg_iters": 4.0
+        },
+        {
+          "scenario": "Sam accidentally overheard coworkers praising their work dur",
+          "score": 0.4745789978762496,
+          "avg_iters": 4.0
+        },
+        {
+          "scenario": "Taylor's teenager just got accepted to a prestigious univers",
+          "score": 0.9863939238321437,
+          "avg_iters": 4.0
+        },
+        {
+          "scenario": "Morgan was just promoted to lead a team, but the role was pr",
+          "score": 0.0,
+          "avg_iters": 4.0
+        },
+        {
+          "scenario": "Casey just found out their surprise birthday party was plann",
+          "score": 0.5773502691896257,
+          "avg_iters": 4.0
+        },
+        {
+          "scenario": "Riley's elderly parent just asked them to move back home to ",
+          "score": 0.9370425713316362,
+          "avg_iters": 4.0
+        },
+        {
+          "scenario": "Quinn just won a heated competition against their younger si",
+          "score": 0.0,
+          "avg_iters": 4.0
+        }
+      ]
+    }
+  }
+}

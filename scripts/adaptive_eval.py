@@ -39,18 +39,29 @@ def run_adaptive_math_eval(loop, tokenizer, questions, verbose=False):
         total_iters += sum(loop.token_iterations)
         total_tokens += len(loop.token_iterations)
 
-        # Score: extract number and compute relative error
+        # Score: extract answer number (handles chain-of-thought output)
         expected = q["answer"]
-        numbers = re.findall(r'-?\d+\.?\d*', generated)
-        if numbers:
-            predicted = float(numbers[0])
+        predicted = None
+        for pattern in [
+            r'(?:answer|result|equals|=)\s*[:is]*\s*(-?\d[\d,]*\.?\d*)',
+            r'(-?\d[\d,]*\.?\d*)\s*$',
+        ]:
+            match = re.search(pattern, generated, re.IGNORECASE)
+            if match:
+                predicted = float(match.group(1).replace(',', ''))
+                break
+        if predicted is None:
+            numbers = re.findall(r'-?\d[\d,]*\.?\d*', generated)
+            if numbers:
+                predicted = float(numbers[-1].replace(',', ''))
+
+        if predicted is not None:
             if expected == 0:
                 score = 1.0 if predicted == 0 else 0.0
             else:
                 rel_error = abs(predicted - expected) / abs(expected)
                 score = max(0.0, 1.0 - rel_error)
         else:
-            predicted = None
             score = 0.0
 
         results.append({

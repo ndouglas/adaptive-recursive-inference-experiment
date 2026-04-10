@@ -19,11 +19,29 @@ from src.evaluation.math_eval import run_math_eval
 
 
 def score_answer(generated, expected):
-    """Score a generated answer against expected (partial credit via relative error)."""
-    numbers = re.findall(r'-?\d+\.?\d*', generated)
+    """Score a generated answer against expected (partial credit via relative error).
+
+    Handles chain-of-thought output by looking for answer-signaling patterns
+    first, then falling back to the last number in the text.
+    """
+    # Try patterns that signal a final answer
+    for pattern in [
+        r'(?:answer|result|equals|=)\s*[:is]*\s*(-?\d[\d,]*\.?\d*)',
+        r'(-?\d[\d,]*\.?\d*)\s*$',
+    ]:
+        match = re.search(pattern, generated, re.IGNORECASE)
+        if match:
+            predicted = float(match.group(1).replace(',', ''))
+            if expected == 0:
+                return (1.0 if predicted == 0 else 0.0), predicted
+            rel_error = abs(predicted - expected) / abs(expected)
+            return max(0.0, 1.0 - rel_error), predicted
+
+    # Fall back to last number
+    numbers = re.findall(r'-?\d[\d,]*\.?\d*', generated)
     if not numbers:
         return 0.0, None
-    predicted = float(numbers[0])
+    predicted = float(numbers[-1].replace(',', ''))
     if expected == 0:
         return (1.0 if predicted == 0 else 0.0), predicted
     rel_error = abs(predicted - expected) / abs(expected)
