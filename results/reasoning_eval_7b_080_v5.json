@@ -1,0 +1,695 @@
+{
+  "model": "Qwen/Qwen2.5-7B",
+  "block": [
+    15,
+    20
+  ],
+  "threshold": 0.8,
+  "max_iterations": 4,
+  "baseline": {
+    "results": [
+      {
+        "question": "What is (7 + 3) * 5?",
+        "expected": 50,
+        "predicted": 50.0,
+        "generated": "{\"reasoning\": \"First, we need to add 7 and 3, which gives us 10. Then, we multiply 10 by 5, which gives us 50.\", \"answer",
+        "score": 1.0,
+        "steps": 2,
+        "category": "chained_arithmetic"
+      },
+      {
+        "question": "What is 15 * 4 - 23?",
+        "expected": 37,
+        "predicted": 37.0,
+        "generated": "{\"reasoning\": \"First, we multiply 15 by 4, which gives us 60. Then, we subtract 23 from 60, which gives us 37.\", \"answer",
+        "score": 1.0,
+        "steps": 2,
+        "category": "chained_arithmetic"
+      },
+      {
+        "question": "What is (8 * 9) + (7 * 6)?",
+        "expected": 114,
+        "predicted": 114.0,
+        "generated": "{\"reasoning\": \"First, we need to perform the multiplication operations inside the parentheses. 8 * 9 = 72 and 7 * 6 = 42",
+        "score": 1.0,
+        "steps": 3,
+        "category": "chained_arithmetic"
+      },
+      {
+        "question": "What is (17 * 3 + 11) * 2 - 5?",
+        "expected": 119,
+        "predicted": 119.0,
+        "generated": "{\"reasoning\": \"First, we need to perform the multiplication and addition inside the parentheses: 17 * 3 = 51 and 51 + 11",
+        "score": 1.0,
+        "steps": 4,
+        "category": "chained_arithmetic"
+      },
+      {
+        "question": "What is ((5 + 3) * (9 - 2)) / 4?",
+        "expected": 14,
+        "predicted": 14.0,
+        "generated": "{\"reasoning\": \"First, we need to solve the expressions inside the parentheses. 5 + 3 = 8 and 9 - 2 = 7. Then, we multipl",
+        "score": 1.0,
+        "steps": 4,
+        "category": "chained_arithmetic"
+      },
+      {
+        "question": "What is (2^5 - 7) * 3 + (4^2 - 1)?",
+        "expected": 90,
+        "predicted": 90.0,
+        "generated": "{\"reasoning\": \"First, we need to calculate the exponents: 2^5 = 32 and 4^2 = 16. Then, we subtract 7 from 32 and 1 from ",
+        "score": 1.0,
+        "steps": 5,
+        "category": "chained_arithmetic"
+      },
+      {
+        "question": "Alice has 12 apples. She gives half to Bob, then eats 2. How many does Alice have?",
+        "expected": 4,
+        "predicted": 4.0,
+        "generated": "{\"reasoning\": \"Alice starts with 12 apples. She gives half to Bob, so she gives away 12/2 = 6 apples. After giving away ",
+        "score": 1.0,
+        "steps": 2,
+        "category": "word_problem"
+      },
+      {
+        "question": "A store sells pencils for $3 each. Tom buys 7 and pays with a $50 bill. How much change does he get?",
+        "expected": 29,
+        "predicted": 29.0,
+        "generated": "{\"reasoning\": \"First, we need to calculate the total cost of the pencils. Tom buys 7 pencils at $3 each, so the total co",
+        "score": 1.0,
+        "steps": 2,
+        "category": "word_problem"
+      },
+      {
+        "question": "A train travels 60 miles per hour for 2 hours, then 40 miles per hour for 3 hours. How many total miles?",
+        "expected": 240,
+        "predicted": 240.0,
+        "generated": "{\"reasoning\": \"First, we need to calculate the distance traveled during each part of the journey. For the first part, th",
+        "score": 1.0,
+        "steps": 3,
+        "category": "word_problem"
+      },
+      {
+        "question": "Alice has 5 marbles. Bob gives her triple what she has. She then gives 4 to Carol. How many does Alice have?",
+        "expected": 16,
+        "predicted": 16.0,
+        "generated": "{\"reasoning\": \"Alice starts with 5 marbles. Bob gives her triple what she has, which is 5 * 3 = 15 marbles. So, Alice no",
+        "score": 1.0,
+        "steps": 3,
+        "category": "word_problem"
+      },
+      {
+        "question": "A rope is 100 feet long. It is cut into 3 pieces. The second piece is twice the first. The third is 10 feet longer than the second. How long is the first piece?",
+        "expected": 18,
+        "predicted": 18.0,
+        "generated": "{\"reasoning\": \"Let's denote the length of the first piece as x. The second piece is twice the first, so it is 2x. The th",
+        "score": 1.0,
+        "steps": 4,
+        "category": "word_problem"
+      },
+      {
+        "question": "Three friends split a $240 dinner bill. Alice pays twice what Bob pays, and Carol pays $20 more than Bob. How much does Bob pay?",
+        "expected": 55,
+        "predicted": 55.0,
+        "generated": "{\"reasoning\": \"Let's denote the amount Bob pays as B. According to the problem, Alice pays twice what Bob pays, so Alice",
+        "score": 1.0,
+        "steps": 4,
+        "category": "word_problem"
+      },
+      {
+        "question": "If x is a positive integer, x > 10, x < 20, and x is divisible by 3, what is the largest possible x?",
+        "expected": 18,
+        "predicted": 18.0,
+        "generated": "{\"reasoning\": \"The largest possible x that is a positive integer, greater than 10, less than 20, and divisible by 3 is 1",
+        "score": 1.0,
+        "steps": 2,
+        "category": "conditional_logic"
+      },
+      {
+        "question": "If x is prime, x > 20, and x < 30, what is x? Give the smaller value.",
+        "expected": 23,
+        "predicted": 23.0,
+        "generated": "{\"reasoning\": \"The prime numbers between 20 and 30 are 23 and 29. The smaller value is 23.\", \"answer\": 23}",
+        "score": 1.0,
+        "steps": 2,
+        "category": "conditional_logic"
+      },
+      {
+        "question": "If x is a perfect square, x > 50, x < 100, and x is even, what is x?",
+        "expected": 64,
+        "predicted": 64.0,
+        "generated": "{\"reasoning\": \"The perfect squares between 50 and 100 are 64 and 81. Since x is even, the only possible value for x is 6",
+        "score": 1.0,
+        "steps": 3,
+        "category": "conditional_logic"
+      },
+      {
+        "question": "Among the integers 1 to 30, how many are divisible by 2 or 3 but not both?",
+        "expected": 15,
+        "predicted": null,
+        "generated": "{\"reasoning\": \"To find the number of integers between 1 and 30 that are divisible by 2 or 3 but not both, we can use the",
+        "score": 0.0,
+        "steps": 4,
+        "category": "conditional_logic"
+      },
+      {
+        "question": "If a, b, c are single digits, a + b = 10, b + c = 7, and a + c = 9, what is a * b * c?",
+        "expected": 72,
+        "predicted": null,
+        "generated": "{\"reasoning\": \"We can solve this problem by setting up a system of equations based on the given information. Let's denot",
+        "score": 0.0,
+        "steps": 4,
+        "category": "conditional_logic"
+      },
+      {
+        "question": "How many integers between 1 and 100 are divisible by 3 but not by 5?",
+        "expected": 27,
+        "predicted": 27.0,
+        "generated": "{\"reasoning\": \"To find the number of integers between 1 and 100 that are divisible by 3 but not by 5, we can first find ",
+        "score": 1.0,
+        "steps": 3,
+        "category": "conditional_logic"
+      },
+      {
+        "question": "Start with 2. Double it, then add 1. What is the result?",
+        "expected": 5,
+        "predicted": 5.0,
+        "generated": "{\"reasoning\": \"Start with 2. Double it: 2 * 2 = 4. Then add 1: 4 + 1 = 5. The result is 5.\", \"answer\": 5}",
+        "score": 1.0,
+        "steps": 2,
+        "category": "recursive"
+      },
+      {
+        "question": "Start with 1. Double it and add 1. Repeat this operation a total of 3 times. What is the result?",
+        "expected": 15,
+        "predicted": 15.0,
+        "generated": "{\"reasoning\": \"Starting with 1, doubling it and adding 1 gives 3. Doubling 3 and adding 1 gives 7. Doubling 7 and adding",
+        "score": 1.0,
+        "steps": 3,
+        "category": "recursive"
+      },
+      {
+        "question": "Start with 1. Double it and add 1. Repeat this operation a total of 5 times. What is the result?",
+        "expected": 63,
+        "predicted": 63.0,
+        "generated": "{\"reasoning\": \"Starting with 1, we double it and add 1 to get 3. We repeat this operation 5 times, so we have 3, 7, 15, ",
+        "score": 1.0,
+        "steps": 5,
+        "category": "recursive"
+      },
+      {
+        "question": "The sequence starts 2, 5, 11, 23, ... where each term is double the previous plus 1. What is the 6th term?",
+        "expected": 95,
+        "predicted": 95.0,
+        "generated": "{\"reasoning\": \"The sequence starts with 2. The second term is 2 * 2 + 1 = 5. The third term is 5 * 2 + 1 = 11. The fourt",
+        "score": 1.0,
+        "steps": 3,
+        "category": "recursive"
+      },
+      {
+        "question": "A population doubles every year. Starting from 3, what is the population after 7 years?",
+        "expected": 384,
+        "predicted": 384.0,
+        "generated": "{\"reasoning\": \"The population doubles every year, so after 7 years, the population will be 3 * 2^7 = 3 * 128 = 384.\", \"a",
+        "score": 1.0,
+        "steps": 2,
+        "category": "recursive"
+      },
+      {
+        "question": "Start with 100. Subtract 7 repeatedly. After how many subtractions do you first go below 50?",
+        "expected": 8,
+        "predicted": 8.0,
+        "generated": "{\"reasoning\": \"We start with 100 and subtract 7 repeatedly until we go below 50. We can calculate the number of subtract",
+        "score": 1.0,
+        "steps": 4,
+        "category": "recursive"
+      },
+      {
+        "question": "What is the sum of the prime factors of 30?",
+        "expected": 10,
+        "predicted": 10.0,
+        "generated": "{\"reasoning\": \"The prime factors of 30 are 2, 3, and 5. To find the sum of these prime factors, we add them together: 2 ",
+        "score": 1.0,
+        "steps": 2,
+        "category": "number_theory"
+      },
+      {
+        "question": "What is the sum of all prime factors of 60?",
+        "expected": 10,
+        "predicted": 12.0,
+        "generated": "{\"reasoning\": \"First, we need to find the prime factors of 60. We can do this by dividing 60 by the smallest prime numbe",
+        "score": 0.8,
+        "steps": 3,
+        "category": "number_theory"
+      },
+      {
+        "question": "What is the product of the distinct prime factors of 360?",
+        "expected": 30,
+        "predicted": null,
+        "generated": "{\"reasoning\": \"First, we need to find the prime factors of 360. We can do this by dividing 360 by the smallest prime num",
+        "score": 0.0,
+        "steps": 3,
+        "category": "number_theory"
+      },
+      {
+        "question": "What is the sum of all divisors of 28?",
+        "expected": 56,
+        "predicted": 56.0,
+        "generated": "{\"reasoning\": \"The divisors of 28 are 1, 2, 4, 7, 14, and 28. Adding them up, we get 1 + 2 + 4 + 7 + 14 + 28 = 56.\", \"an",
+        "score": 1.0,
+        "steps": 3,
+        "category": "number_theory"
+      },
+      {
+        "question": "How many positive divisors does 120 have?",
+        "expected": 16,
+        "predicted": 16.0,
+        "generated": "{\"reasoning\": \"To find the number of positive divisors of 120, we first need to find its prime factorization. 120 can be",
+        "score": 1.0,
+        "steps": 4,
+        "category": "number_theory"
+      },
+      {
+        "question": "What is the largest prime factor of 2310?",
+        "expected": 11,
+        "predicted": 11.0,
+        "generated": "{\"reasoning\": \"To find the largest prime factor of 2310, we can start by finding its prime factorization. We can do this",
+        "score": 1.0,
+        "steps": 4,
+        "category": "number_theory"
+      },
+      {
+        "question": "What is the GCD of 168 and 264?",
+        "expected": 24,
+        "predicted": 24.0,
+        "generated": "{\"reasoning\": \"To find the GCD of 168 and 264, we can use the Euclidean algorithm. First, we divide 264 by 168 and find ",
+        "score": 1.0,
+        "steps": 3,
+        "category": "number_theory"
+      },
+      {
+        "question": "What is Euler's totient of 12, i.e., how many integers from 1 to 12 are coprime to 12?",
+        "expected": 4,
+        "predicted": 4.0,
+        "generated": "{\"reasoning\": \"Euler's totient function, denoted as \u03c6(n), counts the number of positive integers less than or equal to n",
+        "score": 1.0,
+        "steps": 4,
+        "category": "number_theory"
+      }
+    ],
+    "overall": 0.9,
+    "tiers": {
+      "easy (2 steps)": {
+        "count": 9,
+        "avg_score": 1.0,
+        "avg_iters": null
+      },
+      "medium (3 steps)": {
+        "count": 11,
+        "avg_score": 0.890909090909091,
+        "avg_iters": null
+      },
+      "hard (4-5 steps)": {
+        "count": 12,
+        "avg_score": 0.8333333333333334,
+        "avg_iters": null
+      }
+    },
+    "time_s": 120.8
+  },
+  "adaptive": {
+    "results": [
+      {
+        "question": "What is (7 + 3) * 5?",
+        "expected": 50,
+        "predicted": 50.0,
+        "generated": "{\"reasoning\": \"First, we need to add 7 and 3, which gives us 10. Then, we multiply 10 by 5, which results in 50. Therefo",
+        "score": 1.0,
+        "steps": 2,
+        "category": "chained_arithmetic",
+        "avg_iters": 1.88135593220339,
+        "max_iters_used": 2
+      },
+      {
+        "question": "What is 15 * 4 - 23?",
+        "expected": 37,
+        "predicted": 37.0,
+        "generated": "{\"reasoning\": \"To solve this problem, we need to follow the order of operations, which is parentheses, exponents, multip",
+        "score": 1.0,
+        "steps": 2,
+        "category": "chained_arithmetic",
+        "avg_iters": 1.7099236641221374,
+        "max_iters_used": 2
+      },
+      {
+        "question": "What is (8 * 9) + (7 * 6)?",
+        "expected": 114,
+        "predicted": 114.0,
+        "generated": "{\"reasoning\": \"First, we need to calculate the products of the given numbers. So, 8 * 9 = 72 and 7 * 6 = 42. Then, we ad",
+        "score": 1.0,
+        "steps": 3,
+        "category": "chained_arithmetic",
+        "avg_iters": 1.5432098765432098,
+        "max_iters_used": 2
+      },
+      {
+        "question": "What is (17 * 3 + 11) * 2 - 5?",
+        "expected": 119,
+        "predicted": 119.0,
+        "generated": "{\"reasoning\": \"First, we need to calculate the value of the expression inside the parentheses: 17 * 3 + 11. This equals ",
+        "score": 1.0,
+        "steps": 4,
+        "category": "chained_arithmetic",
+        "avg_iters": 1.3153153153153154,
+        "max_iters_used": 2
+      },
+      {
+        "question": "What is ((5 + 3) * (9 - 2)) / 4?",
+        "expected": 14,
+        "predicted": 14.0,
+        "generated": "{\"reasoning\": \"First, we need to perform the operations inside the parentheses. So, 5 + 3 = 8 and 9 - 2 = 7. Then, we mu",
+        "score": 1.0,
+        "steps": 4,
+        "category": "chained_arithmetic",
+        "avg_iters": 1.7037037037037037,
+        "max_iters_used": 2
+      },
+      {
+        "question": "What is (2^5 - 7) * 3 + (4^2 - 1)?",
+        "expected": 90,
+        "predicted": 90.0,
+        "generated": "{\"reasoning\": \"First, we need to calculate the values inside the parentheses. 2^5 = 32 and 4^2 = 16. Then, we subtract 7",
+        "score": 1.0,
+        "steps": 5,
+        "category": "chained_arithmetic",
+        "avg_iters": 1.9396551724137931,
+        "max_iters_used": 2
+      },
+      {
+        "question": "Alice has 12 apples. She gives half to Bob, then eats 2. How many does Alice have?",
+        "expected": 4,
+        "predicted": 4.0,
+        "generated": "{\"reasoning\": \"Alice starts with 12 apples. She gives half to Bob, so she gives away 12/2 = 6 apples. After giving away ",
+        "score": 1.0,
+        "steps": 2,
+        "category": "word_problem",
+        "avg_iters": 1.4146341463414633,
+        "max_iters_used": 2
+      },
+      {
+        "question": "A store sells pencils for $3 each. Tom buys 7 and pays with a $50 bill. How much change does he get?",
+        "expected": 29,
+        "predicted": 29.0,
+        "generated": "{\"reasoning\": \"Tom buys 7 pencils at $3 each, so he spends 7 * $3 = $21. He pays with a $50 bill, so he gets $50 - $21 =",
+        "score": 1.0,
+        "steps": 2,
+        "category": "word_problem",
+        "avg_iters": 2.0,
+        "max_iters_used": 2
+      },
+      {
+        "question": "A train travels 60 miles per hour for 2 hours, then 40 miles per hour for 3 hours. How many total miles?",
+        "expected": 240,
+        "predicted": 240.0,
+        "generated": "{\"reasoning\": \"First, we need to calculate the distance traveled during each segment of the journey. For the first segme",
+        "score": 1.0,
+        "steps": 3,
+        "category": "word_problem",
+        "avg_iters": 1.1777777777777778,
+        "max_iters_used": 2
+      },
+      {
+        "question": "Alice has 5 marbles. Bob gives her triple what she has. She then gives 4 to Carol. How many does Alice have?",
+        "expected": 16,
+        "predicted": 16.0,
+        "generated": "{\"reasoning\": \"Alice starts with 5 marbles. Bob gives her triple what she has, which is 3 * 5 = 15 marbles. So, Alice no",
+        "score": 1.0,
+        "steps": 3,
+        "category": "word_problem",
+        "avg_iters": 2.0,
+        "max_iters_used": 2
+      },
+      {
+        "question": "A rope is 100 feet long. It is cut into 3 pieces. The second piece is twice the first. The third is 10 feet longer than the second. How long is the first piece?",
+        "expected": 18,
+        "predicted": 18.0,
+        "generated": "{\"reasoning\": \"Let's denote the length of the first piece as x. According to the problem, the second piece is twice the ",
+        "score": 1.0,
+        "steps": 4,
+        "category": "word_problem",
+        "avg_iters": 2.0,
+        "max_iters_used": 2
+      },
+      {
+        "question": "Three friends split a $240 dinner bill. Alice pays twice what Bob pays, and Carol pays $20 more than Bob. How much does Bob pay?",
+        "expected": 55,
+        "predicted": 55.0,
+        "generated": "{\"reasoning\": \"Let's denote the amount Bob pays as x. Since Alice pays twice what Bob pays, she pays 2x. Carol pays $20 ",
+        "score": 1.0,
+        "steps": 4,
+        "category": "word_problem",
+        "avg_iters": 2.0,
+        "max_iters_used": 2
+      },
+      {
+        "question": "If x is a positive integer, x > 10, x < 20, and x is divisible by 3, what is the largest possible x?",
+        "expected": 18,
+        "predicted": 15.0,
+        "generated": "{\"reasoning\": \"The largest possible x that is a positive integer, greater than 10, less than 20, and divisible by 3 is 1",
+        "score": 0.8333333333333334,
+        "steps": 2,
+        "category": "conditional_logic",
+        "avg_iters": 2.0,
+        "max_iters_used": 2
+      },
+      {
+        "question": "If x is prime, x > 20, and x < 30, what is x? Give the smaller value.",
+        "expected": 23,
+        "predicted": 23.0,
+        "generated": "{\"reasoning\": \"The prime numbers between 20 and 30 are 23 and 29. The smaller value among these is 23.\", \"answer\": 23}",
+        "score": 1.0,
+        "steps": 2,
+        "category": "conditional_logic",
+        "avg_iters": 2.0,
+        "max_iters_used": 2
+      },
+      {
+        "question": "If x is a perfect square, x > 50, x < 100, and x is even, what is x?",
+        "expected": 64,
+        "predicted": 64.0,
+        "generated": "{\"reasoning\": \"First, we need to find the perfect squares between 50 and 100. The perfect squares in this range are 64 (",
+        "score": 1.0,
+        "steps": 3,
+        "category": "conditional_logic",
+        "avg_iters": 2.0,
+        "max_iters_used": 2
+      },
+      {
+        "question": "Among the integers 1 to 30, how many are divisible by 2 or 3 but not both?",
+        "expected": 15,
+        "predicted": 20.0,
+        "generated": "{\"reasoning\": \"To find the number of integers between 1 and 30 that are divisible by 2 or 3 but not both, we can use the",
+        "score": 0.6666666666666667,
+        "steps": 4,
+        "category": "conditional_logic",
+        "avg_iters": 1.7947368421052632,
+        "max_iters_used": 2
+      },
+      {
+        "question": "If a, b, c are single digits, a + b = 10, b + c = 7, and a + c = 9, what is a * b * c?",
+        "expected": 72,
+        "predicted": null,
+        "generated": "{\"reasoning\": \"Let's solve the equations step by step. We have three equations: a + b = 10, b + c = 7, and a + c = 9. We",
+        "score": 0.0,
+        "steps": 4,
+        "category": "conditional_logic",
+        "avg_iters": 1.91015625,
+        "max_iters_used": 2
+      },
+      {
+        "question": "How many integers between 1 and 100 are divisible by 3 but not by 5?",
+        "expected": 27,
+        "predicted": null,
+        "generated": "{\"reasoning\": \"To find the number of integers between 1 and 100 that are divisible by 3 but not by 5, we can follow thes",
+        "score": 0.0,
+        "steps": 3,
+        "category": "conditional_logic",
+        "avg_iters": 1.1640625,
+        "max_iters_used": 2
+      },
+      {
+        "question": "Start with 2. Double it, then add 1. What is the result?",
+        "expected": 5,
+        "predicted": 5.0,
+        "generated": "{\"reasoning\": \"Start with 2. Double it: 2 * 2 = 4. Then add 1: 4 + 1 = 5. The result is 5.\", \"answer\": 5}",
+        "score": 1.0,
+        "steps": 2,
+        "category": "recursive",
+        "avg_iters": 2.0,
+        "max_iters_used": 2
+      },
+      {
+        "question": "Start with 1. Double it and add 1. Repeat this operation a total of 3 times. What is the result?",
+        "expected": 15,
+        "predicted": 31.0,
+        "generated": "{\"reasoning\": \"Starting with 1, we double it and add 1, resulting in 3. We repeat this operation a total of 3 times, so ",
+        "score": 0.0,
+        "steps": 3,
+        "category": "recursive",
+        "avg_iters": 2.0,
+        "max_iters_used": 2
+      },
+      {
+        "question": "Start with 1. Double it and add 1. Repeat this operation a total of 5 times. What is the result?",
+        "expected": 63,
+        "predicted": 63.0,
+        "generated": "{\"reasoning\": \"Starting with 1, we double it and add 1, which gives us 3. We repeat this operation 5 times, so we have: ",
+        "score": 1.0,
+        "steps": 5,
+        "category": "recursive",
+        "avg_iters": 2.0,
+        "max_iters_used": 2
+      },
+      {
+        "question": "The sequence starts 2, 5, 11, 23, ... where each term is double the previous plus 1. What is the 6th term?",
+        "expected": 95,
+        "predicted": 95.0,
+        "generated": "{\"reasoning\": \"The sequence starts with 2. The second term is double the first term plus 1, which is 2*2+1=5. The third ",
+        "score": 1.0,
+        "steps": 3,
+        "category": "recursive",
+        "avg_iters": 2.0,
+        "max_iters_used": 2
+      },
+      {
+        "question": "A population doubles every year. Starting from 3, what is the population after 7 years?",
+        "expected": 384,
+        "predicted": 384.0,
+        "generated": "{\"reasoning\": \"The population doubles every year, so after 1 year, the population will be 3 * 2 = 6. After 2 years, the ",
+        "score": 1.0,
+        "steps": 2,
+        "category": "recursive",
+        "avg_iters": 1.360248447204969,
+        "max_iters_used": 2
+      },
+      {
+        "question": "Start with 100. Subtract 7 repeatedly. After how many subtractions do you first go below 50?",
+        "expected": 8,
+        "predicted": 6.0,
+        "generated": "{\"reasoning\": \"We start with 100 and subtract 7 repeatedly until we go below 50. We can use a loop to simulate this proc",
+        "score": 0.75,
+        "steps": 4,
+        "category": "recursive",
+        "avg_iters": 2.0,
+        "max_iters_used": 2
+      },
+      {
+        "question": "What is the sum of the prime factors of 30?",
+        "expected": 10,
+        "predicted": 10.0,
+        "generated": "{\"reasoning\": \"To find the sum of the prime factors of 30, we first need to find the prime factors of 30. We can do this",
+        "score": 1.0,
+        "steps": 2,
+        "category": "number_theory",
+        "avg_iters": 1.072538860103627,
+        "max_iters_used": 2
+      },
+      {
+        "question": "What is the sum of all prime factors of 60?",
+        "expected": 10,
+        "predicted": 12.0,
+        "generated": "{\"reasoning\": \"To find the sum of all prime factors of 60, we first need to find the prime factors of 60. We can do this",
+        "score": 0.8,
+        "steps": 3,
+        "category": "number_theory",
+        "avg_iters": 1.0728155339805825,
+        "max_iters_used": 2
+      },
+      {
+        "question": "What is the product of the distinct prime factors of 360?",
+        "expected": 30,
+        "predicted": 30.0,
+        "generated": "{\"reasoning\": \"To find the product of the distinct prime factors of 360, we first need to find its prime factorization. ",
+        "score": 1.0,
+        "steps": 3,
+        "category": "number_theory",
+        "avg_iters": 1.1146496815286624,
+        "max_iters_used": 2
+      },
+      {
+        "question": "What is the sum of all divisors of 28?",
+        "expected": 56,
+        "predicted": 56.0,
+        "generated": "{\"reasoning\": \"To find the sum of all divisors of 28, we first need to find all the divisors of 28. The divisors of 28 a",
+        "score": 1.0,
+        "steps": 3,
+        "category": "number_theory",
+        "avg_iters": 1.1333333333333333,
+        "max_iters_used": 2
+      },
+      {
+        "question": "How many positive divisors does 120 have?",
+        "expected": 16,
+        "predicted": 16.0,
+        "generated": "{\"reasoning\": \"To find the number of positive divisors of 120, we first need to find its prime factorization. 120 can be",
+        "score": 1.0,
+        "steps": 4,
+        "category": "number_theory",
+        "avg_iters": 1.1346153846153846,
+        "max_iters_used": 2
+      },
+      {
+        "question": "What is the largest prime factor of 2310?",
+        "expected": 11,
+        "predicted": 11.0,
+        "generated": "{\"reasoning\": \"To find the largest prime factor of 2310, we can start by finding its prime factorization. We can do this",
+        "score": 1.0,
+        "steps": 4,
+        "category": "number_theory",
+        "avg_iters": 1.0802469135802468,
+        "max_iters_used": 2
+      },
+      {
+        "question": "What is the GCD of 168 and 264?",
+        "expected": 24,
+        "predicted": 24.0,
+        "generated": "{\"reasoning\": \"To find the GCD of 168 and 264, we can use the Euclidean algorithm. First, we divide 264 by 168 and find ",
+        "score": 1.0,
+        "steps": 3,
+        "category": "number_theory",
+        "avg_iters": 1.44,
+        "max_iters_used": 2
+      },
+      {
+        "question": "What is Euler's totient of 12, i.e., how many integers from 1 to 12 are coprime to 12?",
+        "expected": 4,
+        "predicted": 4.0,
+        "generated": "{\"reasoning\": \"To find Euler's totient of 12, we need to count the number of integers from 1 to 12 that are coprime to 1",
+        "score": 1.0,
+        "steps": 4,
+        "category": "number_theory",
+        "avg_iters": 1.1891891891891893,
+        "max_iters_used": 2
+      }
+    ],
+    "overall": 0.8765625,
+    "tiers": {
+      "easy (2 steps)": {
+        "count": 9,
+        "avg_score": 0.9814814814814814,
+        "avg_iters": 1.715411227775065
+      },
+      "medium (3 steps)": {
+        "count": 11,
+        "avg_score": 0.8,
+        "avg_iters": 1.5132589730148696
+      },
+      "hard (4-5 steps)": {
+        "count": 12,
+        "avg_score": 0.8680555555555557,
+        "avg_iters": 1.6723015642435746
+      }
+    },
+    "time_s": 153.8
+  }
+}
