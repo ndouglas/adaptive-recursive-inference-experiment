@@ -1,0 +1,38 @@
+[
+  {"question": "What is (7 + 3) * 5?", "answer": 50, "steps": 2, "category": "chained_arithmetic"},
+  {"question": "What is 15 * 4 - 23?", "answer": 37, "steps": 2, "category": "chained_arithmetic"},
+  {"question": "What is (8 * 9) + (7 * 6)?", "answer": 114, "steps": 3, "category": "chained_arithmetic"},
+  {"question": "What is (17 * 3 + 11) * 2 - 5?", "answer": 119, "steps": 4, "category": "chained_arithmetic"},
+  {"question": "What is ((5 + 3) * (9 - 2)) / 4?", "answer": 14, "steps": 4, "category": "chained_arithmetic"},
+  {"question": "What is (2^5 - 7) * 3 + (4^2 - 1)?", "answer": 90, "steps": 5, "category": "chained_arithmetic"},
+
+  {"question": "Alice has 12 apples. She gives half to Bob, then eats 2. How many does Alice have?", "answer": 4, "steps": 2, "category": "word_problem"},
+  {"question": "A store sells pencils for $3 each. Tom buys 7 and pays with a $50 bill. How much change does he get?", "answer": 29, "steps": 2, "category": "word_problem"},
+  {"question": "A train travels 60 miles per hour for 2 hours, then 40 miles per hour for 3 hours. How many total miles?", "answer": 240, "steps": 3, "category": "word_problem"},
+  {"question": "Alice has 5 marbles. Bob gives her triple what she has. She then gives 4 to Carol. How many does Alice have?", "answer": 16, "steps": 3, "category": "word_problem"},
+  {"question": "A rope is 100 feet long. It is cut into 3 pieces. The second piece is twice the first. The third is 10 feet longer than the second. How long is the first piece?", "answer": 18, "steps": 4, "category": "word_problem"},
+  {"question": "Three friends split a $240 dinner bill. Alice pays twice what Bob pays, and Carol pays $20 more than Bob. How much does Bob pay?", "answer": 55, "steps": 4, "category": "word_problem"},
+
+  {"question": "If x is a positive integer, x > 10, x < 20, and x is divisible by 3, what is the largest possible x?", "answer": 18, "steps": 2, "category": "conditional_logic"},
+  {"question": "If x is prime, x > 20, and x < 30, what is x? Give the smaller value.", "answer": 23, "steps": 2, "category": "conditional_logic"},
+  {"question": "If x is a perfect square, x > 50, x < 100, and x is even, what is x?", "answer": 64, "steps": 3, "category": "conditional_logic"},
+  {"question": "Among the integers 1 to 30, how many are divisible by 2 or 3 but not both?", "answer": 15, "steps": 4, "category": "conditional_logic"},
+  {"question": "If a, b, c are single digits, a + b = 10, b + c = 7, and a + c = 9, what is a * b * c?", "answer": 72, "steps": 4, "category": "conditional_logic"},
+  {"question": "How many integers between 1 and 100 are divisible by 3 but not by 5?", "answer": 27, "steps": 3, "category": "conditional_logic"},
+
+  {"question": "Start with 2. Double it, then add 1. What is the result?", "answer": 5, "steps": 2, "category": "recursive"},
+  {"question": "Start with 1. Double it and add 1. Repeat this operation a total of 3 times. What is the result?", "answer": 15, "steps": 3, "category": "recursive"},
+  {"question": "Start with 1. Double it and add 1. Repeat this operation a total of 5 times. What is the result?", "answer": 63, "steps": 5, "category": "recursive"},
+  {"question": "The sequence starts 2, 5, 11, 23, ... where each term is double the previous plus 1. What is the 6th term?", "answer": 95, "steps": 3, "category": "recursive"},
+  {"question": "A population doubles every year. Starting from 3, what is the population after 7 years?", "answer": 384, "steps": 2, "category": "recursive"},
+  {"question": "Start with 100. Subtract 7 repeatedly. After how many subtractions do you first go below 50?", "answer": 8, "steps": 4, "category": "recursive"},
+
+  {"question": "What is the sum of the prime factors of 30?", "answer": 10, "steps": 2, "category": "number_theory"},
+  {"question": "What is the sum of all prime factors of 60?", "answer": 10, "steps": 3, "category": "number_theory"},
+  {"question": "What is the product of the distinct prime factors of 360?", "answer": 30, "steps": 3, "category": "number_theory"},
+  {"question": "What is the sum of all divisors of 28?", "answer": 56, "steps": 3, "category": "number_theory"},
+  {"question": "How many positive divisors does 120 have?", "answer": 16, "steps": 4, "category": "number_theory"},
+  {"question": "What is the largest prime factor of 2310?", "answer": 11, "steps": 4, "category": "number_theory"},
+  {"question": "What is the GCD of 168 and 264?", "answer": 24, "steps": 3, "category": "number_theory"},
+  {"question": "What is Euler's totient of 12, i.e., how many integers from 1 to 12 are coprime to 12?", "answer": 4, "steps": 4, "category": "number_theory"}
+]
