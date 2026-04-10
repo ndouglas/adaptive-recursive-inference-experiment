@@ -5,24 +5,27 @@ import torch
 def parse_number(text):
     """Extract the answer number from model output text.
 
-    Handles both terse ("45") and chain-of-thought ("To find... the answer is 45")
-    output by checking for answer-signaling patterns first, then falling back
-    to the last number in the text.
+    Handles both terse ("45") and chain-of-thought ("To find... = 45") output.
+    First strips trailing question repetitions, then checks for answer-signaling
+    patterns, then falls back to the first number.
     """
-    # Try patterns that signal a final answer
-    answer_patterns = [
-        r'(?:answer|result|equals|=)\s*[:is]*\s*(-?\d[\d,]*\.?\d*)',
-        r'(-?\d[\d,]*\.?\d*)\s*$',  # last number at end of text
-    ]
-    for pattern in answer_patterns:
+    # Strip trailing question repetitions (model often echoes next question)
+    text = re.split(r'\nQuestion:', text)[0]
+    text = text.strip()
+
+    # Check for answer-signaling patterns
+    for pattern in [
+        r'(?:answer|result)\s*(?:is|:)\s*(-?\d[\d,]*\.?\d*)',
+        r'=\s*(-?\d[\d,]*\.?\d*)',
+    ]:
         match = re.search(pattern, text, re.IGNORECASE)
         if match:
             return float(match.group(1).replace(',', ''))
 
-    # Fall back to last number in the text
-    all_numbers = re.findall(r'-?\d[\d,]*\.?\d*', text)
-    if all_numbers:
-        return float(all_numbers[-1].replace(',', ''))
+    # Fall back to first number
+    match = re.search(r'-?\d[\d,]*\.?\d*', text)
+    if match:
+        return float(match.group().replace(',', ''))
     return None
 
 

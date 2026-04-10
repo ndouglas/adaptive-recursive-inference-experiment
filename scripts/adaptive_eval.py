@@ -39,21 +39,22 @@ def run_adaptive_math_eval(loop, tokenizer, questions, verbose=False):
         total_iters += sum(loop.token_iterations)
         total_tokens += len(loop.token_iterations)
 
-        # Score: extract answer number (handles chain-of-thought output)
+        # Score: extract answer number (handles CoT and question repetitions)
         expected = q["answer"]
+        text = re.split(r'\nQuestion:', generated)[0].strip()
         predicted = None
         for pattern in [
-            r'(?:answer|result|equals|=)\s*[:is]*\s*(-?\d[\d,]*\.?\d*)',
-            r'(-?\d[\d,]*\.?\d*)\s*$',
+            r'(?:answer|result)\s*(?:is|:)\s*(-?\d[\d,]*\.?\d*)',
+            r'=\s*(-?\d[\d,]*\.?\d*)',
         ]:
-            match = re.search(pattern, generated, re.IGNORECASE)
+            match = re.search(pattern, text, re.IGNORECASE)
             if match:
                 predicted = float(match.group(1).replace(',', ''))
                 break
         if predicted is None:
-            numbers = re.findall(r'-?\d[\d,]*\.?\d*', generated)
-            if numbers:
-                predicted = float(numbers[-1].replace(',', ''))
+            match = re.search(r'-?\d[\d,]*\.?\d*', text)
+            if match:
+                predicted = float(match.group().replace(',', ''))
 
         if predicted is not None:
             if expected == 0:

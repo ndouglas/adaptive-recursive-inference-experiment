@@ -21,27 +21,31 @@ from src.evaluation.math_eval import run_math_eval
 def score_answer(generated, expected):
     """Score a generated answer against expected (partial credit via relative error).
 
-    Handles chain-of-thought output by looking for answer-signaling patterns
-    first, then falling back to the last number in the text.
+    Strips trailing question repetitions, checks for answer-signaling patterns,
+    then falls back to first number.
     """
-    # Try patterns that signal a final answer
+    # Strip trailing question repetitions
+    text = re.split(r'\nQuestion:', generated)[0].strip()
+
+    # Try answer-signaling patterns
+    predicted = None
     for pattern in [
-        r'(?:answer|result|equals|=)\s*[:is]*\s*(-?\d[\d,]*\.?\d*)',
-        r'(-?\d[\d,]*\.?\d*)\s*$',
+        r'(?:answer|result)\s*(?:is|:)\s*(-?\d[\d,]*\.?\d*)',
+        r'=\s*(-?\d[\d,]*\.?\d*)',
     ]:
-        match = re.search(pattern, generated, re.IGNORECASE)
+        match = re.search(pattern, text, re.IGNORECASE)
         if match:
             predicted = float(match.group(1).replace(',', ''))
-            if expected == 0:
-                return (1.0 if predicted == 0 else 0.0), predicted
-            rel_error = abs(predicted - expected) / abs(expected)
-            return max(0.0, 1.0 - rel_error), predicted
+            break
 
-    # Fall back to last number
-    numbers = re.findall(r'-?\d[\d,]*\.?\d*', generated)
-    if not numbers:
+    # Fall back to first number
+    if predicted is None:
+        match = re.search(r'-?\d[\d,]*\.?\d*', text)
+        if match:
+            predicted = float(match.group().replace(',', ''))
+
+    if predicted is None:
         return 0.0, None
-    predicted = float(numbers[-1].replace(',', ''))
     if expected == 0:
         return (1.0 if predicted == 0 else 0.0), predicted
     rel_error = abs(predicted - expected) / abs(expected)
