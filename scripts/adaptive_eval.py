@@ -4,6 +4,9 @@ Runs the adaptive loop across a range of thresholds, recording:
 - Math and EQ benchmark scores
 - Average iterations per token
 - Per-prompt halting behavior
+
+Uses outlines for constrained JSON decoding on math eval, ensuring
+100% reliable answer extraction.
 """
 import argparse
 import json
@@ -16,71 +19,49 @@ from transformers import AutoModelForCausalLM, AutoTokenizer
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 from src.inference.adaptive_loop import AdaptiveLoop
-from src.evaluation.math_eval import run_math_eval
+from src.inference.constrained import build_json_processor
+from src.evaluation.math_eval import run_math_eval, score_answer
 from src.evaluation.eq_eval import run_eq_eval
 
 
-def run_adaptive_math_eval(loop, tokenizer, questions, verbose=False):
-    """Run math eval using the adaptive loop instead of model.generate()."""
-    import re
+MATH_PROMPT = ('Respond with JSON: {{"reasoning": "<your work>", "answer": <number>}}\n\n'
+               'Question: {question}\n')
+
+
+def run_adaptive_math_eval(loop, tokenizer, questions, logits_processor,
+                           verbose=False):
+    """Run math eval using the adaptive loop with constrained JSON decoding."""
     results = []
     total_score = 0.0
     total_iters = 0
     total_tokens = 0
 
     for q in questions:
-        prompt = (f'Respond with JSON: {{"reasoning": "<your work>", "answer": <number>}}\n\n'
-                  f'Question: {q["question"]}\n')
+        prompt = MATH_PROMPT.format(question=q["question"])
         input_ids = tokenizer(prompt, return_tensors="pt").input_ids.to(loop.model.device)
 
-        output_ids = loop.generate(input_ids, tokenizer, max_new_tokens=128)
-        generated = tokenizer.decode(output_ids[0][input_ids.shape[1]:], skip_special_tokens=True)
+        output_ids = loop.generate(input_ids, tokenizer, max_new_tokens=256,
+                                   logits_processor=logits_processor)
+        generated = tokenizer.decode(output_ids[0][input_ids.shape[1]:],
+                                     skip_special_tokens=True)
 
         diag = loop.diagnostics_summary()
         total_iters += sum(loop.token_iterations)
         total_tokens += len(loop.token_iterations)
 
-        # Score: extract answer (JSON first, then regex fallback)
         expected = q["answer"]
-        predicted = None
         try:
-            json_match = re.search(r'\{[^{}]*\}', generated, re.DOTALL)
-            if json_match:
-                import json as json_mod
-                obj = json_mod.loads(json_match.group())
-                if "answer" in obj and obj["answer"] is not None:
-                    predicted = float(obj["answer"])
-        except (json_mod.JSONDecodeError, ValueError, TypeError):
-            pass
-        if predicted is None:
-            text = re.split(r'\nQuestion:', generated)[0].strip()
-            for pattern in [
-                r'(?:answer|result)\s*(?:is|:)\s*(-?\d[\d,]*\.?\d*)',
-                r'=\s*(-?\d[\d,]*\.?\d*)',
-            ]:
-                match = re.search(pattern, text, re.IGNORECASE)
-                if match:
-                    predicted = float(match.group(1).replace(',', ''))
-                    break
-            if predicted is None:
-                match = re.search(r'-?\d[\d,]*\.?\d*', text)
-                if match:
-                    predicted = float(match.group().replace(',', ''))
+            obj = json.loads(generated)
+            predicted = float(obj["answer"])
+        except (json.JSONDecodeError, ValueError, TypeError, KeyError):
+            predicted = None
 
-        if predicted is not None:
-            if expected == 0:
-                score = 1.0 if predicted == 0 else 0.0
-            else:
-                rel_error = abs(predicted - expected) / abs(expected)
-                score = max(0.0, 1.0 - rel_error)
-        else:
-            score = 0.0
-
+        score = score_answer(predicted, expected)
         results.append({
             "question": q["question"],
             "expected": expected,
             "predicted": predicted,
-            "generated": generated.strip(),
+            "generated": generated.strip()[:120],
             "score": score,
             "avg_iters": diag["avg_iterations"],
         })
@@ -181,9 +162,14 @@ def main():
     with open("data/eq_probe.json") as f:
         eq_scenarios = json.load(f)[:args.max_eq]
 
+    # Build constrained JSON decoder for math eval
+    print("Building JSON logits processor...")
+    json_processor = build_json_processor(model, tokenizer)
+
     # Baseline (no duplication)
     print("\n=== Baseline ===")
-    _, math_baseline = run_math_eval(model, tokenizer, math_questions, verbose=False)
+    _, math_baseline = run_math_eval(model, tokenizer, math_questions, verbose=False,
+                                     logits_processor=json_processor)
     _, eq_baseline = run_eq_eval(model, tokenizer, eq_scenarios, verbose=False)
     print(f"  math={math_baseline:.4f}  eq={eq_baseline:.4f}")
 
@@ -204,7 +190,7 @@ def main():
                             threshold=threshold, max_iterations=args.max_iters)
 
         math_results, math_score, math_avg_iters = run_adaptive_math_eval(
-            loop, tokenizer, math_questions, verbose=True)
+            loop, tokenizer, math_questions, json_processor, verbose=True)
         eq_results, eq_score, eq_avg_iters = run_adaptive_eq_eval(
             loop, tokenizer, eq_scenarios, verbose=True)
 

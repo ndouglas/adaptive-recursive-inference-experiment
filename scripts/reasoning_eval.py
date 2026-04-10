@@ -2,11 +2,13 @@
 
 Tests the difficulty hypothesis: harder problems should benefit more from
 extra iterations. Compares baseline vs adaptive across step-count tiers.
+
+Uses outlines for constrained JSON decoding, ensuring 100% reliable
+answer extraction.
 """
 import argparse
 import json
 import os
-import re
 import sys
 import time
 
@@ -15,63 +17,48 @@ from transformers import AutoModelForCausalLM, AutoTokenizer
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 from src.inference.adaptive_loop import AdaptiveLoop
-from src.evaluation.math_eval import run_math_eval
+from src.inference.constrained import build_json_processor
+from src.evaluation.math_eval import score_answer
 
 
-def parse_answer(text):
-    """Extract answer from model output — JSON first, then regex fallback."""
-    import json as json_mod
+PROMPT = ('Respond with JSON: {{"reasoning": "<your work>", "answer": <number>}}\n\n'
+          'Question: {question}\n')
+
+
+def extract_answer(generated):
+    """Extract predicted answer from constrained JSON output."""
     try:
-        match = re.search(r'\{[^{}]*\}', text, re.DOTALL)
-        if match:
-            obj = json_mod.loads(match.group())
-            if "answer" in obj and obj["answer"] is not None:
-                return float(obj["answer"])
-    except (json_mod.JSONDecodeError, ValueError, TypeError):
-        pass
-
-    text = re.split(r'\nQuestion:', text)[0].strip()
-    for pattern in [
-        r'(?:answer|result)\s*(?:is|:)\s*(-?\d[\d,]*\.?\d*)',
-        r'=\s*(-?\d[\d,]*\.?\d*)',
-    ]:
-        match = re.search(pattern, text, re.IGNORECASE)
-        if match:
-            return float(match.group(1).replace(',', ''))
-    match = re.search(r'-?\d[\d,]*\.?\d*', text)
-    if match:
-        return float(match.group().replace(',', ''))
-    return None
+        obj = json.loads(generated)
+        return float(obj["answer"])
+    except (json.JSONDecodeError, ValueError, TypeError, KeyError):
+        return None
 
 
-def score_answer(generated, expected):
-    """Score a generated answer against expected (partial credit via relative error)."""
-    predicted = parse_answer(generated)
-    if predicted is None:
-        return 0.0, None
-    if expected == 0:
-        return (1.0 if predicted == 0 else 0.0), predicted
-    rel_error = abs(predicted - expected) / abs(expected)
-    return max(0.0, 1.0 - rel_error), predicted
+def eval_baseline(model, tokenizer, probes, logits_processor):
+    """Run probes through the unmodified model with constrained decoding."""
+    from transformers import LogitsProcessorList
 
-
-def eval_baseline(model, tokenizer, probes):
-    """Run probes through the unmodified model."""
     results = []
     for p in probes:
-        prompt = (f'Respond with JSON: {{"reasoning": "<your work>", "answer": <number>}}\n\n'
-                  f'Question: {p["question"]}\n')
+        prompt = PROMPT.format(question=p["question"])
         inputs = tokenizer(prompt, return_tensors="pt").to(model.device)
+
+        logits_processor.reset()
         with torch.no_grad():
-            output = model.generate(**inputs, max_new_tokens=128, do_sample=False)
+            output = model.generate(
+                **inputs, max_new_tokens=256, do_sample=False,
+                logits_processor=LogitsProcessorList([logits_processor]),
+            )
         generated = tokenizer.decode(output[0][inputs.input_ids.shape[1]:],
                                      skip_special_tokens=True)
-        score, predicted = score_answer(generated, p["answer"])
+
+        predicted = extract_answer(generated)
+        score = score_answer(predicted, p["answer"])
         results.append({
             "question": p["question"],
             "expected": p["answer"],
             "predicted": predicted,
-            "generated": generated.strip()[:80],
+            "generated": generated.strip()[:120],
             "score": score,
             "steps": p["steps"],
             "category": p["category"],
@@ -79,23 +66,25 @@ def eval_baseline(model, tokenizer, probes):
     return results
 
 
-def eval_adaptive(loop, tokenizer, probes):
-    """Run probes through the adaptive loop."""
+def eval_adaptive(loop, tokenizer, probes, logits_processor):
+    """Run probes through the adaptive loop with constrained decoding."""
     results = []
     for p in probes:
-        prompt = (f'Respond with JSON: {{"reasoning": "<your work>", "answer": <number>}}\n\n'
-                  f'Question: {p["question"]}\n')
+        prompt = PROMPT.format(question=p["question"])
         input_ids = tokenizer(prompt, return_tensors="pt").input_ids.to(loop.model.device)
-        output_ids = loop.generate(input_ids, tokenizer, max_new_tokens=128)
+        output_ids = loop.generate(input_ids, tokenizer, max_new_tokens=256,
+                                   logits_processor=logits_processor)
         generated = tokenizer.decode(output_ids[0][input_ids.shape[1]:],
                                      skip_special_tokens=True)
-        score, predicted = score_answer(generated, p["answer"])
+
+        predicted = extract_answer(generated)
+        score = score_answer(predicted, p["answer"])
         diag = loop.diagnostics_summary()
         results.append({
             "question": p["question"],
             "expected": p["answer"],
             "predicted": predicted,
-            "generated": generated.strip()[:80],
+            "generated": generated.strip()[:120],
             "score": score,
             "steps": p["steps"],
             "category": p["category"],
@@ -149,10 +138,14 @@ def main():
         "hard (4-5 steps)": {4, 5},
     }
 
+    # Build constrained JSON decoder
+    print("Building JSON logits processor...")
+    json_processor = build_json_processor(model, tokenizer)
+
     # --- Baseline ---
     print("\n=== Baseline ===")
     t0 = time.time()
-    baseline_results = eval_baseline(model, tokenizer, probes)
+    baseline_results = eval_baseline(model, tokenizer, probes, json_processor)
     baseline_time = time.time() - t0
     baseline_overall = sum(r["score"] for r in baseline_results) / len(baseline_results)
     print(f"  Overall: {baseline_overall:.4f} [{baseline_time:.1f}s]")
@@ -167,7 +160,7 @@ def main():
     loop = AdaptiveLoop(model, args.block_i, args.block_j,
                         threshold=args.threshold, max_iterations=args.max_iters)
     t0 = time.time()
-    adaptive_results = eval_adaptive(loop, tokenizer, probes)
+    adaptive_results = eval_adaptive(loop, tokenizer, probes, json_processor)
     adaptive_time = time.time() - t0
     adaptive_overall = sum(r["score"] for r in adaptive_results) / len(adaptive_results)
     print(f"  Overall: {adaptive_overall:.4f} [{adaptive_time:.1f}s]")

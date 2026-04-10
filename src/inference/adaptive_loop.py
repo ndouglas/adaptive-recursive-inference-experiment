@@ -143,19 +143,29 @@ class AdaptiveLoop:
 
         return logits, info
 
-    def generate(self, input_ids, tokenizer, max_new_tokens=32):
+    def generate(self, input_ids, tokenizer, max_new_tokens=32,
+                 logits_processor=None):
         """Greedy decoding with adaptive loop per token.
 
         No KV caching — reprocesses full sequence each step.
         Fine for short probes, not for long generation.
 
+        Args:
+            input_ids: (batch=1, seq_len) token IDs
+            tokenizer: HuggingFace tokenizer
+            max_new_tokens: generation length cap
+            logits_processor: optional callable(input_ids, logits) -> logits
+                for constrained decoding (e.g., outlines JSON schema processor)
+
         Returns:
             generated_ids: full sequence (prompt + generated)
-            diagnostics: per-token iteration info
         """
         self.token_iterations = []
         self.token_similarities = []
         self.token_trajectories = []
+
+        if logits_processor is not None:
+            logits_processor.reset()
 
         current_ids = input_ids.clone()
         eos_id = tokenizer.eos_token_id
@@ -168,7 +178,10 @@ class AdaptiveLoop:
                 self.token_similarities.append(info["final_similarity"])
                 self.token_trajectories.append(info["trajectory"])
 
-                next_token = logits[:, -1, :].argmax(dim=-1, keepdim=True)
+                last_logits = logits[:, -1, :]
+                if logits_processor is not None:
+                    last_logits = logits_processor(current_ids, last_logits)
+                next_token = last_logits.argmax(dim=-1, keepdim=True)
                 current_ids = torch.cat([current_ids, next_token], dim=1)
 
                 if next_token.item() == eos_id:

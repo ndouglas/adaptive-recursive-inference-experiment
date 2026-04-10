@@ -50,22 +50,33 @@ def score_answer(predicted, expected):
     return score
 
 
-def run_math_eval(model, tokenizer, questions, verbose=True):
-    """Run math evaluation on a list of questions. Returns (results, aggregate_score)."""
+def run_math_eval(model, tokenizer, questions, verbose=True,
+                  logits_processor=None):
+    """Run math evaluation on a list of questions. Returns (results, aggregate_score).
+
+    Args:
+        logits_processor: optional outlines logits processor for constrained decoding.
+            If provided, output is guaranteed valid JSON — parse_number is still used
+            as fallback for safety.
+    """
+    from transformers import LogitsProcessorList
+
     results = []
     for q in questions:
         prompt = (f'Respond with JSON: {{"reasoning": "<your work>", "answer": <number>}}\n\n'
                   f'Question: {q["question"]}\n')
         inputs = tokenizer(prompt, return_tensors="pt").to(model.device)
 
-        with torch.no_grad():
-            output_ids = model.generate(
-                **inputs,
-                max_new_tokens=128,
-                do_sample=False,
+        generate_kwargs = dict(max_new_tokens=256, do_sample=False)
+        if logits_processor is not None:
+            logits_processor.reset()
+            generate_kwargs["logits_processor"] = LogitsProcessorList(
+                [logits_processor]
             )
 
-        # Decode only the new tokens (skip the prompt)
+        with torch.no_grad():
+            output_ids = model.generate(**inputs, **generate_kwargs)
+
         new_tokens = output_ids[0, inputs.input_ids.shape[1]:]
         response = tokenizer.decode(new_tokens, skip_special_tokens=True).strip()
 
