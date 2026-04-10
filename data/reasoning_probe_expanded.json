@@ -1,0 +1,702 @@
+[
+  {
+    "question": "What is the largest integer less than 145 that is divisible by 10?",
+    "answer": 140,
+    "steps": 2,
+    "category": "conditional_logic",
+    "difficulty": "easy"
+  },
+  {
+    "question": "A population of 50 grows by a factor of 3 each year. What is the population after 4 years?",
+    "answer": 4050,
+    "steps": 4,
+    "category": "recursive",
+    "difficulty": "medium"
+  },
+  {
+    "question": "Start with 6. Repeatedly double the number and add 5. After 3 repetitions, what is the result?",
+    "answer": 83,
+    "steps": 3,
+    "category": "recursive",
+    "difficulty": "medium"
+  },
+  {
+    "question": "How many integers from 1 to 94 are divisible by 2 or 3 (or both)?",
+    "answer": 63,
+    "steps": 4,
+    "category": "conditional_logic",
+    "difficulty": "medium"
+  },
+  {
+    "question": "What is (15 + 2) * 6 - 3 * 5?",
+    "answer": 87,
+    "steps": 4,
+    "category": "chained_arithmetic",
+    "difficulty": "medium"
+  },
+  {
+    "question": "What is 4 * (3 + 9) - 9 + 4 * 7?",
+    "answer": 67,
+    "steps": 5,
+    "category": "chained_arithmetic",
+    "difficulty": "hard"
+  },
+  {
+    "question": "What is the GCD of 298 and 186?",
+    "answer": 2,
+    "steps": 3,
+    "category": "number_theory",
+    "difficulty": "medium"
+  },
+  {
+    "question": "What is 2 * (7 + 5) - 13 + 10 * 10?",
+    "answer": 111,
+    "steps": 5,
+    "category": "chained_arithmetic",
+    "difficulty": "hard"
+  },
+  {
+    "question": "What is the largest integer less than 73 that is divisible by 5?",
+    "answer": 70,
+    "steps": 2,
+    "category": "conditional_logic",
+    "difficulty": "easy"
+  },
+  {
+    "question": "Start with 9. Repeatedly double the number and add 2. After 4 repetitions, what is the result?",
+    "answer": 174,
+    "steps": 4,
+    "category": "recursive",
+    "difficulty": "medium"
+  },
+  {
+    "question": "What is Euler's totient of 79? (How many integers from 1 to 79 are coprime to 79?)",
+    "answer": 78,
+    "steps": 4,
+    "category": "number_theory",
+    "difficulty": "hard"
+  },
+  {
+    "question": "Start with 1. Repeatedly double the number and add 3. After 6 repetitions, what is the result?",
+    "answer": 253,
+    "steps": 6,
+    "category": "recursive",
+    "difficulty": "hard"
+  },
+  {
+    "question": "How many integers from 1 to 77 are divisible by 2 but not by 7?",
+    "answer": 33,
+    "steps": 3,
+    "category": "conditional_logic",
+    "difficulty": "medium"
+  },
+  {
+    "question": "What is the LCM of 41 and 22?",
+    "answer": 902,
+    "steps": 3,
+    "category": "number_theory",
+    "difficulty": "medium"
+  },
+  {
+    "question": "What is (14 + 12) * 10 - 4 * 5?",
+    "answer": 240,
+    "steps": 4,
+    "category": "chained_arithmetic",
+    "difficulty": "medium"
+  },
+  {
+    "question": "A train travels 80 mph for 1 hours, then 20 mph for 4 hours. How many total miles does it travel?",
+    "answer": 160,
+    "steps": 3,
+    "category": "word_problem",
+    "difficulty": "medium"
+  },
+  {
+    "question": "Alice has 36 apples. She gives 2/3 of them to Bob, then eats 8. How many apples does Alice have left?",
+    "answer": 4,
+    "steps": 3,
+    "category": "word_problem",
+    "difficulty": "medium"
+  },
+  {
+    "question": "A store sells items for $15 each. Someone buys 2 and pays with $60. How much change do they receive?",
+    "answer": 30,
+    "steps": 2,
+    "category": "word_problem",
+    "difficulty": "easy"
+  },
+  {
+    "question": "What is the sum of all positive divisors of 137?",
+    "answer": 138,
+    "steps": 4,
+    "category": "number_theory",
+    "difficulty": "hard"
+  },
+  {
+    "question": "A population of 100 grows by a factor of 3 each year. What is the population after 4 years?",
+    "answer": 8100,
+    "steps": 4,
+    "category": "recursive",
+    "difficulty": "medium"
+  },
+  {
+    "question": "Start with 112. Subtract 9 repeatedly. After how many subtractions do you first go below 1?",
+    "answer": 13,
+    "steps": 4,
+    "category": "recursive",
+    "difficulty": "hard"
+  },
+  {
+    "question": "What is (6 + 8) * 9 - 3 * 4?",
+    "answer": 114,
+    "steps": 4,
+    "category": "chained_arithmetic",
+    "difficulty": "medium"
+  },
+  {
+    "question": "Alice has 26 apples. She gives 1/2 of them to Bob, then eats 8. How many apples does Alice have left?",
+    "answer": 5,
+    "steps": 3,
+    "category": "word_problem",
+    "difficulty": "medium"
+  },
+  {
+    "question": "How many integers from 1 to 59 are divisible by 4 or 6 (or both)?",
+    "answer": 19,
+    "steps": 4,
+    "category": "conditional_logic",
+    "difficulty": "medium"
+  },
+  {
+    "question": "How many integers from 1 to 96 are divisible by 3 but not by 4?",
+    "answer": 24,
+    "steps": 3,
+    "category": "conditional_logic",
+    "difficulty": "medium"
+  },
+  {
+    "question": "What is (3 + 10) * 3?",
+    "answer": 39,
+    "steps": 2,
+    "category": "chained_arithmetic",
+    "difficulty": "easy"
+  },
+  {
+    "question": "How many integers from 1 to 54 are divisible by 3 or 2 (or both)?",
+    "answer": 36,
+    "steps": 4,
+    "category": "conditional_logic",
+    "difficulty": "medium"
+  },
+  {
+    "question": "What is the largest integer less than 56 that is divisible by 3?",
+    "answer": 54,
+    "steps": 2,
+    "category": "conditional_logic",
+    "difficulty": "easy"
+  },
+  {
+    "question": "What is the sum of all positive divisors of 43?",
+    "answer": 44,
+    "steps": 4,
+    "category": "number_theory",
+    "difficulty": "hard"
+  },
+  {
+    "question": "What is the LCM of 34 and 37?",
+    "answer": 1258,
+    "steps": 3,
+    "category": "number_theory",
+    "difficulty": "medium"
+  },
+  {
+    "question": "Start with 58. Subtract 9 repeatedly. After how many subtractions do you first go below 9?",
+    "answer": 6,
+    "steps": 4,
+    "category": "recursive",
+    "difficulty": "hard"
+  },
+  {
+    "question": "What is (3 + 14) * 10?",
+    "answer": 170,
+    "steps": 2,
+    "category": "chained_arithmetic",
+    "difficulty": "easy"
+  },
+  {
+    "question": "What is 9 * (10 + 8) - 12 + 10 * 2?",
+    "answer": 170,
+    "steps": 5,
+    "category": "chained_arithmetic",
+    "difficulty": "hard"
+  },
+  {
+    "question": "What is (11 + 14) * 7 - 1 * 4?",
+    "answer": 171,
+    "steps": 4,
+    "category": "chained_arithmetic",
+    "difficulty": "medium"
+  },
+  {
+    "question": "How many integers from 1 to 61 are divisible by 4 but not by 6?",
+    "answer": 10,
+    "steps": 3,
+    "category": "conditional_logic",
+    "difficulty": "medium"
+  },
+  {
+    "question": "What is the LCM of 20 and 49?",
+    "answer": 980,
+    "steps": 3,
+    "category": "number_theory",
+    "difficulty": "medium"
+  },
+  {
+    "question": "A store sells items for $14 each. Someone buys 3 and pays with $70. How much change do they receive?",
+    "answer": 28,
+    "steps": 2,
+    "category": "word_problem",
+    "difficulty": "easy"
+  },
+  {
+    "question": "What is 12 * 4 + 4 * 14 - 2?",
+    "answer": 102,
+    "steps": 3,
+    "category": "chained_arithmetic",
+    "difficulty": "medium"
+  },
+  {
+    "question": "Alice has 21 apples. She gives 1/3 of them to Bob, then eats 9. How many apples does Alice have left?",
+    "answer": 5,
+    "steps": 3,
+    "category": "word_problem",
+    "difficulty": "medium"
+  },
+  {
+    "question": "What is the GCD of 248 and 176?",
+    "answer": 8,
+    "steps": 3,
+    "category": "number_theory",
+    "difficulty": "medium"
+  },
+  {
+    "question": "What is the largest integer less than 137 that is divisible by 9?",
+    "answer": 135,
+    "steps": 2,
+    "category": "conditional_logic",
+    "difficulty": "easy"
+  },
+  {
+    "question": "What is the LCM of 26 and 8?",
+    "answer": 104,
+    "steps": 3,
+    "category": "number_theory",
+    "difficulty": "medium"
+  },
+  {
+    "question": "A store sells items for $15 each. Someone buys 8 and pays with $130. How much change do they receive?",
+    "answer": 10,
+    "steps": 2,
+    "category": "word_problem",
+    "difficulty": "easy"
+  },
+  {
+    "question": "What is the GCD of 146 and 234?",
+    "answer": 2,
+    "steps": 3,
+    "category": "number_theory",
+    "difficulty": "medium"
+  },
+  {
+    "question": "What is (19 + 12) * 7?",
+    "answer": 217,
+    "steps": 2,
+    "category": "chained_arithmetic",
+    "difficulty": "easy"
+  },
+  {
+    "question": "What is 11 * 8 + 3 * 2 - 3?",
+    "answer": 91,
+    "steps": 3,
+    "category": "chained_arithmetic",
+    "difficulty": "medium"
+  },
+  {
+    "question": "How many integers from 1 to 70 are divisible by 2 or 6 (or both)?",
+    "answer": 35,
+    "steps": 4,
+    "category": "conditional_logic",
+    "difficulty": "medium"
+  },
+  {
+    "question": "Alice has 60 apples. She gives 1/4 of them to Bob, then eats 18. How many apples does Alice have left?",
+    "answer": 27,
+    "steps": 3,
+    "category": "word_problem",
+    "difficulty": "medium"
+  },
+  {
+    "question": "A population of 10 grows by a factor of 4 each year. What is the population after 4 years?",
+    "answer": 2560,
+    "steps": 4,
+    "category": "recursive",
+    "difficulty": "medium"
+  },
+  {
+    "question": "What is the largest integer less than 63 that is divisible by 11?",
+    "answer": 55,
+    "steps": 2,
+    "category": "conditional_logic",
+    "difficulty": "easy"
+  },
+  {
+    "question": "What is the sum of all positive divisors of 146?",
+    "answer": 222,
+    "steps": 4,
+    "category": "number_theory",
+    "difficulty": "hard"
+  },
+  {
+    "question": "Start with 8. Repeatedly double the number and add 4. After 6 repetitions, what is the result?",
+    "answer": 764,
+    "steps": 6,
+    "category": "recursive",
+    "difficulty": "hard"
+  },
+  {
+    "question": "What is (14 + 9) * 5 - 5 * 5?",
+    "answer": 90,
+    "steps": 4,
+    "category": "chained_arithmetic",
+    "difficulty": "medium"
+  },
+  {
+    "question": "How many integers from 1 to 41 are divisible by 3 but not by 4?",
+    "answer": 10,
+    "steps": 3,
+    "category": "conditional_logic",
+    "difficulty": "medium"
+  },
+  {
+    "question": "What is 7 * (10 + 8) - 3 + 9 * 8?",
+    "answer": 195,
+    "steps": 5,
+    "category": "chained_arithmetic",
+    "difficulty": "hard"
+  },
+  {
+    "question": "A train travels 30 mph for 2 hours, then 50 mph for 1 hours. How many total miles does it travel?",
+    "answer": 110,
+    "steps": 3,
+    "category": "word_problem",
+    "difficulty": "medium"
+  },
+  {
+    "question": "A population of 5 grows by a factor of 2 each year. What is the population after 3 years?",
+    "answer": 40,
+    "steps": 3,
+    "category": "recursive",
+    "difficulty": "medium"
+  },
+  {
+    "question": "A train travels 60 mph for 3 hours, then 30 mph for 3 hours. How many total miles does it travel?",
+    "answer": 270,
+    "steps": 3,
+    "category": "word_problem",
+    "difficulty": "medium"
+  },
+  {
+    "question": "Start with 10. Repeatedly double the number and add 5. After 6 repetitions, what is the result?",
+    "answer": 955,
+    "steps": 6,
+    "category": "recursive",
+    "difficulty": "hard"
+  },
+  {
+    "question": "What is 4 * 2 + 8 * 14 - 1?",
+    "answer": 119,
+    "steps": 3,
+    "category": "chained_arithmetic",
+    "difficulty": "medium"
+  },
+  {
+    "question": "A population of 10 grows by a factor of 2 each year. What is the population after 5 years?",
+    "answer": 320,
+    "steps": 5,
+    "category": "recursive",
+    "difficulty": "hard"
+  },
+  {
+    "question": "A store sells items for $10 each. Someone buys 9 and pays with $100. How much change do they receive?",
+    "answer": 10,
+    "steps": 2,
+    "category": "word_problem",
+    "difficulty": "easy"
+  },
+  {
+    "question": "What is 7 * (2 + 5) - 19 + 3 * 7?",
+    "answer": 51,
+    "steps": 5,
+    "category": "chained_arithmetic",
+    "difficulty": "hard"
+  },
+  {
+    "question": "What is Euler's totient of 70? (How many integers from 1 to 70 are coprime to 70?)",
+    "answer": 24,
+    "steps": 4,
+    "category": "number_theory",
+    "difficulty": "hard"
+  },
+  {
+    "question": "What is the sum of all positive divisors of 132?",
+    "answer": 336,
+    "steps": 4,
+    "category": "number_theory",
+    "difficulty": "hard"
+  },
+  {
+    "question": "Start with 71. Subtract 8 repeatedly. After how many subtractions do you first go below 2?",
+    "answer": 9,
+    "steps": 4,
+    "category": "recursive",
+    "difficulty": "hard"
+  },
+  {
+    "question": "A train travels 70 mph for 3 hours, then 30 mph for 3 hours. How many total miles does it travel?",
+    "answer": 300,
+    "steps": 3,
+    "category": "word_problem",
+    "difficulty": "medium"
+  },
+  {
+    "question": "Alice has 8 apples. She gives 1/2 of them to Bob, then eats 1. How many apples does Alice have left?",
+    "answer": 3,
+    "steps": 3,
+    "category": "word_problem",
+    "difficulty": "medium"
+  },
+  {
+    "question": "A population of 5 grows by a factor of 2 each year. What is the population after 5 years?",
+    "answer": 160,
+    "steps": 5,
+    "category": "recursive",
+    "difficulty": "hard"
+  },
+  {
+    "question": "How many positive divisors does 41 have?",
+    "answer": 2,
+    "steps": 4,
+    "category": "number_theory",
+    "difficulty": "hard"
+  },
+  {
+    "question": "A population of 50 grows by a factor of 2 each year. What is the population after 4 years?",
+    "answer": 800,
+    "steps": 4,
+    "category": "recursive",
+    "difficulty": "medium"
+  },
+  {
+    "question": "A train travels 70 mph for 3 hours, then 50 mph for 3 hours. How many total miles does it travel?",
+    "answer": 360,
+    "steps": 3,
+    "category": "word_problem",
+    "difficulty": "medium"
+  },
+  {
+    "question": "Start with 72. Subtract 12 repeatedly. After how many subtractions do you first go below 10?",
+    "answer": 6,
+    "steps": 4,
+    "category": "recursive",
+    "difficulty": "hard"
+  },
+  {
+    "question": "Alice has 24 apples. She gives 2/3 of them to Bob, then eats 1. How many apples does Alice have left?",
+    "answer": 7,
+    "steps": 3,
+    "category": "word_problem",
+    "difficulty": "medium"
+  },
+  {
+    "question": "What is the GCD of 134 and 238?",
+    "answer": 2,
+    "steps": 3,
+    "category": "number_theory",
+    "difficulty": "medium"
+  },
+  {
+    "question": "Start with 6. Repeatedly double the number and add 4. After 4 repetitions, what is the result?",
+    "answer": 156,
+    "steps": 4,
+    "category": "recursive",
+    "difficulty": "medium"
+  },
+  {
+    "question": "How many positive divisors does 56 have?",
+    "answer": 8,
+    "steps": 4,
+    "category": "number_theory",
+    "difficulty": "hard"
+  },
+  {
+    "question": "What is 7 * 10 + 7 * 13 - 32?",
+    "answer": 129,
+    "steps": 3,
+    "category": "chained_arithmetic",
+    "difficulty": "medium"
+  },
+  {
+    "question": "How many integers from 1 to 94 are divisible by 5 or 2 (or both)?",
+    "answer": 56,
+    "steps": 4,
+    "category": "conditional_logic",
+    "difficulty": "medium"
+  },
+  {
+    "question": "What is the largest integer less than 31 that is divisible by 3?",
+    "answer": 30,
+    "steps": 2,
+    "category": "conditional_logic",
+    "difficulty": "easy"
+  },
+  {
+    "question": "How many integers from 1 to 63 are divisible by 3 but not by 4?",
+    "answer": 16,
+    "steps": 3,
+    "category": "conditional_logic",
+    "difficulty": "medium"
+  },
+  {
+    "question": "Alice has 45 apples. She gives 1/3 of them to Bob, then eats 16. How many apples does Alice have left?",
+    "answer": 14,
+    "steps": 3,
+    "category": "word_problem",
+    "difficulty": "medium"
+  },
+  {
+    "question": "How many positive divisors does 119 have?",
+    "answer": 4,
+    "steps": 4,
+    "category": "number_theory",
+    "difficulty": "hard"
+  },
+  {
+    "question": "A store sells items for $14 each. Someone buys 2 and pays with $40. How much change do they receive?",
+    "answer": 12,
+    "steps": 2,
+    "category": "word_problem",
+    "difficulty": "easy"
+  },
+  {
+    "question": "What is 13 * 9 + 3 * 2 - 1?",
+    "answer": 122,
+    "steps": 3,
+    "category": "chained_arithmetic",
+    "difficulty": "medium"
+  },
+  {
+    "question": "A store sells items for $13 each. Someone buys 3 and pays with $40. How much change do they receive?",
+    "answer": 1,
+    "steps": 2,
+    "category": "word_problem",
+    "difficulty": "easy"
+  },
+  {
+    "question": "How many integers from 1 to 94 are divisible by 6 but not by 4?",
+    "answer": 8,
+    "steps": 3,
+    "category": "conditional_logic",
+    "difficulty": "medium"
+  },
+  {
+    "question": "What is Euler's totient of 28? (How many integers from 1 to 28 are coprime to 28?)",
+    "answer": 12,
+    "steps": 4,
+    "category": "number_theory",
+    "difficulty": "hard"
+  },
+  {
+    "question": "What is (15 + 10) * 3?",
+    "answer": 75,
+    "steps": 2,
+    "category": "chained_arithmetic",
+    "difficulty": "easy"
+  },
+  {
+    "question": "Start with 61. Subtract 5 repeatedly. After how many subtractions do you first go below 17?",
+    "answer": 9,
+    "steps": 4,
+    "category": "recursive",
+    "difficulty": "hard"
+  },
+  {
+    "question": "How many positive divisors does 15 have?",
+    "answer": 4,
+    "steps": 4,
+    "category": "number_theory",
+    "difficulty": "hard"
+  },
+  {
+    "question": "A train travels 80 mph for 2 hours, then 40 mph for 2 hours. How many total miles does it travel?",
+    "answer": 240,
+    "steps": 3,
+    "category": "word_problem",
+    "difficulty": "medium"
+  },
+  {
+    "question": "What is Euler's totient of 15? (How many integers from 1 to 15 are coprime to 15?)",
+    "answer": 8,
+    "steps": 4,
+    "category": "number_theory",
+    "difficulty": "hard"
+  },
+  {
+    "question": "Start with 9. Repeatedly double the number and add 2. After 3 repetitions, what is the result?",
+    "answer": 86,
+    "steps": 3,
+    "category": "recursive",
+    "difficulty": "medium"
+  },
+  {
+    "question": "How many integers from 1 to 100 are divisible by 2 or 4 (or both)?",
+    "answer": 50,
+    "steps": 4,
+    "category": "conditional_logic",
+    "difficulty": "medium"
+  },
+  {
+    "question": "What is (3 + 7) * 4?",
+    "answer": 40,
+    "steps": 2,
+    "category": "chained_arithmetic",
+    "difficulty": "easy"
+  },
+  {
+    "question": "Start with 56. Subtract 4 repeatedly. After how many subtractions do you first go below 8?",
+    "answer": 12,
+    "steps": 4,
+    "category": "recursive",
+    "difficulty": "hard"
+  },
+  {
+    "question": "A store sells items for $5 each. Someone buys 3 and pays with $40. How much change do they receive?",
+    "answer": 25,
+    "steps": 2,
+    "category": "word_problem",
+    "difficulty": "easy"
+  },
+  {
+    "question": "How many integers from 1 to 33 are divisible by 4 but not by 5?",
+    "answer": 7,
+    "steps": 3,
+    "category": "conditional_logic",
+    "difficulty": "medium"
+  },
+  {
+    "question": "What is the largest integer less than 91 that is divisible by 5?",
+    "answer": 90,
+    "steps": 2,
+    "category": "conditional_logic",
+    "difficulty": "easy"
+  }
+]
