@@ -1,0 +1,602 @@
+[
+  {
+    "question": "What is (6 * 12) + (13 * 10)?",
+    "answer": 202,
+    "category": "multi_step",
+    "difficulty": "medium"
+  },
+  {
+    "question": "What is (13 + 10) * 3?",
+    "answer": 69,
+    "category": "multi_step",
+    "difficulty": "medium"
+  },
+  {
+    "question": "What is 23^3 mod 5?",
+    "answer": 2,
+    "category": "modular",
+    "difficulty": "hard"
+  },
+  {
+    "question": "What is 22 squared?",
+    "answer": 484,
+    "category": "powers_roots",
+    "difficulty": "easy"
+  },
+  {
+    "question": "What is the LCM of 40 and 15?",
+    "answer": 120,
+    "category": "number_theory",
+    "difficulty": "hard"
+  },
+  {
+    "question": "What is the GCD of 27 and 146?",
+    "answer": 1,
+    "category": "number_theory",
+    "difficulty": "medium"
+  },
+  {
+    "question": "What is 37 * 39?",
+    "answer": 1443,
+    "category": "basic_arithmetic",
+    "difficulty": "easy"
+  },
+  {
+    "question": "What is 39^3 mod 15?",
+    "answer": 9,
+    "category": "modular",
+    "difficulty": "hard"
+  },
+  {
+    "question": "What is (14 * 14) + (2 * 5)?",
+    "answer": 206,
+    "category": "multi_step",
+    "difficulty": "medium"
+  },
+  {
+    "question": "What is the LCM of 18 and 39?",
+    "answer": 234,
+    "category": "number_theory",
+    "difficulty": "hard"
+  },
+  {
+    "question": "What is 64 * 53?",
+    "answer": 3392,
+    "category": "basic_arithmetic",
+    "difficulty": "easy"
+  },
+  {
+    "question": "What is the square root of 36?",
+    "answer": 6,
+    "category": "powers_roots",
+    "difficulty": "medium"
+  },
+  {
+    "question": "What is the LCM of 49 and 17?",
+    "answer": 833,
+    "category": "number_theory",
+    "difficulty": "hard"
+  },
+  {
+    "question": "What is (16 + 19) * 5?",
+    "answer": 175,
+    "category": "multi_step",
+    "difficulty": "medium"
+  },
+  {
+    "question": "What is 30 * 99?",
+    "answer": 2970,
+    "category": "basic_arithmetic",
+    "difficulty": "easy"
+  },
+  {
+    "question": "What is 8^2 mod 5?",
+    "answer": 4,
+    "category": "modular",
+    "difficulty": "hard"
+  },
+  {
+    "question": "What is 35 * 93?",
+    "answer": 3255,
+    "category": "basic_arithmetic",
+    "difficulty": "easy"
+  },
+  {
+    "question": "What is 702 + 768?",
+    "answer": 1470,
+    "category": "basic_arithmetic",
+    "difficulty": "easy"
+  },
+  {
+    "question": "How many ways can you choose 4 items from 6?",
+    "answer": 15,
+    "category": "combinatorics",
+    "difficulty": "medium"
+  },
+  {
+    "question": "What is (5 * 12) + (7 * 15)?",
+    "answer": 165,
+    "category": "multi_step",
+    "difficulty": "medium"
+  },
+  {
+    "question": "How many ways can you choose 4 items from 8?",
+    "answer": 70,
+    "category": "combinatorics",
+    "difficulty": "medium"
+  },
+  {
+    "question": "What is the square root of 36?",
+    "answer": 6,
+    "category": "powers_roots",
+    "difficulty": "medium"
+  },
+  {
+    "question": "What is (10 + 6) * 8?",
+    "answer": 128,
+    "category": "multi_step",
+    "difficulty": "medium"
+  },
+  {
+    "question": "What is 35 + 769?",
+    "answer": 804,
+    "category": "basic_arithmetic",
+    "difficulty": "easy"
+  },
+  {
+    "question": "What is 30 squared?",
+    "answer": 900,
+    "category": "powers_roots",
+    "difficulty": "easy"
+  },
+  {
+    "question": "What is (12 * 12) + (3 * 11)?",
+    "answer": 177,
+    "category": "multi_step",
+    "difficulty": "medium"
+  },
+  {
+    "question": "What is 20 squared?",
+    "answer": 400,
+    "category": "powers_roots",
+    "difficulty": "easy"
+  },
+  {
+    "question": "What is 99 * 79?",
+    "answer": 7821,
+    "category": "basic_arithmetic",
+    "difficulty": "easy"
+  },
+  {
+    "question": "What is the LCM of 21 and 38?",
+    "answer": 798,
+    "category": "number_theory",
+    "difficulty": "hard"
+  },
+  {
+    "question": "What is (5 * 12) + (6 * 13)?",
+    "answer": 138,
+    "category": "multi_step",
+    "difficulty": "medium"
+  },
+  {
+    "question": "What is 21^4 mod 16?",
+    "answer": 1,
+    "category": "modular",
+    "difficulty": "hard"
+  },
+  {
+    "question": "What is the LCM of 47 and 35?",
+    "answer": 1645,
+    "category": "number_theory",
+    "difficulty": "hard"
+  },
+  {
+    "question": "What is the square root of 256?",
+    "answer": 16,
+    "category": "powers_roots",
+    "difficulty": "medium"
+  },
+  {
+    "question": "What is 45 * 10?",
+    "answer": 450,
+    "category": "basic_arithmetic",
+    "difficulty": "easy"
+  },
+  {
+    "question": "What is 74 * 87?",
+    "answer": 6438,
+    "category": "basic_arithmetic",
+    "difficulty": "easy"
+  },
+  {
+    "question": "What is the square root of 100?",
+    "answer": 10,
+    "category": "powers_roots",
+    "difficulty": "medium"
+  },
+  {
+    "question": "How many ways can you choose 2 items from 7?",
+    "answer": 21,
+    "category": "combinatorics",
+    "difficulty": "medium"
+  },
+  {
+    "question": "How many ways can you choose 4 items from 12?",
+    "answer": 495,
+    "category": "combinatorics",
+    "difficulty": "medium"
+  },
+  {
+    "question": "What is (12 * 4) + (10 * 13)?",
+    "answer": 178,
+    "category": "multi_step",
+    "difficulty": "medium"
+  },
+  {
+    "question": "What is 14 squared?",
+    "answer": 196,
+    "category": "powers_roots",
+    "difficulty": "easy"
+  },
+  {
+    "question": "What is 36^2 mod 15?",
+    "answer": 6,
+    "category": "modular",
+    "difficulty": "hard"
+  },
+  {
+    "question": "What is the GCD of 30 and 31?",
+    "answer": 1,
+    "category": "number_theory",
+    "difficulty": "medium"
+  },
+  {
+    "question": "What is 43^3 mod 11?",
+    "answer": 10,
+    "category": "modular",
+    "difficulty": "hard"
+  },
+  {
+    "question": "What is (12 + 5) * 4?",
+    "answer": 68,
+    "category": "multi_step",
+    "difficulty": "medium"
+  },
+  {
+    "question": "What is (14 + 4) * 19?",
+    "answer": 342,
+    "category": "multi_step",
+    "difficulty": "medium"
+  },
+  {
+    "question": "What is the square root of 289?",
+    "answer": 17,
+    "category": "powers_roots",
+    "difficulty": "medium"
+  },
+  {
+    "question": "What is the square root of 361?",
+    "answer": 19,
+    "category": "powers_roots",
+    "difficulty": "medium"
+  },
+  {
+    "question": "What is 8 squared?",
+    "answer": 64,
+    "category": "powers_roots",
+    "difficulty": "easy"
+  },
+  {
+    "question": "What is 10 squared?",
+    "answer": 100,
+    "category": "powers_roots",
+    "difficulty": "easy"
+  },
+  {
+    "question": "What is the GCD of 14 and 38?",
+    "answer": 2,
+    "category": "number_theory",
+    "difficulty": "medium"
+  },
+  {
+    "question": "What is 238 + 152?",
+    "answer": 390,
+    "category": "basic_arithmetic",
+    "difficulty": "easy"
+  },
+  {
+    "question": "What is 24 squared?",
+    "answer": 576,
+    "category": "powers_roots",
+    "difficulty": "easy"
+  },
+  {
+    "question": "How many ways can you choose 4 items from 8?",
+    "answer": 70,
+    "category": "combinatorics",
+    "difficulty": "medium"
+  },
+  {
+    "question": "What is 42^3 mod 8?",
+    "answer": 0,
+    "category": "modular",
+    "difficulty": "hard"
+  },
+  {
+    "question": "What is the LCM of 13 and 13?",
+    "answer": 13,
+    "category": "number_theory",
+    "difficulty": "hard"
+  },
+  {
+    "question": "What is (14 + 5) * 13?",
+    "answer": 247,
+    "category": "multi_step",
+    "difficulty": "medium"
+  },
+  {
+    "question": "What is 9^3 mod 9?",
+    "answer": 0,
+    "category": "modular",
+    "difficulty": "hard"
+  },
+  {
+    "question": "What is 46^3 mod 4?",
+    "answer": 0,
+    "category": "modular",
+    "difficulty": "hard"
+  },
+  {
+    "question": "What is the square root of 100?",
+    "answer": 10,
+    "category": "powers_roots",
+    "difficulty": "medium"
+  },
+  {
+    "question": "What is 923 + 568?",
+    "answer": 1491,
+    "category": "basic_arithmetic",
+    "difficulty": "easy"
+  },
+  {
+    "question": "What is 13 * 81?",
+    "answer": 1053,
+    "category": "basic_arithmetic",
+    "difficulty": "easy"
+  },
+  {
+    "question": "What is (11 + 13) * 20?",
+    "answer": 480,
+    "category": "multi_step",
+    "difficulty": "medium"
+  },
+  {
+    "question": "What is the LCM of 43 and 32?",
+    "answer": 1376,
+    "category": "number_theory",
+    "difficulty": "hard"
+  },
+  {
+    "question": "What is 12^4 mod 17?",
+    "answer": 13,
+    "category": "modular",
+    "difficulty": "hard"
+  },
+  {
+    "question": "What is the GCD of 71 and 155?",
+    "answer": 1,
+    "category": "number_theory",
+    "difficulty": "medium"
+  },
+  {
+    "question": "What is 42^3 mod 17?",
+    "answer": 2,
+    "category": "modular",
+    "difficulty": "hard"
+  },
+  {
+    "question": "What is 67 * 85?",
+    "answer": 5695,
+    "category": "basic_arithmetic",
+    "difficulty": "easy"
+  },
+  {
+    "question": "What is (8 + 4) * 3?",
+    "answer": 36,
+    "category": "multi_step",
+    "difficulty": "medium"
+  },
+  {
+    "question": "What is 19^2 mod 11?",
+    "answer": 9,
+    "category": "modular",
+    "difficulty": "hard"
+  },
+  {
+    "question": "What is (5 * 4) + (9 * 8)?",
+    "answer": 92,
+    "category": "multi_step",
+    "difficulty": "medium"
+  },
+  {
+    "question": "What is (6 * 9) + (12 * 15)?",
+    "answer": 234,
+    "category": "multi_step",
+    "difficulty": "medium"
+  },
+  {
+    "question": "What is 45^2 mod 15?",
+    "answer": 0,
+    "category": "modular",
+    "difficulty": "hard"
+  },
+  {
+    "question": "How many ways can you choose 4 items from 5?",
+    "answer": 5,
+    "category": "combinatorics",
+    "difficulty": "medium"
+  },
+  {
+    "question": "What is 4 squared?",
+    "answer": 16,
+    "category": "powers_roots",
+    "difficulty": "easy"
+  },
+  {
+    "question": "What is 764 + 114?",
+    "answer": 878,
+    "category": "basic_arithmetic",
+    "difficulty": "easy"
+  },
+  {
+    "question": "What is the GCD of 102 and 88?",
+    "answer": 2,
+    "category": "number_theory",
+    "difficulty": "medium"
+  },
+  {
+    "question": "How many ways can you choose 2 items from 9?",
+    "answer": 36,
+    "category": "combinatorics",
+    "difficulty": "medium"
+  },
+  {
+    "question": "What is 99 + 614?",
+    "answer": 713,
+    "category": "basic_arithmetic",
+    "difficulty": "easy"
+  },
+  {
+    "question": "What is 40 + 105?",
+    "answer": 145,
+    "category": "basic_arithmetic",
+    "difficulty": "easy"
+  },
+  {
+    "question": "What is 664 + 124?",
+    "answer": 788,
+    "category": "basic_arithmetic",
+    "difficulty": "easy"
+  },
+  {
+    "question": "What is the GCD of 71 and 24?",
+    "answer": 1,
+    "category": "number_theory",
+    "difficulty": "medium"
+  },
+  {
+    "question": "How many ways can you choose 4 items from 4?",
+    "answer": 1,
+    "category": "combinatorics",
+    "difficulty": "medium"
+  },
+  {
+    "question": "What is (9 + 5) * 14?",
+    "answer": 196,
+    "category": "multi_step",
+    "difficulty": "medium"
+  },
+  {
+    "question": "What is 5^4 mod 14?",
+    "answer": 9,
+    "category": "modular",
+    "difficulty": "hard"
+  },
+  {
+    "question": "How many ways can you choose 2 items from 11?",
+    "answer": 55,
+    "category": "combinatorics",
+    "difficulty": "medium"
+  },
+  {
+    "question": "What is 291 + 260?",
+    "answer": 551,
+    "category": "basic_arithmetic",
+    "difficulty": "easy"
+  },
+  {
+    "question": "What is 8 squared?",
+    "answer": 64,
+    "category": "powers_roots",
+    "difficulty": "easy"
+  },
+  {
+    "question": "What is 442 + 42?",
+    "answer": 484,
+    "category": "basic_arithmetic",
+    "difficulty": "easy"
+  },
+  {
+    "question": "What is (9 + 11) * 4?",
+    "answer": 80,
+    "category": "multi_step",
+    "difficulty": "medium"
+  },
+  {
+    "question": "What is (7 * 4) + (7 * 7)?",
+    "answer": 77,
+    "category": "multi_step",
+    "difficulty": "medium"
+  },
+  {
+    "question": "What is 63 * 38?",
+    "answer": 2394,
+    "category": "basic_arithmetic",
+    "difficulty": "easy"
+  },
+  {
+    "question": "What is the square root of 361?",
+    "answer": 19,
+    "category": "powers_roots",
+    "difficulty": "medium"
+  },
+  {
+    "question": "What is 48^3 mod 12?",
+    "answer": 0,
+    "category": "modular",
+    "difficulty": "hard"
+  },
+  {
+    "question": "What is the square root of 81?",
+    "answer": 9,
+    "category": "powers_roots",
+    "difficulty": "medium"
+  },
+  {
+    "question": "What is 12 squared?",
+    "answer": 144,
+    "category": "powers_roots",
+    "difficulty": "easy"
+  },
+  {
+    "question": "How many ways can you choose 4 items from 12?",
+    "answer": 495,
+    "category": "combinatorics",
+    "difficulty": "medium"
+  },
+  {
+    "question": "What is the GCD of 92 and 135?",
+    "answer": 1,
+    "category": "number_theory",
+    "difficulty": "medium"
+  },
+  {
+    "question": "What is the square root of 196?",
+    "answer": 14,
+    "category": "powers_roots",
+    "difficulty": "medium"
+  },
+  {
+    "question": "What is (15 * 2) + (14 * 7)?",
+    "answer": 128,
+    "category": "multi_step",
+    "difficulty": "medium"
+  },
+  {
+    "question": "What is the GCD of 197 and 134?",
+    "answer": 1,
+    "category": "number_theory",
+    "difficulty": "medium"
+  }
+]
