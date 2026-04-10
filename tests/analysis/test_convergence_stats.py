@@ -129,3 +129,20 @@ class TestConvergenceAnalyzer:
         assert "correlations" in table["overall"]
         assert "roc_auc" in table["overall"]
         assert "n" in table["overall"]
+
+    def test_constant_metric_no_warning(self):
+        """When a metric is constant, return NaN without scipy warning."""
+        traces = _make_traces(n=20)
+        # Make pct_early_halt constant
+        for t in traces:
+            t["summary"]["pct_early_halt"] = 1.0
+        analyzer = ConvergenceAnalyzer(traces)
+        import warnings
+        with warnings.catch_warnings():
+            warnings.simplefilter("error")  # Turn warnings into errors
+            corr = analyzer.compute_correlations(bootstrap_n=100)
+        # pct_early_halt should be NaN, others should be normal
+        assert np.isnan(corr["pct_early_halt"]["r"])
+        assert np.isnan(corr["pct_early_halt"]["p"])
+        assert np.isnan(corr["pct_early_halt"]["ci_95"][0])
+        assert not np.isnan(corr["avg_iterations"]["r"])

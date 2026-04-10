@@ -46,6 +46,12 @@ class ConvergenceAnalyzer:
         """
         results = {}
         for key, values in self._metrics.items():
+            if np.std(values) == 0 or np.std(self._scores) == 0:
+                entry = {"r": float("nan"), "p": float("nan")}
+                if bootstrap_n > 0:
+                    entry["ci_95"] = [float("nan"), float("nan")]
+                results[key] = entry
+                continue
             r, p = pearsonr(values, self._scores)
             entry = {"r": float(r), "p": float(p)}
 
