@@ -1,12 +1,61 @@
 {
   "baseline": {
-    "score": 0.7613681972302592,
+    "score": 0.750532983223022,
     "results": [
       {
         "question": "What is the square root of 2025?",
         "expected": 45,
         "response": "45",
         "predicted": 45.0,
+        "score": 1.0
+      },
+      {
+        "question": "What is 3847 times 2963?",
+        "expected": 11398661,
+        "response": "11200041",
+        "predicted": 11200041.0,
+        "score": 0.9825751463263974
+      },
+      {
+        "question": "What is the cube root of 27000?",
+        "expected": 30,
+        "response": "30",
+        "predicted": 30.0,
+        "score": 1.0
+      },
+      {
+        "question": "What is f(f(f(3))) if f(x) = 2x + 1?",
+        "expected": 31,
+        "response": "15",
+        "predicted": 15.0,
+        "score": 0.4838709677419355
+      },
+      {
+        "question": "What is 23 times 47?",
+        "expected": 1081,
+        "response": "1081",
+        "predicted": 1081.0,
+        "score": 1.0
+      },
+      {
+        "question": "What is 17 cubed mod 13?",
+        "expected": 12,
+        "response": "1",
+        "predicted": 1.0,
+        "score": 0.08333333333333337
+      },
+      {
+        "question": "How many ways can you choose 3 items from a set of 8?",
+        "expected": 56,
+        "response": "56",
+        "predicted": 56.0,
+        "score": 1.0
+      },
+      {
+        "question": "In SKI combinator calculus, S f g x = f x (g x) and K x y = x. What is S K K 7?",
+        "expected": 7,
+        "response": "7",
+        "predicted": 7.0,
         "score": 1.0
       },
       {
@@ -17,18 +66,53 @@
         "score": 1.0
       },
       {
-        "question": "What is the square root of 15129?",
-        "expected": 123,
+        "question": "What is 47 times 83 plus 291?",
+        "expected": 4192,
+        "response": "3991",
+        "predicted": 3991.0,
+        "score": 0.9520515267175572
+      },
+      {
+        "question": "What is the cube root of 185193?",
+        "expected": 57,
         "response": "123",
         "predicted": 123.0,
+        "score": 0.0
+      },
+      {
+        "question": "What is 2 to the power of 10 minus 3 to the power of 6?",
+        "expected": 295,
+        "response": "1023",
+        "predicted": 1023.0,
+        "score": 0.0
+      },
+      {
+        "question": "What is the sum of the first 20 positive integers?",
+        "expected": 210,
+        "response": "210",
+        "predicted": 210.0,
         "score": 1.0
       },
       {
-        "question": "What is the square root of 54756?",
-        "expected": 234,
-        "response": "234",
-        "predicted": 234.0,
+        "question": "What is 7 to the power of 4 mod 11?",
+        "expected": 3,
+        "response": "1",
+        "predicted": 1.0,
+        "score": 0.33333333333333337
+      },
+      {
+        "question": "What is the greatest common divisor of 84 and 126?",
+        "expected": 42,
+        "response": "42",
+        "predicted": 42.0,
         "score": 1.0
+      },
+      {
+        "question": "What is 17 times 23 minus 11 times 31?",
+        "expected": 50,
+        "response": "102",
+        "predicted": 102.0,
+        "score": 0.0
       },
       {
         "question": "What is the square root of 108241?",
@@ -38,10 +122,66 @@
         "score": 1.0
       },
       {
-        "question": "What is the cube root of 27000?",
-        "expected": 30,
-        "response": "30",
-        "predicted": 30.0,
+        "question": "How many values of x in {1, 2, 3, 4, 5, 6, 7, 8, 9, 10} satisfy x squared > 50?",
+        "expected": 3,
+        "response": "3",
+        "predicted": 3.0,
+        "score": 1.0
+      },
+      {
+        "question": "What is 1234 times 567?",
+        "expected": 699678,
+        "response": "69444",
+        "predicted": 69444.0,
+        "score": 0.09925136991587558
+      },
+      {
+        "question": "In SKI combinator calculus, K x y = x. What is K 3 5?",
+        "expected": 3,
+        "response": "3",
+        "predicted": 3.0,
+        "score": 1.0
+      },
+      {
+        "question": "What is the 10th Fibonacci number, starting from 1, 1?",
+        "expected": 55,
+        "response": "55",
+        "predicted": 55.0,
+        "score": 1.0
+      },
+      {
+        "question": "What is 4821 times 739?",
+        "expected": 3562719,
+        "response": "357,000",
+        "predicted": 357000.0,
+        "score": 0.10020436638421382
+      },
+      {
+        "question": "What is the least common multiple of 12 and 18?",
+        "expected": 36,
+        "response": "36",
+        "predicted": 36.0,
+        "score": 1.0
+      },
+      {
+        "question": "How many prime numbers are there between 1 and 30?",
+        "expected": 10,
+        "response": "10",
+        "predicted": 10.0,
+        "score": 1.0
+      },
+      {
+        "question": "What is the square root of 15129?",
+        "expected": 123,
+        "response": "123",
+        "predicted": 123.0,
+        "score": 1.0
+      },
+      {
+        "question": "What is 98765 times 12?",
+        "expected": 1185180,
+        "response": "1185180",
+        "predicted": 1185180.0,
         "score": 1.0
       },
       {
@@ -52,11 +192,18 @@
         "score": 1.0
       },
       {
-        "question": "What is the cube root of 185193?",
-        "expected": 57,
-        "response": "123",
-        "predicted": 123.0,
-        "score": 0.0
+        "question": "What is 347 times 829?",
+        "expected": 287663,
+        "response": "288,003",
+        "predicted": 288003.0,
+        "score": 0.9988180614121385
+      },
+      {
+        "question": "What is the square root of 54756?",
+        "expected": 234,
+        "response": "234",
+        "predicted": 234.0,
+        "score": 1.0
       },
       {
         "question": "What is the cube root of 438976?",
@@ -66,11 +213,51 @@
         "score": 0.0
       },
       {
+        "question": "What is 156 times 83?",
+        "expected": 12948,
+        "response": "13028",
+        "predicted": 13028.0,
+        "score": 0.9938214396045721
+      },
+      {
         "question": "What is the cube root of 941192?",
         "expected": 98,
         "response": "97",
         "predicted": 97.0,
         "score": 0.9897959183673469
+      }
+    ]
+  },
+  "duplicated_12_17": {
+    "score": 0.7453861806514946,
+    "results": [
+      {
+        "question": "What is the square root of 2025?",
+        "expected": 45,
+        "response": "45",
+        "predicted": 45.0,
+        "score": 1.0
+      },
+      {
+        "question": "What is 3847 times 2963?",
+        "expected": 11398661,
+        "response": "11200001",
+        "predicted": 11200001.0,
+        "score": 0.9825716371422925
+      },
+      {
+        "question": "What is the cube root of 27000?",
+        "expected": 30,
+        "response": "30",
+        "predicted": 30.0,
+        "score": 1.0
+      },
+      {
+        "question": "What is f(f(f(3))) if f(x) = 2x + 1?",
+        "expected": 31,
+        "response": "11",
+        "predicted": 11.0,
+        "score": 0.3548387096774194
       },
       {
         "question": "What is 23 times 47?",
@@ -80,50 +267,24 @@
         "score": 1.0
       },
       {
-        "question": "What is 156 times 83?",
-        "expected": 12948,
-        "response": "13028",
-        "predicted": 13028.0,
-        "score": 0.9938214396045721
+        "question": "What is 17 cubed mod 13?",
+        "expected": 12,
+        "response": "1",
+        "predicted": 1.0,
+        "score": 0.08333333333333337
       },
       {
-        "question": "What is 347 times 829?",
-        "expected": 287663,
-        "response": "288,003",
-        "predicted": 288003.0,
-        "score": 0.9988180614121385
-      },
-      {
-        "question": "What is 1234 times 567?",
-        "expected": 699678,
-        "response": "69444",
-        "predicted": 69444.0,
-        "score": 0.09925136991587558
-      },
-      {
-        "question": "What is 4821 times 739?",
-        "expected": 3562719,
-        "response": "357,000",
-        "predicted": 357000.0,
-        "score": 0.10020436638421382
-      },
-      {
-        "question": "What is 98765 times 12?",
-        "expected": 1185180,
-        "response": "1185180",
-        "predicted": 1185180.0,
+        "question": "How many ways can you choose 3 items from a set of 8?",
+        "expected": 56,
+        "response": "56",
+        "predicted": 56.0,
         "score": 1.0
-      }
-    ]
-  },
-  "duplicated_12_17": {
-    "score": 0.7589274631334637,
-    "results": [
+      },
       {
-        "question": "What is the square root of 2025?",
-        "expected": 45,
-        "response": "45",
-        "predicted": 45.0,
+        "question": "In SKI combinator calculus, S f g x = f x (g x) and K x y = x. What is S K K 7?",
+        "expected": 7,
+        "response": "7",
+        "predicted": 7.0,
         "score": 1.0
       },
       {
@@ -134,18 +295,53 @@
         "score": 0.9999999999999999
       },
       {
-        "question": "What is the square root of 15129?",
-        "expected": 123,
-        "response": "123",
-        "predicted": 123.0,
+        "question": "What is 47 times 83 plus 291?",
+        "expected": 4192,
+        "response": "3991",
+        "predicted": 3991.0,
+        "score": 0.9520515267175572
+      },
+      {
+        "question": "What is the cube root of 185193?",
+        "expected": 57,
+        "response": "125",
+        "predicted": 125.0,
+        "score": 0.0
+      },
+      {
+        "question": "What is 2 to the power of 10 minus 3 to the power of 6?",
+        "expected": 295,
+        "response": "1",
+        "predicted": 1.0,
+        "score": 0.003389830508474523
+      },
+      {
+        "question": "What is the sum of the first 20 positive integers?",
+        "expected": 210,
+        "response": "210",
+        "predicted": 210.0,
         "score": 1.0
       },
       {
-        "question": "What is the square root of 54756?",
-        "expected": 234,
-        "response": "234",
-        "predicted": 234.0,
+        "question": "What is 7 to the power of 4 mod 11?",
+        "expected": 3,
+        "response": "1",
+        "predicted": 1.0,
+        "score": 0.33333333333333337
+      },
+      {
+        "question": "What is the greatest common divisor of 84 and 126?",
+        "expected": 42,
+        "response": "42",
+        "predicted": 42.0,
         "score": 1.0
+      },
+      {
+        "question": "What is 17 times 23 minus 11 times 31?",
+        "expected": 50,
+        "response": "100",
+        "predicted": 100.0,
+        "score": 0.0
       },
       {
         "question": "What is the square root of 108241?",
@@ -155,10 +351,66 @@
         "score": 0.9969604863221885
       },
       {
-        "question": "What is the cube root of 27000?",
-        "expected": 30,
-        "response": "30",
-        "predicted": 30.0,
+        "question": "How many values of x in {1, 2, 3, 4, 5, 6, 7, 8, 9, 10} satisfy x squared > 50?",
+        "expected": 3,
+        "response": "3",
+        "predicted": 3.0,
+        "score": 1.0
+      },
+      {
+        "question": "What is 1234 times 567?",
+        "expected": 699678,
+        "response": "68908",
+        "predicted": 68908.0,
+        "score": 0.09848530323949012
+      },
+      {
+        "question": "In SKI combinator calculus, K x y = x. What is K 3 5?",
+        "expected": 3,
+        "response": "3",
+        "predicted": 3.0,
+        "score": 1.0
+      },
+      {
+        "question": "What is the 10th Fibonacci number, starting from 1, 1?",
+        "expected": 55,
+        "response": "55",
+        "predicted": 55.0,
+        "score": 1.0
+      },
+      {
+        "question": "What is 4821 times 739?",
+        "expected": 3562719,
+        "response": "357,000",
+        "predicted": 357000.0,
+        "score": 0.10020436638421382
+      },
+      {
+        "question": "What is the least common multiple of 12 and 18?",
+        "expected": 36,
+        "response": "36",
+        "predicted": 36.0,
+        "score": 1.0
+      },
+      {
+        "question": "How many prime numbers are there between 1 and 30?",
+        "expected": 10,
+        "response": "10",
+        "predicted": 10.0,
+        "score": 1.0
+      },
+      {
+        "question": "What is the square root of 15129?",
+        "expected": 123,
+        "response": "123",
+        "predicted": 123.0,
+        "score": 1.0
+      },
+      {
+        "question": "What is 98765 times 12?",
+        "expected": 1185180,
+        "response": "1185180",
+        "predicted": 1185180.0,
         "score": 1.0
       },
       {
@@ -169,11 +421,18 @@
         "score": 1.0
       },
       {
-        "question": "What is the cube root of 185193?",
-        "expected": 57,
-        "response": "125",
-        "predicted": 125.0,
-        "score": 0.0
+        "question": "What is 347 times 829?",
+        "expected": 287663,
+        "response": "288,003",
+        "predicted": 288003.0,
+        "score": 0.9988180614121385
+      },
+      {
+        "question": "What is the square root of 54756?",
+        "expected": 234,
+        "response": "234",
+        "predicted": 234.0,
+        "score": 1.0
       },
       {
         "question": "What is the cube root of 438976?",
@@ -183,20 +442,6 @@
         "score": 0.0
       },
       {
-        "question": "What is the cube root of 941192?",
-        "expected": 98,
-        "response": "102",
-        "predicted": 102.0,
-        "score": 0.9591836734693877
-      },
-      {
-        "question": "What is 23 times 47?",
-        "expected": 1081,
-        "response": "1081",
-        "predicted": 1081.0,
-        "score": 1.0
-      },
-      {
         "question": "What is 156 times 83?",
         "expected": 12948,
         "response": "12808",
@@ -204,32 +449,11 @@
         "score": 0.9891875193080012
       },
       {
-        "question": "What is 347 times 829?",
-        "expected": 287663,
-        "response": "288,003",
-        "predicted": 288003.0,
-        "score": 0.9988180614121385
-      },
-      {
-        "question": "What is 1234 times 567?",
-        "expected": 699678,
-        "response": "68908",
-        "predicted": 68908.0,
-        "score": 0.09848530323949012
-      },
-      {
-        "question": "What is 4821 times 739?",
-        "expected": 3562719,
-        "response": "357,000",
-        "predicted": 357000.0,
-        "score": 0.10020436638421382
-      },
-      {
-        "question": "What is 98765 times 12?",
-        "expected": 1185180,
-        "response": "1185180",
-        "predicted": 1185180.0,
-        "score": 1.0
+        "question": "What is the cube root of 941192?",
+        "expected": 98,
+        "response": "102",
+        "predicted": 102.0,
+        "score": 0.9591836734693877
       }
     ]
   }
