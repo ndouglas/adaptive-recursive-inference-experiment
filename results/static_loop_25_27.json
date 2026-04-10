@@ -1,0 +1,711 @@
+{
+  "model": "Qwen/Qwen2.5-1.5B",
+  "block_i": 25,
+  "block_j": 27,
+  "baseline": {
+    "math_score": 0.8187224309252082,
+    "eq_score": 0.38095279858134334
+  },
+  "iterations": {
+    "1": {
+      "total_passes": 2,
+      "math_score": 0.8200401295566528,
+      "eq_score": 0.45310254768740976,
+      "elapsed_s": 5.6,
+      "prompts": [
+        {
+          "prompt": "What is 23 times 47?",
+          "generated": " To find the product of 23 and 47, we can use the standard multiplication algorithm. Here are the steps:\n\n1. Multiply 23",
+          "summary": {
+            "num_passes": 2,
+            "num_forward_calls": 64,
+            "exit_trajectory": [
+              0.8503223657608032
+            ],
+            "entry_exit_sims": [
+              1.0,
+              0.8503223657608032
+            ],
+            "final_similarity": 0.8503223657608032,
+            "converged": false
+          }
+        },
+        {
+          "prompt": "What is the square root of 2025?",
+          "generated": " To find the square root of 2025, we can use the prime factorization method. Here are the steps:\n\n1. **Prime Factorization",
+          "summary": {
+            "num_passes": 2,
+            "num_forward_calls": 64,
+            "exit_trajectory": [
+              0.8624757528305054
+            ],
+            "entry_exit_sims": [
+              1.0,
+              0.8624757528305054
+            ],
+            "final_similarity": 0.8624757528305054,
+            "converged": false
+          }
+        },
+        {
+          "prompt": "Explain why the sky is blue in one sentence.",
+          "generated": " The sky is blue because of the scattering of sunlight by tiny particles in the atmosphere, which causes shorter blue wavelengths to scatter more than longer red wavelengths.",
+          "summary": {
+            "num_passes": 2,
+            "num_forward_calls": 62,
+            "exit_trajectory": [
+              0.8703832030296326
+            ],
+            "entry_exit_sims": [
+              1.0,
+              0.8703832030296326
+            ],
+            "final_similarity": 0.8703832030296326,
+            "converged": false
+          }
+        },
+        {
+          "prompt": "What is the capital of France?",
+          "generated": " The capital of France is Paris.",
+          "summary": {
+            "num_passes": 2,
+            "num_forward_calls": 16,
+            "exit_trajectory": [
+              0.8341876268386841
+            ],
+            "entry_exit_sims": [
+              1.0,
+              0.8341876268386841
+            ],
+            "final_similarity": 0.8341876268386841,
+            "converged": false
+          }
+        }
+      ]
+    },
+    "2": {
+      "total_passes": 3,
+      "math_score": 0.82558329690621,
+      "eq_score": 0.22075640374827732,
+      "elapsed_s": 6.9,
+      "prompts": [
+        {
+          "prompt": "What is 23 times 47?",
+          "generated": " To find the product of 23 and 47, we can use the standard multiplication method. Here are the steps:\n\n1. Multiply 23",
+          "summary": {
+            "num_passes": 3,
+            "num_forward_calls": 96,
+            "exit_trajectory": [
+              1.0,
+              0.8503223657608032
+            ],
+            "entry_exit_sims": [
+              1.0,
+              1.0,
+              0.8503223657608032
+            ],
+            "final_similarity": 0.8503223657608032,
+            "converged": false
+          }
+        },
+        {
+          "prompt": "What is the square root of 2025?",
+          "generated": " To find the square root of 2025, we can use a method called prime factorization. Here are the steps:\n\n1. **Find the",
+          "summary": {
+            "num_passes": 3,
+            "num_forward_calls": 96,
+            "exit_trajectory": [
+              1.0,
+              0.8624757528305054
+            ],
+            "entry_exit_sims": [
+              1.0,
+              1.0,
+              0.8624757528305054
+            ],
+            "final_similarity": 0.8624757528305054,
+            "converged": false
+          }
+        },
+        {
+          "prompt": "Explain why the sky is blue in one sentence.",
+          "generated": " The sky is blue because of the way sunlight is scattered by particles in the atmosphere, with shorter blue wavelengths interacting more with these particles.",
+          "summary": {
+            "num_passes": 3,
+            "num_forward_calls": 84,
+            "exit_trajectory": [
+              1.0,
+              0.8703832030296326
+            ],
+            "entry_exit_sims": [
+              1.0,
+              1.0,
+              0.8703832030296326
+            ],
+            "final_similarity": 0.8703832030296326,
+            "converged": false
+          }
+        },
+        {
+          "prompt": "What is the capital of France?",
+          "generated": " The capital of France is Paris.",
+          "summary": {
+            "num_passes": 3,
+            "num_forward_calls": 24,
+            "exit_trajectory": [
+              1.0,
+              0.8341876268386841
+            ],
+            "entry_exit_sims": [
+              1.0,
+              1.0,
+              0.8341876268386841
+            ],
+            "final_similarity": 0.8341876268386841,
+            "converged": false
+          }
+        }
+      ]
+    },
+    "3": {
+      "total_passes": 4,
+      "math_score": 0.814947306232978,
+      "eq_score": 0.1209048525410927,
+      "elapsed_s": 7.9,
+      "prompts": [
+        {
+          "prompt": "What is 23 times 47?",
+          "generated": " | 23 * 47 = | 23 * 47 = 1,061. The answer is 1,0",
+          "summary": {
+            "num_passes": 4,
+            "num_forward_calls": 128,
+            "exit_trajectory": [
+              1.0,
+              1.0,
+              0.8503223657608032
+            ],
+            "entry_exit_sims": [
+              1.0,
+              1.0,
+              1.0,
+              0.8503223657608032
+            ],
+            "final_similarity": 0.8503223657608032,
+            "converged": false
+          }
+        },
+        {
+          "prompt": "What is the square root of 2025?",
+          "generated": " To find the square root of 2025, we can use a square-100 app. The square root of 2025",
+          "summary": {
+            "num_passes": 4,
+            "num_forward_calls": 128,
+            "exit_trajectory": [
+              1.0,
+              1.0,
+              0.8624757528305054
+            ],
+            "entry_exit_sims": [
+              1.0,
+              1.0,
+              1.0,
+              0.8624757528305054
+            ],
+            "final_similarity": 0.8624757528305054,
+            "converged": false
+          }
+        },
+        {
+          "prompt": "Explain why the sky is blue in one sentence.",
+          "generated": " The sky is blue, in one sentence, because of the way sunlight, particles in the atmosphere, and our eyes work together. Sunlight, made up of",
+          "summary": {
+            "num_passes": 4,
+            "num_forward_calls": 128,
+            "exit_trajectory": [
+              1.0,
+              1.0,
+              0.8703832030296326
+            ],
+            "entry_exit_sims": [
+              1.0,
+              1.0,
+              1.0,
+              0.8703832030296326
+            ],
+            "final_similarity": 0.8703832030296326,
+            "converged": false
+          }
+        },
+        {
+          "prompt": "What is the capital of France?",
+          "generated": " The capital of France is Paris.",
+          "summary": {
+            "num_passes": 4,
+            "num_forward_calls": 32,
+            "exit_trajectory": [
+              1.0,
+              1.0,
+              0.8341876268386841
+            ],
+            "entry_exit_sims": [
+              1.0,
+              1.0,
+              1.0,
+              0.8341876268386841
+            ],
+            "final_similarity": 0.8341876268386841,
+            "converged": false
+          }
+        }
+      ]
+    },
+    "4": {
+      "total_passes": 5,
+      "math_score": 0.6354167872948703,
+      "eq_score": 0.04515631366810919,
+      "elapsed_s": 7.7,
+      "prompts": [
+        {
+          "prompt": "What is 23 times 47?",
+          "generated": " | 23 * 47\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n\\n",
+          "summary": {
+            "num_passes": 5,
+            "num_forward_calls": 160,
+            "exit_trajectory": [
+              1.0,
+              1.0,
+              1.0,
+              0.8503223657608032
+            ],
+            "entry_exit_sims": [
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              0.8503223657608032
+            ],
+            "final_similarity": 0.8503223657608032,
+            "converged": false
+          }
+        },
+        {
+          "prompt": "What is the square root of 2025?",
+          "generated": " To find the square root of 2025, we can use a square-1 app. The square-1 app, also known as the square",
+          "summary": {
+            "num_passes": 5,
+            "num_forward_calls": 160,
+            "exit_trajectory": [
+              1.0,
+              1.0,
+              1.0,
+              0.8624757528305054
+            ],
+            "entry_exit_sims": [
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              0.8624757528305054
+            ],
+            "final_similarity": 0.8624757528305054,
+            "converged": false
+          }
+        },
+        {
+          "prompt": "Explain why the sky is blue in one sentence.",
+          "generated": " The sky is blue, in one sentence, because of the way sunlight, particles in the atmosphere, and our v. v. v. v. v.",
+          "summary": {
+            "num_passes": 5,
+            "num_forward_calls": 160,
+            "exit_trajectory": [
+              1.0,
+              1.0,
+              1.0,
+              0.8703832030296326
+            ],
+            "entry_exit_sims": [
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              0.8703832030296326
+            ],
+            "final_similarity": 0.8703832030296326,
+            "converged": false
+          }
+        },
+        {
+          "prompt": "What is the capital of France?",
+          "generated": " The capital of France is Paris.",
+          "summary": {
+            "num_passes": 5,
+            "num_forward_calls": 40,
+            "exit_trajectory": [
+              1.0,
+              1.0,
+              1.0,
+              0.8341876268386841
+            ],
+            "entry_exit_sims": [
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              0.8341876268386841
+            ],
+            "final_similarity": 0.8341876268386841,
+            "converged": false
+          }
+        }
+      ]
+    },
+    "5": {
+      "total_passes": 6,
+      "math_score": 0.4980997362839016,
+      "eq_score": 0.04515631366810919,
+      "elapsed_s": 8.6,
+      "prompts": [
+        {
+          "prompt": "What is 23 times 47?",
+          "generated": " | 23 47 23 47 23 47 23 47 23 47 ",
+          "summary": {
+            "num_passes": 6,
+            "num_forward_calls": 192,
+            "exit_trajectory": [
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              0.8503223657608032
+            ],
+            "entry_exit_sims": [
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              0.8503223657608032
+            ],
+            "final_similarity": 0.8503223657608032,
+            "converged": false
+          }
+        },
+        {
+          "prompt": "What is the square root of 2025?",
+          "generated": " To square a number, we square the 2000, 1, and 5 1, 2, and 3 4,",
+          "summary": {
+            "num_passes": 6,
+            "num_forward_calls": 192,
+            "exit_trajectory": [
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              0.8624757528305054
+            ],
+            "entry_exit_sims": [
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              0.8624757528305054
+            ],
+            "final_similarity": 0.8624757528305054,
+            "converged": false
+          }
+        },
+        {
+          "prompt": "Explain why the sky is blue in one sentence.",
+          "generated": " The sky is blue, in one, because of the way the atmosphere scats white, and, for us, scats, scats, scats,",
+          "summary": {
+            "num_passes": 6,
+            "num_forward_calls": 192,
+            "exit_trajectory": [
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              0.8703832030296326
+            ],
+            "entry_exit_sims": [
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              0.8703832030296326
+            ],
+            "final_similarity": 0.8703832030296326,
+            "converged": false
+          }
+        },
+        {
+          "prompt": "What is the capital of France?",
+          "generated": " The capital of France is Paris.",
+          "summary": {
+            "num_passes": 6,
+            "num_forward_calls": 48,
+            "exit_trajectory": [
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              0.8341876268386841
+            ],
+            "entry_exit_sims": [
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              0.8341876268386841
+            ],
+            "final_similarity": 0.8341876268386841,
+            "converged": false
+          }
+        }
+      ]
+    },
+    "6": {
+      "total_passes": 7,
+      "math_score": 0.38697251313329434,
+      "eq_score": 0.11065634601381213,
+      "elapsed_s": 9.8,
+      "prompts": [
+        {
+          "prompt": "What is 23 times 47?",
+          "generated": " | 23 47 23 47 23 47 23 47 23 47 ",
+          "summary": {
+            "num_passes": 7,
+            "num_forward_calls": 224,
+            "exit_trajectory": [
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              0.8503223657608032
+            ],
+            "entry_exit_sims": [
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              0.8503223657608032
+            ],
+            "final_similarity": 0.8503223657608032,
+            "converged": false
+          }
+        },
+        {
+          "prompt": "What is the square root of 2025?",
+          "generated": " | Squace\n\n# Squace\n\n## Squace\n\n1, 25\n6.14.2018. 17.",
+          "summary": {
+            "num_passes": 7,
+            "num_forward_calls": 224,
+            "exit_trajectory": [
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              0.8624757528305054
+            ],
+            "entry_exit_sims": [
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              0.8624757528305054
+            ],
+            "final_similarity": 0.8624757528305054,
+            "converged": false
+          }
+        },
+        {
+          "prompt": "Explain why the sky is blue in one sentence.",
+          "generated": " Sky is blue, a result of the time it takes for air, water, and the air in between, to scatter, dis- and re- and re",
+          "summary": {
+            "num_passes": 7,
+            "num_forward_calls": 224,
+            "exit_trajectory": [
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              0.8703832030296326
+            ],
+            "entry_exit_sims": [
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              0.8703832030296326
+            ],
+            "final_similarity": 0.8703832030296326,
+            "converged": false
+          }
+        },
+        {
+          "prompt": "What is the capital of France?",
+          "generated": " The capital of France is, of all places, the capital of the capital, the capital of the capital, the capital of the capital, the capital of the",
+          "summary": {
+            "num_passes": 7,
+            "num_forward_calls": 224,
+            "exit_trajectory": [
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              0.8341876268386841
+            ],
+            "entry_exit_sims": [
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              0.8341876268386841
+            ],
+            "final_similarity": 0.8341876268386841,
+            "converged": false
+          }
+        }
+      ]
+    },
+    "7": {
+      "total_passes": 8,
+      "math_score": 0.44947251313329434,
+      "eq_score": 0.04515631366810919,
+      "elapsed_s": 10.3,
+      "prompts": [
+        {
+          "prompt": "What is 23 times 47?",
+          "generated": " | 23 47 1 2 3 47 9 1 2 3 47 9 1 ",
+          "summary": {
+            "num_passes": 8,
+            "num_forward_calls": 256,
+            "exit_trajectory": [
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              0.8503223657608032
+            ],
+            "entry_exit_sims": [
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              0.8503223657608032
+            ],
+            "final_similarity": 0.8503223657608032,
+            "converged": false
+          }
+        },
+        {
+          "prompt": "What is the square root of 2025?",
+          "generated": " | Squace\n\n# Squade\n\n67.8.147.127.22\n67.8.147",
+          "summary": {
+            "num_passes": 8,
+            "num_forward_calls": 256,
+            "exit_trajectory": [
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              0.8624757528305054
+            ],
+            "entry_exit_sims": [
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              0.8624757528305054
+            ],
+            "final_similarity": 0.8624757528305054,
+            "converged": false
+          }
+        },
+        {
+          "prompt": "Explain why the sky is blue in one sentence.",
+          "generated": " Sky- a, a, a, a, a, a, a, a, a, a, a, a, a, a, a,",
+          "summary": {
+            "num_passes": 8,
+            "num_forward_calls": 256,
+            "exit_trajectory": [
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              0.8703832030296326
+            ],
+            "entry_exit_sims": [
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              0.8703832030296326
+            ],
+            "final_similarity": 0.8703832030296326,
+            "converged": false
+          }
+        },
+        {
+          "prompt": "What is the capital of France?",
+          "generated": " The capital of France is, of, you, of, of, of, of, of, of, of, of, of, of, of,",
+          "summary": {
+            "num_passes": 8,
+            "num_forward_calls": 256,
+            "exit_trajectory": [
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              0.8341876268386841
+            ],
+            "entry_exit_sims": [
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              1.0,
+              0.8341876268386841
+            ],
+            "final_similarity": 0.8341876268386841,
+            "converged": false
+          }
+        }
+      ]
+    }
+  }
+}
