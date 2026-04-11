@@ -88,13 +88,13 @@ How does convergence-based uncertainty compare to established methods? We benchm
 2. **Sampling-based** (8.0 forward passes): generate N=8 outputs at temperature=0.7, measure answer agreement
 3. **Softmax entropy** (1.0 forward pass): mean per-token entropy from the model's output distribution
 
-| Method | Math AUC | Reasoning AUC | Cost (FP) |
-|--------|----------|---------------|-----------|
-| Sampling (N=8) | **0.874** | **0.829** | 8.00 |
-| Conv. Similarity | 0.690 | 0.475 | 1.09 |
-| Conv. Speed | 0.660 | 0.524 | 1.09 |
-| Conv. Iterations | 0.625 | 0.560 | 1.12 |
-| Softmax Entropy | 0.338 | 0.544 | 1.00 |
+| Method           | Math AUC  | Reasoning AUC | Cost (FP) |
+| ---------------- | --------- | ------------- | --------- |
+| Sampling (N=8)   | **0.874** | **0.829**     | 8.00      |
+| Conv. Similarity | 0.690     | 0.475         | 1.09      |
+| Conv. Speed      | 0.660     | 0.524         | 1.09      |
+| Conv. Iterations | 0.625     | 0.560         | 1.12      |
+| Softmax Entropy  | 0.338     | 0.544         | 1.00      |
 
 Sampling dominates in raw discriminative power — AUC > 0.82 for both task types. But it costs 8× more compute.
 
