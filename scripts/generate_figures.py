@@ -25,6 +25,8 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 
 from src.analysis.token_profiles import TokenProfileAnalyzer
 from src.analysis.token_roles import TokenRoleClassifier, TokenRole
+from src.analysis.calibration import CalibrationAnalyzer
+from src.analysis.uncertainty_comparison import UncertaintyComparison
 
 # ---------------------------------------------------------------------------
 # Style
@@ -81,6 +83,35 @@ def savefig(fig, path):
     fig.savefig(path, dpi=150, bbox_inches="tight", facecolor="white")
     plt.close(fig)
     print(f"  Saved: {path}")
+
+
+# ---------------------------------------------------------------------------
+# Data Helpers
+# ---------------------------------------------------------------------------
+def merge_data_sources(results_dir, conv_file, samp_file, ent_file):
+    """Match problems across convergence, sampling, and entropy by question text."""
+    conv_data = load_json(os.path.join(results_dir, conv_file))
+    samp_data = load_json(os.path.join(results_dir, samp_file))
+    ent_data = load_json(os.path.join(results_dir, ent_file))
+
+    conv_by_q = {t["prompt"]: t for t in conv_data["traces"]}
+    samp_by_q = {r["question"]: r for r in samp_data["results"]}
+    ent_by_q = {r["question"]: r for r in ent_data["results"]}
+
+    common = set(conv_by_q) & set(samp_by_q) & set(ent_by_q)
+    matched = []
+    for q in sorted(common):
+        c, s, e = conv_by_q[q], samp_by_q[q], ent_by_q[q]
+        matched.append({
+            "question": q,
+            "correct": c["correct"],
+            "convergence_similarity": c["summary"]["avg_final_similarity"],
+            "convergence_iterations": c["summary"]["avg_iterations"],
+            "convergence_speed": c["summary"]["avg_convergence_speed"],
+            "sampling_agreement": s["agreement"],
+            "mean_entropy": e["mean_entropy"],
+        })
+    return matched
 
 
 # ---------------------------------------------------------------------------
@@ -355,6 +386,204 @@ def fig_heatmaps(out_dir, results_dir, model_name):
 
 
 # ---------------------------------------------------------------------------
+# Fig 6: Reliability Diagrams
+# ---------------------------------------------------------------------------
+def fig_reliability(out_dir, results_dir):
+    """Calibration reliability diagrams for best and worst metrics per task."""
+    math_traces = load_json(os.path.join(results_dir, "traces_7b_math_expanded.json"))["traces"]
+    reas_traces = load_json(os.path.join(results_dir, "traces_7b_reasoning_expanded_t0.80.json"))["traces"]
+
+    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 5.5))
+
+    metrics_to_plot = [
+        ("avg_iterations", "Iterations"),
+        ("avg_final_similarity", "Similarity"),
+        ("avg_convergence_speed", "Speed"),
+    ]
+    metric_colors = ["#FF9800", "#2196F3", "#4CAF50"]
+
+    for ax, traces, title in [(ax1, math_traces, "Math"), (ax2, reas_traces, "Reasoning")]:
+        for (metric, label), color in zip(metrics_to_plot, metric_colors):
+            cal = CalibrationAnalyzer(traces, metric=metric)
+            bins = cal.reliability_bins(10)
+            ece = cal.expected_calibration_error(10)
+            if bins:
+                confs = [b["confidence"] for b in bins]
+                accs = [b["accuracy"] for b in bins]
+                ax.plot(confs, accs, "o-", color=color, markersize=4, linewidth=1.5,
+                        label=f"{label} (ECE={ece:.2f})")
+
+        ax.plot([0, 1], [0, 1], "k--", alpha=0.3, label="Perfect")
+        ax.set_xlabel("Binned Confidence")
+        ax.set_ylabel("Observed Accuracy")
+        ax.set_title(title)
+        ax.legend(fontsize=8)
+        ax.set_xlim(0, 1)
+        ax.set_ylim(0, 1)
+
+    fig.suptitle("Calibration Reliability Diagrams", fontsize=14, y=1.02)
+    fig.tight_layout()
+    savefig(fig, os.path.join(out_dir, "fig6_reliability.png"))
+
+
+# ---------------------------------------------------------------------------
+# Fig 7: Pareto Frontier
+# ---------------------------------------------------------------------------
+def fig_pareto(out_dir, results_dir):
+    """AUC vs compute cost for all methods, both task types."""
+    fig, ax = plt.subplots(figsize=(9, 6))
+
+    task_configs = [
+        ("math", "traces_7b_math_expanded.json",
+         "samples_7b_math.json", "entropy_7b_math.json"),
+        ("reasoning", "traces_7b_reasoning_expanded_t0.80.json",
+         "samples_7b_reasoning.json", "entropy_7b_reasoning.json"),
+    ]
+
+    markers = {"convergence_similarity": "o", "convergence_iterations": "s",
+               "convergence_speed": "^", "sampling_agreement": "D",
+               "mean_entropy": "v"}
+
+    for task_name, conv, samp, ent in task_configs:
+        matched = merge_data_sources(results_dir, conv, samp, ent)
+        if not matched:
+            continue
+        comp = UncertaintyComparison(matched)
+        points = comp.pareto_data()
+        color = COLORS[task_name]
+
+        for p in points:
+            marker = markers.get(p["method"], "o")
+            ax.scatter(p["cost"], p["auc"], marker=marker, color=color,
+                       s=100, zorder=5, edgecolors="white", linewidth=0.5)
+            offset_y = 0.015 if p["method"] != "sampling_agreement" else -0.025
+            ax.annotate(METHOD_LABELS.get(p["method"], p["method"]),
+                        (p["cost"], p["auc"]),
+                        textcoords="offset points", xytext=(5, 8 if offset_y > 0 else -12),
+                        fontsize=7, color=color)
+
+        sorted_pts = sorted(points, key=lambda x: x["cost"])
+        ax.plot([p["cost"] for p in sorted_pts],
+                [p["auc"] for p in sorted_pts],
+                color=color, alpha=0.25, linestyle="--", label=task_name.capitalize())
+
+    ax.axhline(y=0.5, color="gray", alpha=0.2, linestyle=":")
+    ax.set_xlabel("Compute Cost (forward pass equivalents)")
+    ax.set_ylabel("ROC AUC (correct/incorrect classification)")
+    ax.set_title("Uncertainty Quality vs Compute Cost")
+    ax.legend(fontsize=10)
+    ax.set_xscale("log")
+    ax.set_xlim(0.8, 12)
+    ax.set_ylim(0.25, 1.0)
+
+    fig.tight_layout()
+    savefig(fig, os.path.join(out_dir, "fig7_pareto.png"))
+
+
+# ---------------------------------------------------------------------------
+# Fig 8: Scatter — Convergence vs Sampling
+# ---------------------------------------------------------------------------
+def fig_scatter(out_dir, results_dir):
+    """Scatter: convergence similarity vs sampling agreement, colored by correctness."""
+    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 5.5))
+
+    task_configs = [
+        (ax1, "Math", "traces_7b_math_expanded.json",
+         "samples_7b_math.json", "entropy_7b_math.json"),
+        (ax2, "Reasoning", "traces_7b_reasoning_expanded_t0.80.json",
+         "samples_7b_reasoning.json", "entropy_7b_reasoning.json"),
+    ]
+
+    for ax, title, conv, samp, ent in task_configs:
+        matched = merge_data_sources(results_dir, conv, samp, ent)
+        if not matched:
+            continue
+
+        sim = [d["convergence_similarity"] for d in matched]
+        agr = [d["sampling_agreement"] for d in matched]
+        correct = [d["correct"] for d in matched]
+        colors = [COLORS["correct"] if c else COLORS["incorrect"] for c in correct]
+
+        ax.scatter(sim, agr, c=colors, alpha=0.6, s=30, edgecolors="white", linewidth=0.3)
+        ax.set_xlabel("Convergence Similarity")
+        ax.set_ylabel("Sampling Agreement")
+        ax.set_title(f"{title} (n={len(matched)})")
+
+    from matplotlib.lines import Line2D
+    legend_els = [
+        Line2D([0], [0], marker="o", color="w", markerfacecolor=COLORS["correct"],
+               markersize=8, label="Correct"),
+        Line2D([0], [0], marker="o", color="w", markerfacecolor=COLORS["incorrect"],
+               markersize=8, label="Incorrect"),
+    ]
+    ax2.legend(handles=legend_els, fontsize=9)
+
+    fig.suptitle("Convergence Similarity vs Sampling Agreement", fontsize=14, y=1.02)
+    fig.tight_layout()
+    savefig(fig, os.path.join(out_dir, "fig8_scatter.png"))
+
+
+# ---------------------------------------------------------------------------
+# Fig 9: Summary Table
+# ---------------------------------------------------------------------------
+def fig_summary_table(out_dir, results_dir):
+    """Render the key results as a matplotlib table figure."""
+    rows = []
+    task_configs = [
+        ("Math", "traces_7b_math_expanded.json",
+         "samples_7b_math.json", "entropy_7b_math.json"),
+        ("Reasoning", "traces_7b_reasoning_expanded_t0.80.json",
+         "samples_7b_reasoning.json", "entropy_7b_reasoning.json"),
+    ]
+
+    for task_name, conv, samp, ent in task_configs:
+        matched = merge_data_sources(results_dir, conv, samp, ent)
+        if not matched:
+            continue
+        comp = UncertaintyComparison(matched)
+        aucs = comp.roc_auc_all()
+        pareto = {p["method"]: p["cost"] for p in comp.pareto_data()}
+
+        for method in ["sampling_agreement", "convergence_similarity",
+                       "convergence_speed", "convergence_iterations", "mean_entropy"]:
+            auc = aucs[method]["auc"]
+            cost = pareto.get(method, 0)
+            rows.append([
+                task_name,
+                METHOD_LABELS.get(method, method),
+                f"{auc:.3f}",
+                f"{cost:.2f}",
+            ])
+
+    fig, ax = plt.subplots(figsize=(10, 5))
+    ax.axis("off")
+
+    col_labels = ["Task", "Method", "AUC", "Cost (FP)"]
+    table = ax.table(
+        cellText=rows,
+        colLabels=col_labels,
+        cellLoc="center",
+        loc="center",
+    )
+    table.auto_set_font_size(False)
+    table.set_fontsize(10)
+    table.scale(1, 1.5)
+
+    for j in range(len(col_labels)):
+        table[0, j].set_facecolor("#E3F2FD")
+        table[0, j].set_text_props(fontweight="bold")
+
+    for i in range(1, len(rows) + 1):
+        for j in range(len(col_labels)):
+            if i % 2 == 0:
+                table[i, j].set_facecolor("#F5F5F5")
+
+    fig.suptitle("Summary: Uncertainty Method Comparison", fontsize=14)
+    fig.tight_layout()
+    savefig(fig, os.path.join(out_dir, "fig9_summary_table.png"))
+
+
+# ---------------------------------------------------------------------------
 # Main
 # ---------------------------------------------------------------------------
 def main():
@@ -376,6 +605,10 @@ def main():
     fig_phase_transition(out_dir, results_dir)
     fig_token_roles(out_dir, results_dir, args.model_name)
     fig_heatmaps(out_dir, results_dir, args.model_name)
+    fig_reliability(out_dir, results_dir)
+    fig_pareto(out_dir, results_dir)
+    fig_scatter(out_dir, results_dir)
+    fig_summary_table(out_dir, results_dir)
     print(f"\nDone. {len([f for f in os.listdir(out_dir) if f.endswith('.png')])} figures in {out_dir}/")
 
 
