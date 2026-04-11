@@ -19,6 +19,7 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
 from matplotlib.patches import FancyBboxPatch
 from pathlib import Path
+from matplotlib.lines import Line2D
 from sklearn.metrics import roc_curve, roc_auc_score
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
@@ -509,7 +510,6 @@ def fig_scatter(out_dir, results_dir):
         ax.set_ylabel("Sampling Agreement")
         ax.set_title(f"{title} (n={len(matched)})")
 
-    from matplotlib.lines import Line2D
     legend_els = [
         Line2D([0], [0], marker="o", color="w", markerfacecolor=COLORS["correct"],
                markersize=8, label="Correct"),
