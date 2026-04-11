@@ -162,7 +162,7 @@ The interesting finding is not that the mechanism "works" or "doesn't work" — 
 
 **Compute:** RunPod (fine-grained threshold sweep on 7B)
 
-**Status:** Not Started
+**Status:** Complete
 
 ---
 
