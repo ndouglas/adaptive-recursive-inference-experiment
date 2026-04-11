@@ -201,7 +201,7 @@ The interesting finding is not that the mechanism "works" or "doesn't work" — 
 
 **Compute:** RunPod (sampling requires multiple generations per problem)
 
-**Status:** Not Started
+**Status:** Complete
 
 ---
 
