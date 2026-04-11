@@ -1,34 +1,41 @@
 # Adaptive Recursive Inference
 
-Extending [dnhkng's RYS (Repeat Your Self)](https://github.com/dnhkng/RYS) technique from static layer duplication to **adaptive recursive inference** with cosine-similarity-based halting.
+Extending [dnhkng's RYS (Repeat Your Self)](https://github.com/dnhkng/RYS) technique from static layer duplication to **adaptive recursive inference** with cosine-similarity-based halting -- and using convergence dynamics as a cheap uncertainty signal.
+
+**For the full writeup, see [WRITEUP.md](WRITEUP.md).**
+
+## Key Findings
+
+- **Convergence predicts math correctness** (AUC=0.69) at 14% the cost of sampling-based uncertainty (8 samples)
+- **Convergence inverts for reasoning** -- the model converges *harder* on wrong answers (r=-0.38)
+- **Three-regime phase transition**: Safe (θ≤0.70), Plateau (θ=0.80-0.95), Cliff (θ≥0.96)
+- **Softmax entropy is worse than random for math** (AUC=0.34) -- convergence captures structural information that token-level confidence misses
 
 ## Background
 
 RYS duplicates contiguous mid-stack transformer layers at inference time, running them twice in the forward pass. This improves benchmark performance without modifying weights -- the hypothesis being that "reasoning" layers benefit from a second pass through the same circuit.
 
-This project makes that process dynamic: instead of a fixed duplication config, the model loops through its reasoning layers until the hidden state converges (measured by cosine similarity between passes). The core hypothesis is that convergence behaves like a laser cavity -- coherent features amplify while incoherent features attenuate, producing a detectable phase transition.
-
-## Approach
-
-1. **Characterize model anatomy** -- trace forward passes, measure layer contributions, identify the three-phase structure (encoder / reasoning / decoder)
-2. **Build proxy evaluation tasks** -- math (structured reasoning) and EQ (emotional/contextual reasoning) probes that test orthogonal capabilities
-3. **Sweep all (i, j) layer duplication configs** -- generate heatmaps showing which blocks improve performance, identifying functional circuit boundaries
-4. **Implement adaptive halting** -- replace static duplication with a cosine-similarity convergence loop, measuring per-token halting behavior
-5. **Measure convergence dynamics** -- characterize the phase transition, measure across model scales, validate on held-out benchmarks
+This project makes that process dynamic: instead of a fixed duplication config, the model loops through its reasoning layers until the hidden state converges (measured by cosine similarity between passes). We then study whether the convergence rate itself serves as a useful uncertainty signal -- and find that it does for math, but actively misleads for reasoning.
 
 ## Project Structure
 
 ```
+WRITEUP.md              # Full writeup with figures and analysis
+figures/                 # 9 publication-quality figures
 src/
-  inference/       # Layer duplication (LayerDuplicator)
-  evaluation/      # Math and EQ probes, sweep runner
-  analysis/        # Heatmap generation
-  utils/           # Cosine analysis, layer contribution metrics
-scripts/           # Runnable experiments (trace, analyze, evaluate, sweep)
-data/              # Probe datasets (math_probe.json, eq_probe.json)
-k8s/               # Dockerfile and K8s Job manifests for GPU cluster
-results/           # Sweep results, eval outputs
-plots/             # Generated heatmaps and analysis plots
+  inference/             # Adaptive recursive inference engine
+  evaluation/            # Math and reasoning probes, sweep runner
+  analysis/              # Convergence stats, calibration, uncertainty comparison,
+                         #   token profiles, statistical summary
+  utils/                 # Cosine analysis, layer contribution metrics
+scripts/
+  generate_figures.py    # Master figure script (produces all 9 figures)
+  run_sweep.py           # Phase transition threshold sweep
+  collect_traces.py      # Convergence trace collection
+  sample_uncertainty.py  # Sampling-based uncertainty baseline
+  entropy_baseline.py    # Softmax entropy baseline
+data/                    # Probe datasets (math, reasoning)
+results/                 # Traces, sweep results, baselines, statistical summary
 ```
 
 ## Running
@@ -36,34 +43,35 @@ plots/             # Generated heatmaps and analysis plots
 Requires Python 3.12+, PyTorch, and Transformers. Uses `uv` for dependency management.
 
 ```bash
-# Environment verification
-uv run python scripts/verify_environment.py
+# Run all tests
+uv run python -m pytest tests/ -v
 
-# Forward pass analysis
-uv run python scripts/trace_forward.py
-uv run python scripts/cosine_analysis.py
-uv run python scripts/layer_contributions.py
+# Generate all figures from existing results
+uv run python scripts/generate_figures.py
 
-# Layer duplication experiments
-uv run python scripts/layer_duplication.py
+# Generate statistical summary
+uv run python -c "from src.analysis.statistical_summary import StatisticalSummary; StatisticalSummary().to_json('results/statistical_summary.json')"
+```
 
-# Proxy task evaluation (baseline vs duplicated)
-uv run python scripts/math_eval.py
-uv run python scripts/eq_eval.py
+### Data Collection (requires GPU)
 
-# Full (i,j) sweep (long-running, ~1hr on GPU)
-uv run python scripts/run_sweep.py --max-math 8 --max-eq 8
+```bash
+# Convergence trace collection (RunPod L40S)
+uv run python scripts/collect_traces.py
 
-# Generate heatmaps from sweep results
-uv run python scripts/generate_heatmaps.py
+# Phase transition sweep
+uv run python scripts/run_sweep.py
+
+# Sampling and entropy baselines
+uv run python scripts/sample_uncertainty.py
+uv run python scripts/entropy_baseline.py
 ```
 
 ## Compute
 
-- **Mac M1 Max (64GB)** -- development, analysis, interactive exploration via MPS
-- **Velaryon (RTX 2070S)** -- batch sweeps via K8s Jobs on the Goldentooth cluster
-- **RunPod (A100+)** -- 7B+ model experiments
+- **Mac M1 Max (32GB)** -- analysis, figure generation, development
+- **RunPod (L40S 48GB)** -- data collection with Qwen2.5-7B-Instruct
 
 ## Status
 
-Work in progress. Currently running the (i,j) sweep on Qwen2.5-1.5B.
+Complete through Stage 6 (Writeup and Visualization). See [WRITEUP.md](WRITEUP.md) for the full analysis.
