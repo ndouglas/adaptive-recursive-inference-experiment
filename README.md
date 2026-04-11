@@ -70,6 +70,7 @@ uv run python scripts/entropy_baseline.py
 ## Compute
 
 - **Mac M1 Max (32GB)** -- analysis, figure generation, development
+- **Velaryon (RTX 2070S)** -- batch sweeps via K8s Jobs on the Goldentooth cluster
 - **RunPod (L40S 48GB)** -- data collection with Qwen2.5-7B-Instruct
 
 ## Status
