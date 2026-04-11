@@ -75,7 +75,7 @@ A useful uncertainty signal should be **calibrated**: when the signal says "80% 
 
 The best-calibrated metric differs by task type. For math, **iteration count** is best-calibrated (ECE = 0.19). For reasoning, **convergence speed** is well-calibrated (ECE = 0.10–0.12) — meaning it reliably tracks how likely the model is to be right, even though the absolute AUC is low.
 
-But final similarity for reasoning is **anti-calibrated** (ECE = 0.61). When the signal says "high confidence," accuracy is actually *lower* than when it says "low confidence." This is the confident-wrong phenomenon from Section 3, now quantified: the model's similarity-based convergence signal actively misleads for reasoning tasks.
+But final similarity for reasoning is **anti-calibrated** (ECE = 0.61). When the signal says "high confidence," accuracy is actually *lower* than when it says "low confidence." This is the confident-wrong phenomenon described above, now quantified: the model's similarity-based convergence signal actively misleads for reasoning tasks.
 
 ![Fig 6: Reliability diagrams](figures/fig6_reliability.png)
 *Fig 6: Calibration reliability diagrams. The diagonal represents perfect calibration. Left: math. Right: reasoning, showing well-calibrated speed (ECE=0.10) alongside anti-calibrated similarity (ECE=0.61).*
