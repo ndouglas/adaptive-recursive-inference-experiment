@@ -23,6 +23,9 @@ from sklearn.metrics import roc_curve, roc_auc_score
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 
+from src.analysis.token_profiles import TokenProfileAnalyzer
+from src.analysis.token_roles import TokenRoleClassifier, TokenRole
+
 # ---------------------------------------------------------------------------
 # Style
 # ---------------------------------------------------------------------------
@@ -221,6 +224,137 @@ def fig_phase_transition(out_dir, results_dir):
 
 
 # ---------------------------------------------------------------------------
+# Fig 4: Convergence by Token Role
+# ---------------------------------------------------------------------------
+def fig_token_roles(out_dir, results_dir, model_name):
+    """Bar chart: mean iterations by token role, correct vs incorrect."""
+    math_traces = load_json(os.path.join(results_dir, "traces_7b_math_expanded.json"))["traces"]
+
+    analyzer = TokenProfileAnalyzer(model_name)
+    comparison = analyzer.compare_correct_vs_incorrect(math_traces)
+
+    roles = ["structural", "reasoning", "answer"]
+    role_labels = ["Structural", "Reasoning", "Answer"]
+    metrics = [
+        ("mean_iterations", "Mean Iterations"),
+        ("mean_final_similarity", "Mean Final Similarity"),
+    ]
+
+    fig, axes = plt.subplots(1, len(metrics), figsize=(10, 5))
+    x = np.arange(len(roles))
+    width = 0.35
+
+    for ax, (metric, title) in zip(axes, metrics):
+        correct_vals = [
+            comparison.get("correct", {}).get(r, {}).get(metric, 0) for r in roles
+        ]
+        incorrect_vals = [
+            comparison.get("incorrect", {}).get(r, {}).get(metric, 0) for r in roles
+        ]
+
+        ax.bar(x - width / 2, correct_vals, width,
+               label="Correct", color=COLORS["correct"], alpha=0.85)
+        ax.bar(x + width / 2, incorrect_vals, width,
+               label="Incorrect", color=COLORS["incorrect"], alpha=0.85)
+
+        ax.set_xticks(x)
+        ax.set_xticklabels(role_labels)
+        ax.set_title(title)
+        ax.legend(fontsize=9)
+
+    fig.suptitle("Convergence by Token Role (Math, θ=0.80)", fontsize=14, y=1.02)
+    fig.tight_layout()
+    savefig(fig, os.path.join(out_dir, "fig4_token_roles.png"))
+
+
+# ---------------------------------------------------------------------------
+# Fig 5: Convergence Heatmaps (Representative Examples)
+# ---------------------------------------------------------------------------
+def _build_heatmap_array(token_traces, max_iters=4):
+    """Build (iterations × positions) similarity matrix from token traces."""
+    n_tokens = len(token_traces)
+    matrix = np.full((max_iters, n_tokens), np.nan)
+    for j, tt in enumerate(token_traces):
+        sims = tt.get("similarities", [])
+        for i, s in enumerate(sims):
+            if i < max_iters:
+                matrix[i, j] = s
+        if sims:
+            for i in range(len(sims), max_iters):
+                matrix[i, j] = sims[-1]
+    return matrix
+
+
+def _select_representative(traces, correct):
+    """Pick a median-convergence trace from the correct/incorrect group."""
+    group = [t for t in traces if t["correct"] == correct]
+    if not group:
+        return None
+    group.sort(key=lambda t: t["summary"].get("avg_iterations", 0))
+    return group[len(group) // 2]
+
+
+def fig_heatmaps(out_dir, results_dir, model_name):
+    """2×2 grid of convergence heatmaps: correct/incorrect × math/reasoning."""
+    math_traces = load_json(os.path.join(results_dir, "traces_7b_math_expanded.json"))["traces"]
+    reas_traces = load_json(os.path.join(results_dir, "traces_7b_reasoning_expanded_t0.80.json"))["traces"]
+
+    classifier = TokenRoleClassifier(model_name)
+
+    selections = [
+        (_select_representative(math_traces, True), "Math — Correct"),
+        (_select_representative(math_traces, False), "Math — Incorrect"),
+        (_select_representative(reas_traces, True), "Reasoning — Correct"),
+        (_select_representative(reas_traces, False), "Reasoning — Incorrect"),
+    ]
+
+    fig, axes = plt.subplots(2, 2, figsize=(14, 8))
+    role_colors = {
+        TokenRole.STRUCTURAL: COLORS["structural"],
+        TokenRole.REASONING: COLORS["reasoning_role"],
+        TokenRole.ANSWER: COLORS["answer"],
+    }
+
+    for idx, (trace, title) in enumerate(selections):
+        ax = axes[idx // 2][idx % 2]
+        if trace is None:
+            ax.text(0.5, 0.5, "No data", ha="center", va="center")
+            ax.set_title(title)
+            continue
+
+        matrix = _build_heatmap_array(trace["token_traces"])
+        im = ax.imshow(matrix, aspect="auto", cmap="viridis", vmin=0.7, vmax=1.0,
+                        interpolation="nearest", origin="lower")
+        ax.set_xlabel("Token Position")
+        ax.set_ylabel("Iteration")
+        ax.set_title(title, fontsize=11)
+
+        try:
+            roles = classifier.classify(trace["generated"])
+            n = min(len(roles), matrix.shape[1])
+            for i in range(n):
+                ax.axvspan(i - 0.5, i + 0.5, ymax=1.05, ymin=1.0,
+                           color=role_colors.get(roles[i], "#888"),
+                           clip_on=False)
+        except Exception:
+            pass
+
+    cbar = fig.colorbar(im, ax=axes, shrink=0.6, label="Cosine Similarity")
+
+    legend_patches = [
+        mpatches.Patch(color=COLORS["structural"], label="Structural"),
+        mpatches.Patch(color=COLORS["reasoning_role"], label="Reasoning"),
+        mpatches.Patch(color=COLORS["answer"], label="Answer"),
+    ]
+    fig.legend(handles=legend_patches, loc="upper right", fontsize=9,
+               bbox_to_anchor=(0.98, 0.98))
+
+    fig.suptitle("Per-Token Convergence Heatmaps", fontsize=14, y=1.02)
+    fig.tight_layout(rect=[0, 0, 0.92, 0.96])
+    savefig(fig, os.path.join(out_dir, "fig5_heatmaps.png"))
+
+
+# ---------------------------------------------------------------------------
 # Main
 # ---------------------------------------------------------------------------
 def main():
@@ -240,6 +374,8 @@ def main():
     fig_method_diagram(out_dir)
     fig_roc_curves(out_dir, results_dir)
     fig_phase_transition(out_dir, results_dir)
+    fig_token_roles(out_dir, results_dir, args.model_name)
+    fig_heatmaps(out_dir, results_dir, args.model_name)
     print(f"\nDone. {len([f for f in os.listdir(out_dir) if f.endswith('.png')])} figures in {out_dir}/")
 
 
