@@ -1,0 +1,129 @@
+{
+  "model": "Qwen/Qwen2.5-7B",
+  "data": "data/math_probe_expanded.json",
+  "block": [
+    15,
+    20
+  ],
+  "max_iterations": 4,
+  "num_probes": 100,
+  "results": [
+    {
+      "threshold": 0.5,
+      "accuracy": 0.97,
+      "num_correct": 97,
+      "mean_score": 0.9747668298088467,
+      "mean_avg_iterations": 1.0,
+      "mean_tokens": 105.96,
+      "elapsed_s": 337.1
+    },
+    {
+      "threshold": 0.6,
+      "accuracy": 0.97,
+      "num_correct": 97,
+      "mean_score": 0.9747668298088467,
+      "mean_avg_iterations": 1.0,
+      "mean_tokens": 105.96,
+      "elapsed_s": 333.2
+    },
+    {
+      "threshold": 0.7,
+      "accuracy": 0.97,
+      "num_correct": 97,
+      "mean_score": 0.9747668298088467,
+      "mean_avg_iterations": 1.0,
+      "mean_tokens": 105.96,
+      "elapsed_s": 333.4
+    },
+    {
+      "threshold": 0.8,
+      "accuracy": 0.93,
+      "num_correct": 93,
+      "mean_score": 0.9342564446804954,
+      "mean_avg_iterations": 1.4889173532210704,
+      "mean_tokens": 109.34,
+      "elapsed_s": 374.1
+    },
+    {
+      "threshold": 0.85,
+      "accuracy": 0.91,
+      "num_correct": 91,
+      "mean_score": 0.9339910886302029,
+      "mean_avg_iterations": 2.0,
+      "mean_tokens": 117.92,
+      "elapsed_s": 440.9
+    },
+    {
+      "threshold": 0.9,
+      "accuracy": 0.91,
+      "num_correct": 91,
+      "mean_score": 0.9339910886302029,
+      "mean_avg_iterations": 2.0,
+      "mean_tokens": 117.92,
+      "elapsed_s": 441.2
+    },
+    {
+      "threshold": 0.92,
+      "accuracy": 0.91,
+      "num_correct": 91,
+      "mean_score": 0.9339910886302029,
+      "mean_avg_iterations": 2.0,
+      "mean_tokens": 117.92,
+      "elapsed_s": 441.4
+    },
+    {
+      "threshold": 0.94,
+      "accuracy": 0.91,
+      "num_correct": 91,
+      "mean_score": 0.9339910886302029,
+      "mean_avg_iterations": 2.0,
+      "mean_tokens": 117.92,
+      "elapsed_s": 441.7
+    },
+    {
+      "threshold": 0.95,
+      "accuracy": 0.91,
+      "num_correct": 91,
+      "mean_score": 0.9339910886302029,
+      "mean_avg_iterations": 2.0082383610477716,
+      "mean_tokens": 120.24,
+      "elapsed_s": 451.3
+    },
+    {
+      "threshold": 0.96,
+      "accuracy": 0.88,
+      "num_correct": 88,
+      "mean_score": 0.9052709060915085,
+      "mean_avg_iterations": 2.3369813603363747,
+      "mean_tokens": 134.52,
+      "elapsed_s": 531.6
+    },
+    {
+      "threshold": 0.97,
+      "accuracy": 0.76,
+      "num_correct": 76,
+      "mean_score": 0.8621552093208424,
+      "mean_avg_iterations": 3.0,
+      "mean_tokens": 144.48,
+      "elapsed_s": 632.5
+    },
+    {
+      "threshold": 0.98,
+      "accuracy": 0.76,
+      "num_correct": 76,
+      "mean_score": 0.8530458975799518,
+      "mean_avg_iterations": 3.0188753775672086,
+      "mean_tokens": 147.15,
+      "elapsed_s": 644.7
+    },
+    {
+      "threshold": 0.99,
+      "accuracy": 0.31,
+      "num_correct": 31,
+      "mean_score": 0.5491560348152233,
+      "mean_avg_iterations": 4.0,
+      "mean_tokens": 183.66,
+      "elapsed_s": 927.4
+    }
+  ]
+}
