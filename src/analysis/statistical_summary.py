@@ -103,14 +103,13 @@ class StatisticalSummary:
         }
 
     def to_json(self, path, trace_configs=None, sweep_configs=None,
-                comparison_configs=None, bootstrap_n=1000):
+                bootstrap_n=1000):
         """Compute all statistics and save to JSON.
 
         Args:
             path: Output JSON file path.
             trace_configs: Dict of {name: trace_filename} for task analysis.
             sweep_configs: Dict of {name: sweep_filename} for phase transitions.
-            comparison_configs: Dict of {name: {conv, samples, entropy}} (optional).
             bootstrap_n: Number of bootstrap resamples for CIs.
 
         Returns:
@@ -132,11 +131,6 @@ class StatisticalSummary:
 
         for name, filename in sweep_configs.items():
             summary["phase_transitions"][name] = self._analyze_phase_transition(filename)
-
-        if comparison_configs:
-            summary["comparisons"] = {}
-            for name, cfg in comparison_configs.items():
-                summary["comparisons"][name] = self._analyze_comparison(**cfg)
 
         with open(path, "w") as f:
             json.dump(summary, f, indent=2, default=str)
