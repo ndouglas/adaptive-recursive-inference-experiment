@@ -124,6 +124,103 @@ def fig_method_diagram(out_dir):
 
 
 # ---------------------------------------------------------------------------
+# Fig 2: ROC Curves — Math vs Reasoning
+# ---------------------------------------------------------------------------
+def fig_roc_curves(out_dir, results_dir):
+    """Two-panel ROC curves showing convergence predicts math but not reasoning."""
+    math_traces = load_json(os.path.join(results_dir, "traces_7b_math_expanded.json"))["traces"]
+    reas_traces = load_json(os.path.join(results_dir, "traces_7b_reasoning_expanded_t0.80.json"))["traces"]
+
+    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 5.5))
+
+    metric_map = {
+        "avg_final_similarity": ("convergence_similarity", False),
+        "avg_convergence_speed": ("convergence_speed", False),
+        "avg_iterations": ("convergence_iterations", True),
+    }
+
+    for ax, traces, title in [(ax1, math_traces, "Math (n={})"),
+                               (ax2, reas_traces, "Reasoning (n={})")]:
+        labels = np.array([t["correct"] for t in traces], dtype=int)
+        title = title.format(len(traces))
+
+        for metric_key, (color_key, negate) in metric_map.items():
+            values = np.array([t["summary"].get(metric_key, 0) for t in traces])
+            if negate:
+                values = -values
+            if len(np.unique(labels)) < 2:
+                continue
+            try:
+                fpr, tpr, _ = roc_curve(labels, values)
+                auc = roc_auc_score(labels, values)
+                ax.plot(fpr, tpr, color=COLORS[color_key], lw=2,
+                        label=f"{METHOD_LABELS[color_key]} (AUC={auc:.3f})")
+            except ValueError:
+                continue
+
+        ax.plot([0, 1], [0, 1], "k--", alpha=0.3, label="Random (AUC=0.5)")
+        ax.set_xlabel("False Positive Rate")
+        ax.set_ylabel("True Positive Rate")
+        ax.set_title(title)
+        ax.legend(loc="lower right", fontsize=8)
+        ax.set_xlim(0, 1)
+        ax.set_ylim(0, 1)
+
+    fig.suptitle("Convergence Metrics as Correctness Predictors", fontsize=14, y=1.02)
+    fig.tight_layout()
+    savefig(fig, os.path.join(out_dir, "fig2_roc_curves.png"))
+
+
+# ---------------------------------------------------------------------------
+# Fig 3: Phase Transition — Three Regimes
+# ---------------------------------------------------------------------------
+def fig_phase_transition(out_dir, results_dir):
+    """Accuracy and iterations vs threshold with regime annotations."""
+    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(13, 5.5))
+
+    for sweep_file, label, color in [
+        ("phase_sweep_math.json", "Math", COLORS["math"]),
+        ("phase_sweep_reasoning.json", "Reasoning", COLORS["reasoning"]),
+    ]:
+        data = load_json(os.path.join(results_dir, sweep_file))
+        results = sorted(data["results"], key=lambda r: r["threshold"])
+        thresholds = [r["threshold"] for r in results]
+        accuracies = [r.get("accuracy", r.get("mean_score", 0)) for r in results]
+        iterations = [r.get("mean_avg_iterations", float("nan")) for r in results]
+
+        ax1.plot(thresholds, accuracies, "o-", color=color, label=label,
+                 markersize=5, linewidth=2)
+        ax2.plot(thresholds, iterations, "o-", color=color, label=label,
+                 markersize=5, linewidth=2)
+
+    ax1.axvspan(0.0, 0.70, alpha=0.06, color="green", label="Safe")
+    ax1.axvspan(0.70, 0.95, alpha=0.06, color="gold", label="Plateau")
+    ax1.axvspan(0.95, 1.0, alpha=0.06, color="red", label="Cliff")
+
+    ax1.axvline(x=0.96, color=COLORS["math"], linestyle=":", alpha=0.6, linewidth=1.5)
+    ax1.axvline(x=0.95, color=COLORS["reasoning"], linestyle=":", alpha=0.6, linewidth=1.5)
+    ax1.text(0.96, 0.25, "θ*≈0.96\n(math)", fontsize=8, color=COLORS["math"],
+             ha="center")
+    ax1.text(0.935, 0.18, "θ*≈0.95\n(reas.)", fontsize=8, color=COLORS["reasoning"],
+             ha="center")
+
+    ax1.set_xlabel("Similarity Threshold (θ)")
+    ax1.set_ylabel("Accuracy")
+    ax1.set_title("Accuracy vs Threshold")
+    ax1.legend(loc="lower left", fontsize=8)
+    ax1.set_ylim(0, 1.05)
+
+    ax2.set_xlabel("Similarity Threshold (θ)")
+    ax2.set_ylabel("Mean Iterations")
+    ax2.set_title("Mean Iterations vs Threshold")
+    ax2.legend(loc="upper left", fontsize=8)
+
+    fig.suptitle("Phase Transition: Three-Regime Structure", fontsize=14, y=1.02)
+    fig.tight_layout()
+    savefig(fig, os.path.join(out_dir, "fig3_phase_transition.png"))
+
+
+# ---------------------------------------------------------------------------
 # Main
 # ---------------------------------------------------------------------------
 def main():
@@ -141,7 +238,8 @@ def main():
 
     print("Generating figures...")
     fig_method_diagram(out_dir)
-    # Remaining figures added in subsequent tasks
+    fig_roc_curves(out_dir, results_dir)
+    fig_phase_transition(out_dir, results_dir)
     print(f"\nDone. {len([f for f in os.listdir(out_dir) if f.endswith('.png')])} figures in {out_dir}/")
 
 
